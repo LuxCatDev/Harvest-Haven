@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxexgcctq1njk"]
+
+[ext_resource type="Script" path="res://common/scripts/TileMapSystem.cs" id="1_blcev"]
+[ext_resource type="TileSet" uid="uid://ipxgj5bgc4un" path="res://tilesets/data_tile_set.tres" id="1_jnt2p"]
+[ext_resource type="TileSet" uid="uid://l40ghwqdkwam" path="res://tilesets/grass_tile_set.tres" id="2_q6kvy"]
+
+[node name="TileMapSystem" type="Node2D"]
+script = ExtResource("1_blcev")
+
+[node name="DataLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_jnt2p")
+y_sort_origin = -1
+
+[node name="DisplayLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_q6kvy")
