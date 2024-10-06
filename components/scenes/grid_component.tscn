@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://components/scripts/grid_component/GridComponent.cs" id="1_rff7d"]
 
 [node name="GridComponent" type="Node2D"]
+visible = false
+z_index = 5
 script = ExtResource("1_rff7d")

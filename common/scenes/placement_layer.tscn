@@ -3,8 +3,6 @@
 [ext_resource type="Script" path="res://common/scripts/PlacementLayer.cs" id="1_5r880"]
 [ext_resource type="TileSet" uid="uid://dl0gp15s75br8" path="res://tilesets/placement_collision_tile_set.tres" id="1_g5xr6"]
 
-[node name="PlacementLayer" type="Node2D"]
-script = ExtResource("1_5r880")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="PlacementLayer" type="TileMapLayer"]
 tile_set = ExtResource("1_g5xr6")
+script = ExtResource("1_5r880")

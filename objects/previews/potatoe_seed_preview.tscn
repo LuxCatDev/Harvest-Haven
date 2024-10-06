@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://djyc8ee3rhfpv"]
+
+[ext_resource type="Texture2D" uid="uid://bnnaevje6fcrw" path="res://assets/tilesets/PlantsTileSet.png" id="1_nru8g"]
+
+[node name="PotatoeSeedPreview" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nru8g")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

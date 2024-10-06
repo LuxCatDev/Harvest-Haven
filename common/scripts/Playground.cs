@@ -20,13 +20,19 @@ public partial class Playground: Node2D
 	[Node]
 	private Crosshair crosshair;
 
+	[Node]
+	private PlacingControllerComponent placingControllerComponent;
+
     public override void _Ready()
     {
 		GameManager.Instance.PlacementLayer = placementLayer;
 		GameManager.Instance.Crosshair = crosshair;
 
-		crosshair.Size = new(16, 16);
-
-		crosshair.ShowCrosshair();
+		placingControllerComponent.Enable();
     }
+
+	public void SpawnNode(Node2D node)
+	{
+		AddChild(node);
+	}
 }

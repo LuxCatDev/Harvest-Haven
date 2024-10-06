@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=6 format=3 uid="uid://dpivqcafdq1yl"]
+
+[ext_resource type="Texture2D" uid="uid://ckn6jru0o1qop" path="res://assets/tilesets/WildTileSet.png" id="1_hb056"]
+[ext_resource type="PackedScene" uid="uid://b5v8qq4kjh857" path="res://objects/previews/log_preview.tscn" id="2_g06nc"]
+[ext_resource type="PackedScene" uid="uid://cr1qdk4pl7wxk" path="res://objects/scenes/log.tscn" id="2_pcn2k"]
+[ext_resource type="Script" path="res://models/PlacesableObject.cs" id="3_fxy3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34glb"]
+atlas = ExtResource("1_hb056")
+region = Rect2(0, 32, 32, 32)
+
+[resource]
+script = ExtResource("3_fxy3c")
+Scene = ExtResource("2_pcn2k")
+Preview = ExtResource("2_g06nc")
+Logo = SubResource("AtlasTexture_34glb")
+Size = Vector2(2, 2)
