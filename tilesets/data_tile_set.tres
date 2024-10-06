@@ -6,6 +6,7 @@
 texture = ExtResource("1_n4mom")
 0:0/0 = 0
 0:0/0/custom_data_0 = "Grass"
+0:0/0/custom_data_1 = true
 1:0/0 = 0
 1:0/0/custom_data_0 = "Water"
 2:0/0 = 0
@@ -14,4 +15,6 @@ texture = ExtResource("1_n4mom")
 [resource]
 custom_data_layer_0/name = "TileType"
 custom_data_layer_0/type = 4
+custom_data_layer_1/name = "CanPlaceObjects"
+custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_q67sn")

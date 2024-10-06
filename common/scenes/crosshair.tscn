@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq35qq65agd27"]
+
+[ext_resource type="Script" path="res://common/scripts/Crosshair.cs" id="1_w2rdv"]
+[ext_resource type="Texture2D" uid="uid://cvcksqfcqoedr" path="res://assets/sprites/Crosshair.png" id="1_xemhg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vig3m"]
+size = Vector2(15, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkgbm"]
+texture = ExtResource("1_xemhg")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3mhmn"]
+texture = ExtResource("1_xemhg")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Crosshair" type="Node2D"]
+script = ExtResource("1_w2rdv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vig3m")
+
+[node name="Free" type="Panel" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_pkgbm")
+
+[node name="Restricted" type="Panel" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3mhmn")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="OnBodyExited"]

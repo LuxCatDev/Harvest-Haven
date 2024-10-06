@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://503hfj7s0rqf"]
+
+[ext_resource type="TileSet" uid="uid://b3mq76ecikic" path="res://tilesets/data_tile_set.tres" id="1_1vl7r"]
+
+[node name="TerrainLayer" type="TileMapLayer"]
+visible = false
+tile_set = ExtResource("1_1vl7r")
