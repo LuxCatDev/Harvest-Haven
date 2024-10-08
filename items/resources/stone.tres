@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://druypm282lfct"]
+
+[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_onbq4"]
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="1_sincf"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="3_3dlgj"]
+
+[sub_resource type="Resource" id="Resource_4piev"]
+script = ExtResource("1_sincf")
+Type = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
+atlas = ExtResource("1_onbq4")
+region = Rect2(16, 16, 16, 16)
+
+[resource]
+script = ExtResource("3_3dlgj")
+Name = "Stone"
+Description = "Basic resource"
+Texture = SubResource("AtlasTexture_6oty5")
+Value = 0
+Type = 1
+Data = SubResource("Resource_4piev")

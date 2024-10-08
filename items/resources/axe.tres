@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://c2o4txjmajk4a"]
+
+[ext_resource type="Script" path="res://items/scripts/ToolData.cs" id="1_b1a3o"]
+[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_shm8v"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="3_v82sg"]
+
+[sub_resource type="Resource" id="Resource_pt2g2"]
+script = ExtResource("1_b1a3o")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
+atlas = ExtResource("1_shm8v")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_v82sg")
+Name = "Axe"
+Description = "Tool for wood harvest"
+Texture = SubResource("AtlasTexture_6oty5")
+Value = 0
+Type = 2
+Data = SubResource("Resource_pt2g2")

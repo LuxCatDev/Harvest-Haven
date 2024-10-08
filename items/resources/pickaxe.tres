@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bofft6c5ojaog"]
+
+[ext_resource type="Script" path="res://items/scripts/ToolData.cs" id="1_kj0mr"]
+[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_ub6gy"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="3_ivfea"]
+
+[sub_resource type="Resource" id="Resource_qpq24"]
+script = ExtResource("1_kj0mr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
+atlas = ExtResource("1_ub6gy")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_ivfea")
+Name = "Pickaxe"
+Description = "Tool"
+Texture = SubResource("AtlasTexture_6oty5")
+Value = 0
+Type = 2
+Data = SubResource("Resource_qpq24")

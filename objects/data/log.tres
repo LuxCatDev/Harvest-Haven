@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ckn6jru0o1qop" path="res://assets/tilesets/WildTileSet.png" id="1_hb056"]
 [ext_resource type="PackedScene" uid="uid://b5v8qq4kjh857" path="res://objects/previews/log_preview.tscn" id="2_g06nc"]
 [ext_resource type="PackedScene" uid="uid://cr1qdk4pl7wxk" path="res://objects/scenes/log.tscn" id="2_pcn2k"]
-[ext_resource type="Script" path="res://models/PlacesableObject.cs" id="3_fxy3c"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="3_fxy3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34glb"]
 atlas = ExtResource("1_hb056")

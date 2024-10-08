@@ -1,3 +1,4 @@
+using Components.InventoryComponent;
 using Components.State;
 using Godot;
 using GodotUtilities;
@@ -51,9 +52,12 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
+	// Components
+	[Node("Components/InventoryComponent")]
+	public InventoryComponent InventoryComponent { get; private set; }
+
     public override void _Ready()
     {
-		GameManager.Instance.Player = this;
 		stateMachineComponent.Init();
     }
 

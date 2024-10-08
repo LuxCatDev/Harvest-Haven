@@ -2,23 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://bnnaevje6fcrw" path="res://assets/tilesets/PlantsTileSet.png" id="1_nxcn4"]
 
-[sub_resource type="Animation" id="Animation_rlgiw"]
-resource_name = "seed"
-length = 0.001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_61n43"]
 length = 0.001
 tracks/0/type = "value"
@@ -32,6 +15,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_77lp8"]
+resource_name = "fully_growed"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
 }
 
 [sub_resource type="Animation" id="Animation_s74eo"]
@@ -102,8 +102,8 @@ tracks/0/keys = {
 "values": [4]
 }
 
-[sub_resource type="Animation" id="Animation_77lp8"]
-resource_name = "fully_growed"
+[sub_resource type="Animation" id="Animation_rlgiw"]
+resource_name = "seed"
 length = 0.001
 loop_mode = 1
 tracks/0/type = "value"
@@ -116,7 +116,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd1e0"]

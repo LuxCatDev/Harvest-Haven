@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dw5oc2fybrmll"]
+
+[ext_resource type="FontFile" uid="uid://d3xr4a1mmtg75" path="res://assets/fonts/monogram-extended.ttf" id="1_h3e2q"]
+
+[sub_resource type="FontVariation" id="FontVariation_3fodw"]
+base_font = ExtResource("1_h3e2q")
+
+[resource]
+Label/fonts/font = SubResource("FontVariation_3fodw")

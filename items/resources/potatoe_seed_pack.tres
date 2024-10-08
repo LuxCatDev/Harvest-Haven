@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://q4ks7q0dpvhl"]
+
+[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_jkty5"]
+[ext_resource type="Script" path="res://items/scripts/SeedData.cs" id="1_wp7u4"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="3_mbgu8"]
+
+[sub_resource type="Resource" id="Resource_ujxsx"]
+script = ExtResource("1_wp7u4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
+atlas = ExtResource("1_jkty5")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+script = ExtResource("3_mbgu8")
+Name = "Potatoe Seed Pack"
+Description = "Seed pack for planting potatoes"
+Texture = SubResource("AtlasTexture_6oty5")
+Value = 0
+Type = 3
+Data = SubResource("Resource_ujxsx")

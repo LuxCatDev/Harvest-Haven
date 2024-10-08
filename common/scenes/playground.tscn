@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cxngdkgy21j0v"]
+[gd_scene load_steps=24 format=4 uid="uid://cxngdkgy21j0v"]
 
 [ext_resource type="Script" path="res://common/scripts/Playground.cs" id="1_c0txn"]
 [ext_resource type="PackedScene" uid="uid://cwdbcogpej64k" path="res://common/scenes/tile_map_system.tscn" id="1_od26g"]
@@ -12,6 +12,12 @@
 [ext_resource type="Script" path="res://components/scripts/grid_component/IsCloseToPlayerRule.cs" id="9_8c46t"]
 [ext_resource type="PackedScene" uid="uid://ctp76rxn1357f" path="res://components/scenes/placing_controller_component.tscn" id="11_5wcf1"]
 [ext_resource type="Resource" uid="uid://demehm5kws7kw" path="res://objects/data/tree.tres" id="12_o6vug"]
+[ext_resource type="PackedScene" uid="uid://be1wsht6aor3n" path="res://common/scenes/pickable_item.tscn" id="13_sa8ti"]
+[ext_resource type="Resource" uid="uid://3w5ao3vw8na1" path="res://items/resources/coal.tres" id="14_hgs3v"]
+[ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="15_0if8g"]
+[ext_resource type="PackedScene" uid="uid://c5kgpxuwj5c2h" path="res://ui/scenes/menu.tscn" id="16_7nmh8"]
+[ext_resource type="PackedScene" uid="uid://dxukauo4xnkw1" path="res://ui/scenes/player_inventory_page.tscn" id="17_6p5yr"]
+[ext_resource type="Resource" uid="uid://druypm282lfct" path="res://items/resources/stone.tres" id="18_ve4l0"]
 
 [sub_resource type="Resource" id="Resource_eiaat"]
 script = ExtResource("6_mi58r")
@@ -22,6 +28,16 @@ script = ExtResource("7_4r3bj")
 [sub_resource type="Resource" id="Resource_5rv7y"]
 script = ExtResource("9_8c46t")
 expectedDistance = 28.0
+
+[sub_resource type="Resource" id="Resource_w2jn4"]
+script = ExtResource("15_0if8g")
+Item = ExtResource("14_hgs3v")
+Amount = 5
+
+[sub_resource type="Resource" id="Resource_b5cep"]
+script = ExtResource("15_0if8g")
+Item = ExtResource("18_ve4l0")
+Amount = 10
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -47,3 +63,14 @@ placementRules = Array[Resource]([SubResource("Resource_eiaat"), SubResource("Re
 [node name="PlacingControllerComponent" parent="." node_paths=PackedStringArray("gridComponent") instance=ExtResource("11_5wcf1")]
 Object = ExtResource("12_o6vug")
 gridComponent = NodePath("../GridComponent")
+
+[node name="PickableItem" parent="." instance=ExtResource("13_sa8ti")]
+position = Vector2(-76, 49)
+inventoryItem = SubResource("Resource_w2jn4")
+
+[node name="Menu" parent="." instance=ExtResource("16_7nmh8")]
+pageScene = ExtResource("17_6p5yr")
+
+[node name="PickableItem2" parent="." instance=ExtResource("13_sa8ti")]
+position = Vector2(2, 59)
+inventoryItem = SubResource("Resource_b5cep")

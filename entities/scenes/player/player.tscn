@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c126d6k7tkm4x"]
+[gd_scene load_steps=31 format=3 uid="uid://c126d6k7tkm4x"]
 
 [ext_resource type="Texture2D" uid="uid://otscik4br2j5" path="res://assets/sprites/Character.png" id="1_3uqbx"]
 [ext_resource type="Script" path="res://entities/scripts/player/Player.cs" id="1_suvfo"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://entities/scripts/player/PlayerIdleState.cs" id="7_vtctx"]
 [ext_resource type="Script" path="res://components/scripts/state/StateEvent.cs" id="8_sx4xc"]
 [ext_resource type="Script" path="res://entities/scripts/player/PlayerMoveState.cs" id="9_wnbqj"]
+[ext_resource type="PackedScene" uid="uid://p1oeutw1j6p0" path="res://components/scenes/inventory_component.tscn" id="11_opfh0"]
 
 [sub_resource type="Animation" id="Animation_ghxxq"]
 length = 0.001
@@ -363,3 +364,8 @@ launchEvents = [NodePath("../Idle/OnPlayerMove")]
 
 [node name="OnPlayerStopMoving" type="Node" parent="StateMachineComponent/Move"]
 script = ExtResource("8_sx4xc")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="InventoryComponent" parent="Components" instance=ExtResource("11_opfh0")]
+Size = 45

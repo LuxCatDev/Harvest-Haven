@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://mjdsq5y0tpjg"]
+[gd_scene load_steps=3 format=3 uid="uid://mjdsq5y0tpjg"]
 
 [ext_resource type="Texture2D" uid="uid://ckn6jru0o1qop" path="res://assets/tilesets/WildTileSet.png" id="1_874on"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a0rp"]
+size = Vector2(20, 12)
+
 [node name="Tree" type="StaticBody2D"]
 z_index = 1
+collision_layer = 4
+collision_mask = 0
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -12,3 +17,5 @@ region_enabled = true
 region_rect = Rect2(64, 64, 64, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_5a0rp")

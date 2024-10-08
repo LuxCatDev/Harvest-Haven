@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://0gvmwx4jxstj"]
+
+[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_fbeyh"]
+[ext_resource type="Script" path="res://items/scripts/ConsumableData.cs" id="1_kgovm"]
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="2_ips6j"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="4_1w8cv"]
+
+[sub_resource type="Resource" id="Resource_3ekbv"]
+script = ExtResource("1_kgovm")
+FoodMod = 10
+WaterhMod = 0
+EnergyMod = 0
+
+[sub_resource type="Resource" id="Resource_rehvg"]
+script = ExtResource("2_ips6j")
+Type = 1
+Data = SubResource("Resource_3ekbv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
+atlas = ExtResource("1_fbeyh")
+region = Rect2(16, 32, 16, 16)
+
+[resource]
+script = ExtResource("4_1w8cv")
+Name = "Potatoe"
+Description = "Food Product"
+Texture = SubResource("AtlasTexture_6oty5")
+Value = 0
+Type = 1
+Data = SubResource("Resource_rehvg")

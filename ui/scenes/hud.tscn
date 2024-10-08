@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ind1grl6sqh"]
+
+[ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="1_hr3yy"]
+[ext_resource type="PackedScene" uid="uid://b7kw7p0v3mbtg" path="res://ui/scenes/hot_bar_slot.tscn" id="2_u6q8v"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HotBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -56.0
+offset_right = 150.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_hr3yy")
+theme_type_variation = &"MainContainer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HotBar"]
+layout_mode = 2
+
+[node name="HotBarSlot" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot2" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot3" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot4" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot5" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot6" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot7" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2
+
+[node name="HotBarSlot8" parent="HotBar/HBoxContainer" instance=ExtResource("2_u6q8v")]
+layout_mode = 2

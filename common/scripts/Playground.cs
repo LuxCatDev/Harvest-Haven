@@ -1,3 +1,4 @@
+using Entities.Player;
 using Godot;
 using GodotUtilities;
 
@@ -23,12 +24,20 @@ public partial class Playground: Node2D
 	[Node]
 	private PlacingControllerComponent placingControllerComponent;
 
+	[Node]
+	private Player player;
+
     public override void _Ready()
     {
 		GameManager.Instance.PlacementLayer = placementLayer;
 		GameManager.Instance.Crosshair = crosshair;
+		GameManager.Instance.Player = player;
 
 		placingControllerComponent.Enable();
+
+		// PackedScene UIScene = GD.Load<PackedScene>("res://ui/scenes/UI.tscn");
+
+		// AddChild(UIScene.Instantiate());
     }
 
 	public void SpawnNode(Node2D node)

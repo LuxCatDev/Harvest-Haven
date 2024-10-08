@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cjcvugeyxecx0"]
+
+[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_2brho"]
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="1_4a3hr"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="3_htfxj"]
+
+[sub_resource type="Resource" id="Resource_yglob"]
+script = ExtResource("1_4a3hr")
+Type = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
+atlas = ExtResource("1_2brho")
+region = Rect2(32, 16, 16, 16)
+
+[resource]
+script = ExtResource("3_htfxj")
+Name = "Wood"
+Description = "Basic resource"
+Texture = SubResource("AtlasTexture_6oty5")
+Value = 0
+Type = 1
+Data = SubResource("Resource_yglob")

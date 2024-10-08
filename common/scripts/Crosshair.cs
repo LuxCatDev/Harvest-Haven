@@ -80,7 +80,6 @@ public partial class Crosshair : Node2D
 
 	public void ShowCrosshair()
 	{
-		GD.Print("show");
 		Visible = true;
 		free.Size = Size;
 		restricted.Size = Size;
@@ -107,7 +106,7 @@ public partial class Crosshair : Node2D
 
 		TilePosition = mapPosition;
 
-		GlobalPosition = tile;
+		// GlobalPosition = tile;
 	}
 
 	public List<Vector2I> GetTargetetCells()
