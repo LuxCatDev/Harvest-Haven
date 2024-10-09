@@ -34,18 +34,14 @@ public partial class ChestDialog: CanvasLayer
 		chestInventory.Init();
     }
 
-	public void ShowDialog()
-	{
-		GetTree().Paused = true;
-		Visible = true;
-	}
-
-    public override void _UnhandledInput(InputEvent @event)
+    public override void _Process(double delta)
     {
-		if (@event.IsActionPressed("exit"))
+		if (Visible)
 		{
-			GetTree().Paused = false;
-			Visible = false;
+			if (GameManager.Instance.Player.Direction != Vector2.Zero)
+			{
+				GameManager.Instance.DialogController.HideDialog();
+			}
 		}
     }
 }

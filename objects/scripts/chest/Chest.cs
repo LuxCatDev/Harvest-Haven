@@ -24,19 +24,18 @@ public partial class Chest : StaticBody2D
 
 	private void OnInteraction()
 	{
+		if (chestDialog != null && chestDialog.Visible) return;
+
 		if (chestDialog == null)
 		{
-			ChestDialog chestDialog = chestDialogScene.Instantiate<ChestDialog>();
+			chestDialog = chestDialogScene.Instantiate<ChestDialog>();
 
 			chestDialog.Inventory = inventoryComponent;
 
 			AddChild(chestDialog);
-
-			chestDialog.ShowDialog();
-		} else {
-			chestDialog.ShowDialog();
 		}
 
+		GameManager.Instance.DialogController.ShowDialog(chestDialog);
 	}
 }
 

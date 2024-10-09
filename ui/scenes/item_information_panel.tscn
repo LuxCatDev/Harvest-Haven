@@ -113,6 +113,7 @@ texture = SubResource("AtlasTexture_jef3u")
 
 [node name="ItemDescription" type="Label" parent="."]
 custom_minimum_size = Vector2(144, 27)
+layout_mode = 0
 offset_left = 16.0
 offset_top = 84.0
 offset_right = 160.0

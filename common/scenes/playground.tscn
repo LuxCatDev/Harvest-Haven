@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cxngdkgy21j0v"]
+[gd_scene load_steps=26 format=4 uid="uid://cxngdkgy21j0v"]
 
 [ext_resource type="Script" path="res://common/scripts/Playground.cs" id="1_c0txn"]
 [ext_resource type="PackedScene" uid="uid://cwdbcogpej64k" path="res://common/scenes/tile_map_system.tscn" id="1_od26g"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dxukauo4xnkw1" path="res://ui/scenes/player_inventory_page.tscn" id="17_6p5yr"]
 [ext_resource type="Resource" uid="uid://druypm282lfct" path="res://items/resources/stone.tres" id="18_ve4l0"]
 [ext_resource type="PackedScene" uid="uid://c8kqvvynsko6u" path="res://objects/scenes/chest/chest.tscn" id="19_1dxaq"]
+[ext_resource type="PackedScene" uid="uid://bppifb3ojbfp1" path="res://ui/scenes/dialog_controller.tscn" id="20_es6ge"]
 
 [sub_resource type="Resource" id="Resource_eiaat"]
 script = ExtResource("6_mi58r")
@@ -79,3 +80,5 @@ inventoryItem = SubResource("Resource_b5cep")
 
 [node name="Chest" parent="." instance=ExtResource("19_1dxaq")]
 position = Vector2(-50, -34)
+
+[node name="DialogController" parent="." instance=ExtResource("20_es6ge")]

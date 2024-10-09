@@ -27,11 +27,15 @@ public partial class Playground: Node2D
 	[Node]
 	private Player player;
 
+	[Node]
+	private DialogController dialogController;
+
     public override void _Ready()
     {
 		GameManager.Instance.PlacementLayer = placementLayer;
 		GameManager.Instance.Crosshair = crosshair;
 		GameManager.Instance.Player = player;
+		GameManager.Instance.DialogController = dialogController;
 
 		placingControllerComponent.Enable();
 

@@ -22,7 +22,7 @@ public partial class Menu : CanvasLayer
 	private Control page;
 
 	public override void _UnhandledInput(InputEvent @event)
-    {
+	{
 		if (@event.IsActionPressed("open_menu"))
 		{
 			if (actualPage == null)
@@ -31,8 +31,16 @@ public partial class Menu : CanvasLayer
 
 				page.AddChild(actualPage);
 			}
-			Visible = !Visible;
-			GetTree().Paused = !GetTree().Paused;
+			if (Visible)
+			{
+				GameManager.Instance.DialogController.HideDialog();
+				GetTree().Paused = false;
+			}
+			else
+			{
+				GameManager.Instance.DialogController.ShowDialog(this);
+				GetTree().Paused = true;
+			}
 		}
-    }
+	}
 }
