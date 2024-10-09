@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7kw7p0v3mbtg"]
-
-[ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="1_fvp3c"]
-
-[node name="HotBarSlot" type="PanelContainer"]
-custom_minimum_size = Vector2(32, 32)
-theme_type_variation = &"SecondaryContainer"
-theme_override_styles/panel = ExtResource("1_fvp3c")

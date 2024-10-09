@@ -21,6 +21,9 @@ public partial class InventorySlot: Control
 	[Node("Panel/Amount")]
 	private Label amount;
 
+	[Node]
+	private Label accessNumber;
+
 	public int Index;
 
 	public InventoryItem InventoryItem { get; private set; }
@@ -34,7 +37,8 @@ public partial class InventorySlot: Control
         TextureRect preview = new()
         {
             Texture = InventoryItem.Item.Texture,
-			Size = new(16, 16)
+			Size = new(16, 16),
+			ZIndex = 100
         };
 
         SetDragPreview(preview);
@@ -78,7 +82,7 @@ public partial class InventorySlot: Control
 	{
 		InventoryItem = inventoryItem;
 		texture.Texture = inventoryItem.Item.Texture;
-		amount.Text = inventoryItem.Amount.ToString();
+		amount.Text = inventoryItem.Amount.ToString();	
 	}
 
 	public void SetEmpty()
@@ -86,5 +90,11 @@ public partial class InventorySlot: Control
 		InventoryItem = null;
 		texture.Texture = null;
 		amount.Text = "";
+	}
+
+	public void SetIndex(int index)
+	{
+		accessNumber.Text = index <= 7 ? (index + 1).ToString() : "";
+		Index = index;
 	}
 }

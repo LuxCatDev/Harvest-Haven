@@ -368,4 +368,4 @@ script = ExtResource("8_sx4xc")
 [node name="Components" type="Node2D" parent="."]
 
 [node name="InventoryComponent" parent="Components" instance=ExtResource("11_opfh0")]
-Size = 45
+Size = 32

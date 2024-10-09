@@ -106,7 +106,7 @@ public partial class Crosshair : Node2D
 
 		TilePosition = mapPosition;
 
-		// GlobalPosition = tile;
+		GlobalPosition = tile;
 	}
 
 	public List<Vector2I> GetTargetetCells()

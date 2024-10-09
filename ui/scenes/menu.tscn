@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5kgpxuwj5c2h"]
+[gd_scene load_steps=8 format=3 uid="uid://c5kgpxuwj5c2h"]
 
 [ext_resource type="Script" path="res://ui/scripts/Menu.cs" id="1_gw3b5"]
 [ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="2_2ekvt"]
 [ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="3_fdq1l"]
 [ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="3_itqck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjvfs"]
+bg_color = Color(0.0823529, 0.113725, 0.156863, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaylp"]
 atlas = ExtResource("3_itqck")
@@ -15,8 +18,15 @@ region = Rect2(50, 51, 11, 11)
 
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_gw3b5")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qjvfs")
 
 [node name="Page" type="Control" parent="."]
 layout_mode = 3
@@ -34,10 +44,10 @@ offset_bottom = 40.0
 
 [node name="NavItem" type="PanelContainer" parent="Nav"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 8.0
-offset_right = 120.0
-offset_bottom = 48.0
+offset_left = 96.0
+offset_top = 24.0
+offset_right = 136.0
+offset_bottom = 64.0
 theme_override_styles/panel = ExtResource("3_fdq1l")
 
 [node name="TextureRect" type="TextureRect" parent="Nav/NavItem"]
@@ -47,10 +57,10 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Coin Display" type="Panel" parent="."]
-offset_left = 56.0
-offset_top = 320.0
-offset_right = 128.0
-offset_bottom = 344.0
+offset_left = 96.0
+offset_top = 304.0
+offset_right = 168.0
+offset_bottom = 328.0
 theme_override_styles/panel = ExtResource("3_fdq1l")
 
 [node name="Label" type="Label" parent="Coin Display"]
@@ -81,10 +91,10 @@ offset_bottom = 20.0
 texture = SubResource("AtlasTexture_12d6p")
 
 [node name="Day Display" type="Panel" parent="."]
-offset_left = 136.0
-offset_top = 320.0
-offset_right = 208.0
-offset_bottom = 344.0
+offset_left = 176.0
+offset_top = 304.0
+offset_right = 248.0
+offset_bottom = 328.0
 theme_override_styles/panel = ExtResource("3_fdq1l")
 
 [node name="Label2" type="Label" parent="Day Display"]

@@ -8,7 +8,6 @@ public enum ItemType
 	Item,
 	Product,
 	Tool,
-	Seed,
 }
 
 [GlobalClass]

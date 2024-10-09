@@ -7,7 +7,7 @@ using GodotUtilities;
 namespace UI;
 
 [Scene]
-public partial class PlayerInventoryPage: Control 
+public partial class CompactInventoryDialog : Panel
 {
 	public override void _Notification(int what)
 	{
@@ -17,33 +17,40 @@ public partial class PlayerInventoryPage: Control
 		}
 	}
 
-	[Node("Content/GridContainer")]
+	[Node("ScrollContainer/GridContainer")]
 	private GridContainer gridContainer;
+
+	[Node]
+	private Label title;
+
+	[Export]
+	private string name;
 
 	private List<InventorySlot> slots;
 
-	private InventoryComponent inventory;
+	public InventoryComponent Inventory;
 
 	private PackedScene slotScene;
 
-	public override void _Ready()
+	public void Init()
 	{
 		slots = new();
 
 		slotScene = GD.Load<PackedScene>("res://ui/scenes/inventory_slot.tscn");
-		inventory = GameManager.Instance.Player.InventoryComponent;
 
-		inventory.Updated += OnInventoryUpdated;
+		Inventory.Updated += OnInventoryUpdated;
 
-		foreach(int index in Enumerable.Range(0, inventory.Size))
+		title.Text = name;
+
+		foreach (int index in Enumerable.Range(0, Inventory.Size))
 		{
 			InventorySlot slot = slotScene.Instantiate<InventorySlot>();
-			slot.SetIndex(index);
-			if (inventory.items[slot.Index] != null)
+			slot.Index = index;
+			if (Inventory.items[slot.Index] != null)
 			{
-				slot.SetItem(inventory.items[slot.Index]);
+				slot.SetItem(Inventory.items[slot.Index]);
 			}
-			slot.Inventory = inventory;
+			slot.Inventory = Inventory;
 
 			gridContainer.AddChild(slot);
 
@@ -53,12 +60,14 @@ public partial class PlayerInventoryPage: Control
 
 	public void OnInventoryUpdated()
 	{
-		foreach(InventorySlot slot in slots)
+		foreach (InventorySlot slot in slots)
 		{
-			if (inventory.items[slot.Index] != null)
+			if (Inventory.items[slot.Index] != null)
 			{
-				slot.SetItem(inventory.items[slot.Index]);
-			} else {
+				slot.SetItem(Inventory.items[slot.Index]);
+			}
+			else
+			{
 				slot.SetEmpty();
 			}
 		}

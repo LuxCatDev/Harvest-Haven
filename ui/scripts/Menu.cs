@@ -32,7 +32,7 @@ public partial class Menu : CanvasLayer
 				page.AddChild(actualPage);
 			}
 			Visible = !Visible;
-			// GetTree().Paused = !GetTree().Paused;
+			GetTree().Paused = !GetTree().Paused;
 		}
     }
 }

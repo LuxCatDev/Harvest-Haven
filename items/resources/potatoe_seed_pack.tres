@@ -1,11 +1,32 @@
 [gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://q4ks7q0dpvhl"]
 
 [ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="1_jkty5"]
-[ext_resource type="Script" path="res://items/scripts/SeedData.cs" id="1_wp7u4"]
 [ext_resource type="Script" path="res://items/scripts/Item.cs" id="3_mbgu8"]
 
+[sub_resource type="CSharpScript" id="CSharpScript_adhw6"]
+script/source = "using Godot;
+using Models;
+using System;
+
+namespace Items;
+
+[GlobalClass]
+public partial class SeedData : ItemData
+{
+	[Export]
+	public PlacesableObject Object;
+
+	SeedData(): this(null) {}
+
+	public SeedData(PlacesableObject placesableObject)
+	{
+		Object = placesableObject;
+	}
+}
+"
+
 [sub_resource type="Resource" id="Resource_ujxsx"]
-script = ExtResource("1_wp7u4")
+script = SubResource("CSharpScript_adhw6")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
 atlas = ExtResource("1_jkty5")
@@ -17,5 +38,5 @@ Name = "Potatoe Seed Pack"
 Description = "Seed pack for planting potatoes"
 Texture = SubResource("AtlasTexture_6oty5")
 Value = 0
-Type = 3
+Type = 1
 Data = SubResource("Resource_ujxsx")

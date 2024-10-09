@@ -77,7 +77,7 @@ public partial class GridComponent : Node2D
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event.IsActionPressed("interact") && IsValid)
+        if (@event.IsActionPressed("primary_action") && IsValid)
         {
             EmitSignal(SignalName.OnInteraction);
         }
