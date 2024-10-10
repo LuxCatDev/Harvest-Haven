@@ -1,6 +1,7 @@
 using Components.InventoryComponent;
 using Godot;
 using GodotUtilities;
+using Items;
 
 namespace UI;
 
@@ -14,6 +15,15 @@ public partial class InventorySlot: Control
 			WireNodes(); // this is a generated method
 		}
 	}
+
+	[Export]
+	private StyleBoxTexture style;
+
+	[Export]
+	private StyleBoxTexture activeStyle;
+
+	[Node]
+	private PanelContainer icon;
 
 	[Node("Icon/Texture")]
 	private TextureRect texture;
@@ -29,6 +39,35 @@ public partial class InventorySlot: Control
 	public InventoryItem InventoryItem { get; private set; }
 
 	public InventoryComponent Inventory;
+
+	public ItemInformationPanel InformationPanel;
+
+    public override void _Ready()
+    {
+		icon.AddThemeStyleboxOverride("panel", style);
+		InformationPanel?.Connect(ItemInformationPanel.SignalName.OnItemFocusedChanged, Callable.From(OnItemFocusedChanged));
+
+    }
+
+	public void OnItemFocusedChanged()
+	{
+		if (InventoryItem != null && InformationPanel.CurrentItem != InventoryItem.Item)
+		{
+			icon.AddThemeStyleboxOverride("panel", style);
+		}
+	}
+
+    public override void _GuiInput(InputEvent @event)
+    {
+		if (@event is InputEventMouseButton && InventoryItem != null)
+		{
+			if (InformationPanel != null)
+			{
+				InformationPanel.SetItem(InventoryItem.Item);
+				icon.AddThemeStyleboxOverride("panel", activeStyle);
+			}
+		}
+    }
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
@@ -83,6 +122,10 @@ public partial class InventorySlot: Control
 		InventoryItem = inventoryItem;
 		texture.Texture = inventoryItem.Item.Texture;
 		amount.Text = inventoryItem.Amount.ToString();	
+		if (InformationPanel != null && InformationPanel.CurrentItem == inventoryItem.Item)
+		{
+			icon.AddThemeStyleboxOverride("panel", activeStyle);
+		}
 	}
 
 	public void SetEmpty()
@@ -90,6 +133,7 @@ public partial class InventorySlot: Control
 		InventoryItem = null;
 		texture.Texture = null;
 		amount.Text = "";
+		icon.AddThemeStyleboxOverride("panel", style);
 	}
 
 	public void SetIndex(int index)

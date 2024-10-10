@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cxngdkgy21j0v"]
+[gd_scene load_steps=26 format=4 uid="uid://cxngdkgy21j0v"]
 
 [ext_resource type="Script" path="res://common/scripts/Playground.cs" id="1_c0txn"]
 [ext_resource type="PackedScene" uid="uid://cwdbcogpej64k" path="res://common/scenes/tile_map_system.tscn" id="1_od26g"]
@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://ctp76rxn1357f" path="res://components/scenes/placing_controller_component.tscn" id="11_5wcf1"]
 [ext_resource type="Resource" uid="uid://dqlnu2y154phy" path="res://objects/data/craftable/chest.tres" id="12_4yc6f"]
 [ext_resource type="PackedScene" uid="uid://be1wsht6aor3n" path="res://common/scenes/pickable_item.tscn" id="13_sa8ti"]
-[ext_resource type="Script" path="res://items/scripts/Product.cs" id="14_trcct"]
+[ext_resource type="Resource" uid="uid://c44hej8u0o8ue" path="res://items/data/products/coal.tres" id="14_jocx5"]
 [ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="15_0if8g"]
-[ext_resource type="Script" path="res://items/scripts/Item.cs" id="15_7s1ns"]
 [ext_resource type="PackedScene" uid="uid://c5kgpxuwj5c2h" path="res://ui/scenes/menu.tscn" id="16_7nmh8"]
 [ext_resource type="PackedScene" uid="uid://dxukauo4xnkw1" path="res://ui/scenes/player_inventory_page.tscn" id="17_6p5yr"]
+[ext_resource type="Resource" uid="uid://ctes2xtecpa3a" path="res://items/data/products/wood.tres" id="18_cgawv"]
 [ext_resource type="PackedScene" uid="uid://c8kqvvynsko6u" path="res://objects/scenes/craftable/chest/chest.tscn" id="19_1dxaq"]
 [ext_resource type="PackedScene" uid="uid://bppifb3ojbfp1" path="res://ui/scenes/dialog_controller.tscn" id="20_es6ge"]
 
@@ -31,50 +31,14 @@ script = ExtResource("7_4r3bj")
 script = ExtResource("9_8c46t")
 expectedDistance = 28.0
 
-[sub_resource type="Resource" id="Resource_87how"]
-script = ExtResource("14_trcct")
-Type = 0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wqjar"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6oty5"]
-atlas = SubResource("CompressedTexture2D_wqjar")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="Resource" id="Resource_1qdav"]
-script = ExtResource("15_7s1ns")
-Name = "Coal"
-Description = "Fuel resource"
-Texture = SubResource("AtlasTexture_6oty5")
-Value = 0
-Type = 1
-Data = SubResource("Resource_87how")
-
 [sub_resource type="Resource" id="Resource_w2jn4"]
 script = ExtResource("15_0if8g")
-Item = SubResource("Resource_1qdav")
+Item = ExtResource("14_jocx5")
 Amount = 5
-
-[sub_resource type="Resource" id="Resource_4piev"]
-script = ExtResource("14_trcct")
-Type = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bidh4"]
-atlas = SubResource("CompressedTexture2D_wqjar")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="Resource" id="Resource_mk6h0"]
-script = ExtResource("15_7s1ns")
-Name = "Stone"
-Description = "Basic resource"
-Texture = SubResource("AtlasTexture_bidh4")
-Value = 0
-Type = 1
-Data = SubResource("Resource_4piev")
 
 [sub_resource type="Resource" id="Resource_b5cep"]
 script = ExtResource("15_0if8g")
-Item = SubResource("Resource_mk6h0")
+Item = ExtResource("18_cgawv")
 Amount = 10
 
 [node name="Playground" type="Node2D"]

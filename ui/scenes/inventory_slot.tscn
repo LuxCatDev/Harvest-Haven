@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://db8lqbuqg6qim"]
+[gd_scene load_steps=6 format=3 uid="uid://db8lqbuqg6qim"]
 
 [ext_resource type="Script" path="res://ui/scripts/InventorySlot.cs" id="1_8l82e"]
 [ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="1_50xmb"]
+[ext_resource type="StyleBox" uid="uid://6p6xqbiuixfq" path="res://ui/themes/slot_active_style.tres" id="3_css7j"]
 [ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="3_k1011"]
 [ext_resource type="StyleBox" uid="uid://b1ylojw0dcq1" path="res://ui/themes/slot_alt_style.tres" id="3_nmp1l"]
 
@@ -11,13 +12,14 @@ offset_right = 32.0
 offset_bottom = 41.0
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_8l82e")
+style = ExtResource("1_50xmb")
+activeStyle = ExtResource("3_css7j")
 
 [node name="Icon" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 30.0
 mouse_filter = 2
-theme_override_styles/panel = ExtResource("1_50xmb")
 
 [node name="Texture" type="TextureRect" parent="Icon"]
 layout_mode = 2

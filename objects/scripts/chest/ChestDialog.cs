@@ -24,10 +24,16 @@ public partial class ChestDialog: CanvasLayer
 
 	public InventoryComponent Inventory;
 
+	[Node]
+	private ItemInformationPanel itemInformationPanel;
+
     public override void _Ready()	
     {
 		playerInventory.Inventory = GameManager.Instance.Player.InventoryComponent;
 		chestInventory.Inventory = Inventory;
+
+		playerInventory.InformationPanel = itemInformationPanel;
+		chestInventory.InformationPanel = itemInformationPanel;
 
 		playerInventory.Init();
 

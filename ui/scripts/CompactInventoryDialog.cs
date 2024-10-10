@@ -32,6 +32,8 @@ public partial class CompactInventoryDialog : Panel
 
 	private PackedScene slotScene;
 
+	public ItemInformationPanel InformationPanel;
+
 	public void Init()
 	{
 		slots = new();
@@ -51,6 +53,7 @@ public partial class CompactInventoryDialog : Panel
 				slot.SetItem(Inventory.items[slot.Index]);
 			}
 			slot.Inventory = Inventory;
+			slot.InformationPanel = InformationPanel;
 
 			gridContainer.AddChild(slot);
 

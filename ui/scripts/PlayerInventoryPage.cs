@@ -20,6 +20,9 @@ public partial class PlayerInventoryPage: Control
 	[Node("Content/GridContainer")]
 	private GridContainer gridContainer;
 
+	[Node]
+	private ItemInformationPanel itemInformationPanel;
+
 	private List<InventorySlot> slots;
 
 	private InventoryComponent inventory;
@@ -44,6 +47,7 @@ public partial class PlayerInventoryPage: Control
 				slot.SetItem(inventory.items[slot.Index]);
 			}
 			slot.Inventory = inventory;
+			slot.InformationPanel = itemInformationPanel;
 
 			gridContainer.AddChild(slot);
 
