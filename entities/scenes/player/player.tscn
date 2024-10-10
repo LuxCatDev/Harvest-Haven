@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=3 uid="uid://c126d6k7tkm4x"]
 
-[ext_resource type="Texture2D" uid="uid://otscik4br2j5" path="res://assets/sprites/Character.png" id="1_3uqbx"]
 [ext_resource type="Script" path="res://entities/scripts/player/Player.cs" id="1_suvfo"]
-[ext_resource type="Texture2D" uid="uid://u5i04ir2kfi3" path="res://assets/sprites/Shadow.png" id="2_erjw6"]
+[ext_resource type="Texture2D" uid="uid://bkrpeo4ijhhf" path="res://assets/sprites/common/sprites/shadow.png" id="2_4ify6"]
+[ext_resource type="Texture2D" uid="uid://82clnbv2d8bd" path="res://assets/sprites/entities/sprites/character.png" id="3_jwjgp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_wqn1s"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_k2ch5"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_2caso"]
@@ -315,10 +315,10 @@ script = ExtResource("1_suvfo")
 
 [node name="Shadow" type="Sprite2D" parent="Textures"]
 position = Vector2(-1, 8)
-texture = ExtResource("2_erjw6")
+texture = ExtResource("2_4ify6")
 
 [node name="Texture" type="Sprite2D" parent="Textures"]
-texture = ExtResource("1_3uqbx")
+texture = ExtResource("3_jwjgp")
 hframes = 6
 vframes = 9
 

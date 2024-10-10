@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=9 format=3 uid="uid://q045sw0wggl0"]
+
+[ext_resource type="Texture2D" uid="uid://cs0i34sk1t5y5" path="res://assets/sprites/items/sprites/plants/melon_seed_pack.png" id="1_60ujl"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_mn1y0"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCellFreeRule.cs" id="2_0d2oq"]
+[ext_resource type="PackedScene" uid="uid://tleopn36edd7" path="res://objects/previews/plants/melon_plant_preview.tscn" id="2_xjxo5"]
+[ext_resource type="PackedScene" uid="uid://s3e2ey0bss6" path="res://objects/scenes/plants/melon_plant.tscn" id="3_0o02u"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCloseToPlayerRule.cs" id="3_pc8da"]
+
+[sub_resource type="Resource" id="Resource_mgdjy"]
+script = ExtResource("2_0d2oq")
+
+[sub_resource type="Resource" id="Resource_2xkyk"]
+script = ExtResource("3_pc8da")
+expectedDistance = 16.0
+
+[resource]
+script = ExtResource("1_mn1y0")
+Scene = ExtResource("3_0o02u")
+Preview = ExtResource("2_xjxo5")
+Logo = ExtResource("1_60ujl")
+Size = Vector2(1, 1)
+Category = 2
+PlacementRules = Array[Object]([SubResource("Resource_mgdjy"), SubResource("Resource_2xkyk")])

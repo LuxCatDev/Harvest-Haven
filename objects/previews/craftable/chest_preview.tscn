@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwx34ts2fjs4j"]
+
+[ext_resource type="PackedScene" uid="uid://dn282g1mu4la7" path="res://objects/previews/preview.tscn" id="1_fua2d"]
+[ext_resource type="Texture2D" uid="uid://dsu72bhohfqii" path="res://assets/sprites/objects/sprites/craftable/chest.png" id="2_3ko6n"]
+
+[node name="ChestPreview" instance=ExtResource("1_fua2d")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3ko6n")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dva25p05bse2x"]
+
+[ext_resource type="PackedScene" uid="uid://u45p22htiyh4" path="res://objects/scenes/plants/plant.tscn" id="1_ty722"]
+[ext_resource type="Texture2D" uid="uid://bwm1c4a224bme" path="res://assets/sprites/objects/sprites/plants/potatoe_plant.png" id="2_mg0tw"]
+
+[node name="PotatoePlant" instance=ExtResource("1_ty722")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_mg0tw")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bxpsp2xpsa201"]
+
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="1_81scd"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_unk30"]
+[ext_resource type="Texture2D" uid="uid://bvgjij76by4ok" path="res://assets/sprites/items/sprites/products/stone.png" id="2_pbrnq"]
+
+[sub_resource type="Resource" id="Resource_h7wou"]
+script = ExtResource("1_81scd")
+Type = 0
+
+[resource]
+script = ExtResource("1_unk30")
+Name = "Stone"
+Description = "Piece of a rock"
+Texture = ExtResource("2_pbrnq")
+Value = 25
+Type = 1
+Data = SubResource("Resource_h7wou")

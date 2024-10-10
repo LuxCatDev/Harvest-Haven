@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bffr2gpdl616b"]
+
+[ext_resource type="PackedScene" uid="uid://dn282g1mu4la7" path="res://objects/previews/preview.tscn" id="1_lp01k"]
+[ext_resource type="Texture2D" uid="uid://bwm1c4a224bme" path="res://assets/sprites/objects/sprites/plants/potatoe_plant.png" id="2_pms5k"]
+
+[node name="PotatoePlantPreview" instance=ExtResource("1_lp01k")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pms5k")
+hframes = 6

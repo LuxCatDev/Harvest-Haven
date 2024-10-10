@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=11 format=3 uid="uid://dqlnu2y154phy"]
+
+[ext_resource type="Texture2D" uid="uid://dsu72bhohfqii" path="res://assets/sprites/objects/sprites/craftable/chest.png" id="1_6sxld"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_6ueyn"]
+[ext_resource type="PackedScene" uid="uid://dwx34ts2fjs4j" path="res://objects/previews/craftable/chest_preview.tscn" id="2_jnxi2"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCloseToPlayerRule.cs" id="2_jxydx"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsNotOverPlayerRule.cs" id="3_2eo82"]
+[ext_resource type="PackedScene" uid="uid://c8kqvvynsko6u" path="res://objects/scenes/craftable/chest/chest.tscn" id="3_h2lyu"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCellFreeRule.cs" id="4_2y5f6"]
+
+[sub_resource type="Resource" id="Resource_37ubx"]
+script = ExtResource("2_jxydx")
+expectedDistance = 16.0
+
+[sub_resource type="Resource" id="Resource_iuywf"]
+script = ExtResource("3_2eo82")
+
+[sub_resource type="Resource" id="Resource_mtfs6"]
+script = ExtResource("4_2y5f6")
+
+[resource]
+script = ExtResource("1_6ueyn")
+Scene = ExtResource("3_h2lyu")
+Preview = ExtResource("2_jnxi2")
+Logo = ExtResource("1_6sxld")
+Size = Vector2(1, 1)
+Category = 1
+PlacementRules = Array[Object]([SubResource("Resource_37ubx"), SubResource("Resource_iuywf"), SubResource("Resource_mtfs6")])

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://85kt86fcv1xo"]
+
+[ext_resource type="PackedScene" uid="uid://dn282g1mu4la7" path="res://objects/previews/preview.tscn" id="1_5bnhk"]
+[ext_resource type="Texture2D" uid="uid://crm50mlf1mxf1" path="res://assets/sprites/objects/sprites/craftable/fence_front.png" id="2_52c43"]
+
+[node name="WoodFencePreview" instance=ExtResource("1_5bnhk")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -8)
+texture = ExtResource("2_52c43")

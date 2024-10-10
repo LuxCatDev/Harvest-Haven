@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://dhefu7ahkyi1n"]
+
+[ext_resource type="Script" path="res://items/scripts/ConsumableData.cs" id="1_2hpsb"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_ii4x3"]
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="2_awd43"]
+[ext_resource type="Texture2D" uid="uid://cwifhe7bwh312" path="res://assets/sprites/items/sprites/products/water_bottle.png" id="3_pw1ln"]
+
+[sub_resource type="Resource" id="Resource_0ml8b"]
+script = ExtResource("1_2hpsb")
+FoodMod = 0
+WaterhMod = 50
+EnergyMod = 15
+
+[sub_resource type="Resource" id="Resource_osd4b"]
+script = ExtResource("2_awd43")
+Type = 0
+Data = SubResource("Resource_0ml8b")
+
+[resource]
+script = ExtResource("1_ii4x3")
+Name = "Water Bottle"
+Description = "Drink It To Hydrate"
+Texture = ExtResource("3_pw1ln")
+Value = 35
+Type = 1
+Data = SubResource("Resource_osd4b")

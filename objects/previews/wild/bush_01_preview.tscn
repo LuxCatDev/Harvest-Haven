@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c43cj651vln4s"]
+
+[ext_resource type="PackedScene" uid="uid://dn282g1mu4la7" path="res://objects/previews/preview.tscn" id="1_grkjl"]
+[ext_resource type="Texture2D" uid="uid://joeblphlmc7i" path="res://assets/sprites/objects/sprites/wild/bush_01.png" id="2_xv5n7"]
+
+[node name="Bush_01_Preview" instance=ExtResource("1_grkjl")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xv5n7")

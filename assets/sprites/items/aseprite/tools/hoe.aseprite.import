@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://0tp032jfc4r0"
+path="res://.godot/imported/hoe.aseprite-a8e0e9a5f018b2b0257753eb66c29b9a.res"
+
+[deps]
+
+source_file="res://assets/sprites/items/aseprite/tools/hoe.aseprite"
+dest_files=["res://.godot/imported/hoe.aseprite-a8e0e9a5f018b2b0257753eb66c29b9a.res"]
+
+[params]
+

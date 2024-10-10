@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://ctes2xtecpa3a"]
+
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_awswi"]
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="1_kihnq"]
+[ext_resource type="Texture2D" uid="uid://peah1gowjvpy" path="res://assets/sprites/items/sprites/products/wood.png" id="2_7lk86"]
+
+[sub_resource type="Resource" id="Resource_760ei"]
+script = ExtResource("1_kihnq")
+Type = 0
+
+[resource]
+script = ExtResource("1_awswi")
+Name = "Wood"
+Description = "Raw Wood"
+Texture = ExtResource("2_7lk86")
+Value = 15
+Type = 1
+Data = SubResource("Resource_760ei")

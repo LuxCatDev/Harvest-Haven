@@ -1,20 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5kgpxuwj5c2h"]
+[gd_scene load_steps=7 format=3 uid="uid://c5kgpxuwj5c2h"]
 
 [ext_resource type="Script" path="res://ui/scripts/Menu.cs" id="1_gw3b5"]
 [ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="2_2ekvt"]
 [ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="3_fdq1l"]
-[ext_resource type="Texture2D" uid="uid://cld80fhmsbnis" path="res://assets/sprites/Items.png" id="3_itqck"]
+[ext_resource type="Texture2D" uid="uid://tbtc6y1m0nvw" path="res://assets/sprites/items/sprites/tools/pickaxe.png" id="3_fkmtm"]
+[ext_resource type="Texture2D" uid="uid://dahgosmlxqwl0" path="res://assets/sprites/common/sprites/coin.png" id="5_hcylu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjvfs"]
 bg_color = Color(0.0823529, 0.113725, 0.156863, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qaylp"]
-atlas = ExtResource("3_itqck")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12d6p"]
-atlas = ExtResource("3_itqck")
-region = Rect2(50, 51, 11, 11)
 
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
@@ -52,7 +45,7 @@ theme_override_styles/panel = ExtResource("3_fdq1l")
 
 [node name="TextureRect" type="TextureRect" parent="Nav/NavItem"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_qaylp")
+texture = ExtResource("3_fkmtm")
 expand_mode = 1
 stretch_mode = 5
 
@@ -88,7 +81,7 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 21.0
 offset_bottom = 20.0
-texture = SubResource("AtlasTexture_12d6p")
+texture = ExtResource("5_hcylu")
 
 [node name="Day Display" type="Panel" parent="."]
 offset_left = 176.0

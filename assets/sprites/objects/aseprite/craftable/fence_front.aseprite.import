@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cpb7wlie2tvrt"
+path="res://.godot/imported/fence_front.aseprite-50c17c03d2e79448e8afdac9e63c5f07.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/craftable/fence_front.aseprite"
+dest_files=["res://.godot/imported/fence_front.aseprite-50c17c03d2e79448e8afdac9e63c5f07.res"]
+
+[params]
+

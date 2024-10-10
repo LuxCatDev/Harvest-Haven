@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8kqvvynsko6u"]
+
+[ext_resource type="Script" path="res://objects/scripts/chest/Chest.cs" id="1_vlr17"]
+[ext_resource type="Texture2D" uid="uid://dsu72bhohfqii" path="res://assets/sprites/objects/sprites/craftable/chest.png" id="2_ygy1g"]
+[ext_resource type="PackedScene" uid="uid://cwfi3swb0da46" path="res://components/scenes/interaction_component.tscn" id="3_1culr"]
+[ext_resource type="PackedScene" uid="uid://p1oeutw1j6p0" path="res://components/scenes/inventory_component.tscn" id="4_epcjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8xv6"]
+size = Vector2(16, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4658m"]
+radius = 32.0
+
+[node name="Chest" type="StaticBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_vlr17")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_ygy1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_j8xv6")
+
+[node name="InteractionComponent" parent="." instance=ExtResource("3_1culr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent"]
+shape = SubResource("CircleShape2D_4658m")
+
+[node name="InventoryComponent" parent="." instance=ExtResource("4_epcjw")]
+Size = 16
+
+[connection signal="OnInteraction" from="InteractionComponent" to="." method="OnInteraction"]

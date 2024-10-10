@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dalvf41ga1v7d"]
+
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_yibt7"]
+[ext_resource type="Texture2D" uid="uid://joeblphlmc7i" path="res://assets/sprites/objects/sprites/wild/bush_01.png" id="2_e2suh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5r2"]
+size = Vector2(20, 10)
+
+[node name="Bush_01" instance=ExtResource("1_yibt7")]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_e2suh")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_3y5r2")

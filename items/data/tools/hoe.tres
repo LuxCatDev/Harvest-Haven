@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://puvu3tep2tpy"]
+
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_5263c"]
+[ext_resource type="Script" path="res://items/scripts/ToolData.cs" id="1_ijpjv"]
+[ext_resource type="Texture2D" uid="uid://cxvbhljiuk2kc" path="res://assets/sprites/items/sprites/tools/hoe.png" id="2_1uuo2"]
+
+[sub_resource type="Resource" id="Resource_6aaml"]
+script = ExtResource("1_ijpjv")
+
+[resource]
+script = ExtResource("1_5263c")
+Name = "Hoe"
+Description = "Tool For Preparing The Dirt For Planting"
+Texture = ExtResource("2_1uuo2")
+Value = 350
+Type = 2
+Data = SubResource("Resource_6aaml")

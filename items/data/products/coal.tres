@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://c44hej8u0o8ue"]
+
+[ext_resource type="Script" path="res://items/scripts/Product.cs" id="1_ciatn"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_vgacx"]
+[ext_resource type="Texture2D" uid="uid://cjxldlxxws1ju" path="res://assets/sprites/items/sprites/products/coal.png" id="2_8co2y"]
+
+[sub_resource type="Resource" id="Resource_yfcd0"]
+script = ExtResource("1_ciatn")
+Type = 0
+
+[resource]
+script = ExtResource("1_vgacx")
+Name = "Coal"
+Description = "Organic Fuel"
+Texture = ExtResource("2_8co2y")
+Value = 45
+Type = 1
+Data = SubResource("Resource_yfcd0")

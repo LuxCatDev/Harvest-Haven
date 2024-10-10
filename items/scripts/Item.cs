@@ -20,7 +20,7 @@ public partial class Item : Resource
 	public string Description;
 
 	[Export]
-	public AtlasTexture Texture;
+	public CompressedTexture2D Texture;
 
 	[Export]
 	public int Value;
@@ -33,7 +33,7 @@ public partial class Item : Resource
 
 	Item() : this("", "", null, 0, ItemType.Item, null) {}
 
-	public Item(string name, string description, AtlasTexture texture, int value, ItemType type, ItemData data)
+	public Item(string name, string description, CompressedTexture2D texture, int value, ItemType type, ItemData data)
 	{
 		Name = name;
 		Description = description;

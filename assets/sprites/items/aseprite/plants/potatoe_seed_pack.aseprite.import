@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cerrl15uapu5p"
+path="res://.godot/imported/potatoe_seed_pack.aseprite-adf965d5cec00751c073de46be025e7c.res"
+
+[deps]
+
+source_file="res://assets/sprites/items/aseprite/plants/potatoe_seed_pack.aseprite"
+dest_files=["res://.godot/imported/potatoe_seed_pack.aseprite-adf965d5cec00751c073de46be025e7c.res"]
+
+[params]
+

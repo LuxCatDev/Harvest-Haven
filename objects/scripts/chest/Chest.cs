@@ -18,7 +18,7 @@ public partial class Chest : StaticBody2D
 	[Node]
 	private InventoryComponent inventoryComponent;
 
-	private PackedScene chestDialogScene = GD.Load<PackedScene>("res://objects/scenes/chest/chest_dialog.tscn");
+	private PackedScene chestDialogScene = GD.Load<PackedScene>("res://objects/scenes/craftable/chest/chest_dialog.tscn");
 
 	private ChestDialog chestDialog;
 

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=11 format=3 uid="uid://dcuy58ifkmtjn"]
+
+[ext_resource type="Texture2D" uid="uid://crm50mlf1mxf1" path="res://assets/sprites/objects/sprites/craftable/fence_front.png" id="1_s83hk"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_xrblk"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCloseToPlayerRule.cs" id="2_gmer7"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsNotOverPlayerRule.cs" id="3_ip24u"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCellFreeRule.cs" id="4_fhhnx"]
+[ext_resource type="PackedScene" uid="uid://85kt86fcv1xo" path="res://objects/previews/craftable/wood_fence_preview.tscn" id="5_8s1hb"]
+[ext_resource type="PackedScene" uid="uid://0avi8k44amr3" path="res://objects/scenes/craftable/wood_fence.tscn" id="6_xpey0"]
+
+[sub_resource type="Resource" id="Resource_6doeo"]
+script = ExtResource("2_gmer7")
+expectedDistance = 16.0
+
+[sub_resource type="Resource" id="Resource_s4wxa"]
+script = ExtResource("3_ip24u")
+
+[sub_resource type="Resource" id="Resource_56s8n"]
+script = ExtResource("4_fhhnx")
+
+[resource]
+script = ExtResource("1_xrblk")
+Scene = ExtResource("6_xpey0")
+Preview = ExtResource("5_8s1hb")
+Logo = ExtResource("1_s83hk")
+Size = Vector2(1, 1)
+Category = 1
+PlacementRules = Array[Object]([SubResource("Resource_6doeo"), SubResource("Resource_s4wxa"), SubResource("Resource_56s8n")])

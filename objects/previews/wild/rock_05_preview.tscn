@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://qwhnngsvs5s6"]
+
+[ext_resource type="PackedScene" uid="uid://dn282g1mu4la7" path="res://objects/previews/preview.tscn" id="1_peeni"]
+[ext_resource type="Texture2D" uid="uid://hd4sgvqww0d4" path="res://assets/sprites/objects/sprites/wild/rock_05.png" id="2_xcypp"]
+
+[node name="Rock_05_Preview" instance=ExtResource("1_peeni")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xcypp")

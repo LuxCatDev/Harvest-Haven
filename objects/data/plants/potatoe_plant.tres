@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=9 format=3 uid="uid://cog1xdopqlbex"]
+
+[ext_resource type="Texture2D" uid="uid://d341f1u8oi44c" path="res://assets/sprites/items/sprites/plants/potatoe_seed_pack.png" id="1_l87jo"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_r0a8c"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCellFreeRule.cs" id="2_ku44t"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/IsCloseToPlayerRule.cs" id="3_n8avu"]
+[ext_resource type="PackedScene" uid="uid://bffr2gpdl616b" path="res://objects/previews/plants/potatoe_plant_preview.tscn" id="4_pj4sl"]
+[ext_resource type="PackedScene" uid="uid://dva25p05bse2x" path="res://objects/scenes/plants/potatoe_plant.tscn" id="5_wv3os"]
+
+[sub_resource type="Resource" id="Resource_6o3kb"]
+script = ExtResource("2_ku44t")
+
+[sub_resource type="Resource" id="Resource_l3qit"]
+script = ExtResource("3_n8avu")
+expectedDistance = 16.0
+
+[resource]
+script = ExtResource("1_r0a8c")
+Scene = ExtResource("5_wv3os")
+Preview = ExtResource("4_pj4sl")
+Logo = ExtResource("1_l87jo")
+Size = Vector2(1, 1)
+Category = 2
+PlacementRules = Array[Object]([SubResource("Resource_6o3kb"), SubResource("Resource_l3qit")])

@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b3mq76ecikic"]
 
-[ext_resource type="Texture2D" uid="uid://cxlpr66ulyxpq" path="res://assets/tilesets/DataTileSet.png" id="1_n4mom"]
+[ext_resource type="Texture2D" uid="uid://c4gfphset3nq7" path="res://assets/tilesets/textures/data_tile_set.png" id="1_qu706"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q67sn"]
-texture = ExtResource("1_n4mom")
+texture = ExtResource("1_qu706")
 0:0/0 = 0
 0:0/0/custom_data_0 = "Grass"
 0:0/0/custom_data_1 = true

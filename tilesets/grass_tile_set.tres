@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dugskuc1gkyo7"]
 
-[ext_resource type="Texture2D" uid="uid://ceusopyvlj8nt" path="res://assets/tilesets/GrassTileSet.png" id="1_f5p28"]
+[ext_resource type="Texture2D" uid="uid://cdsdgwbyhkduc" path="res://assets/tilesets/textures/grass_tile_set.png" id="1_r8n71"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_350nk"]
-texture = ExtResource("1_f5p28")
+texture = ExtResource("1_r8n71")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -38,6 +38,7 @@ texture = ExtResource("1_f5p28")
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
