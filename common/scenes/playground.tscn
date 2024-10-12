@@ -1,44 +1,27 @@
-[gd_scene load_steps=26 format=4 uid="uid://cxngdkgy21j0v"]
+[gd_scene load_steps=16 format=4 uid="uid://cxngdkgy21j0v"]
 
 [ext_resource type="Script" path="res://common/scripts/Playground.cs" id="1_c0txn"]
 [ext_resource type="PackedScene" uid="uid://cwdbcogpej64k" path="res://common/scenes/tile_map_system.tscn" id="1_od26g"]
 [ext_resource type="PackedScene" uid="uid://503hfj7s0rqf" path="res://common/scenes/terrain_layer.tscn" id="2_820n3"]
 [ext_resource type="PackedScene" uid="uid://c126d6k7tkm4x" path="res://entities/scenes/player/player.tscn" id="3_k7md7"]
-[ext_resource type="PackedScene" uid="uid://bvjrc7dtfc852" path="res://components/scenes/grid_component.tscn" id="4_afa8j"]
 [ext_resource type="PackedScene" uid="uid://8kkksc7ado7l" path="res://common/scenes/placement_layer.tscn" id="5_rr8bq"]
-[ext_resource type="Script" path="res://components/scripts/grid_component/IsNotOverPlayerRule.cs" id="6_mi58r"]
-[ext_resource type="Script" path="res://components/scripts/grid_component/IsCellFreeRule.cs" id="7_4r3bj"]
-[ext_resource type="PackedScene" uid="uid://cq35qq65agd27" path="res://common/scenes/crosshair.tscn" id="9_6i2ad"]
-[ext_resource type="Script" path="res://components/scripts/grid_component/IsCloseToPlayerRule.cs" id="9_8c46t"]
-[ext_resource type="PackedScene" uid="uid://ctp76rxn1357f" path="res://components/scenes/placing_controller_component.tscn" id="11_5wcf1"]
-[ext_resource type="Resource" uid="uid://dqlnu2y154phy" path="res://objects/data/craftable/chest.tres" id="12_4yc6f"]
+[ext_resource type="Resource" uid="uid://bs26246ytctxi" path="res://items/data/plants/potatoe_seed_pack.tres" id="11_6uhra"]
 [ext_resource type="PackedScene" uid="uid://be1wsht6aor3n" path="res://common/scenes/pickable_item.tscn" id="13_sa8ti"]
-[ext_resource type="Resource" uid="uid://c44hej8u0o8ue" path="res://items/data/products/coal.tres" id="14_jocx5"]
 [ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="15_0if8g"]
 [ext_resource type="PackedScene" uid="uid://c5kgpxuwj5c2h" path="res://ui/scenes/menu.tscn" id="16_7nmh8"]
 [ext_resource type="PackedScene" uid="uid://dxukauo4xnkw1" path="res://ui/scenes/player_inventory_page.tscn" id="17_6p5yr"]
-[ext_resource type="Resource" uid="uid://ctes2xtecpa3a" path="res://items/data/products/wood.tres" id="18_cgawv"]
+[ext_resource type="Resource" uid="uid://cafnkedsbi4eb" path="res://items/data/tools/pickaxe.tres" id="18_mlbgd"]
 [ext_resource type="PackedScene" uid="uid://c8kqvvynsko6u" path="res://objects/scenes/craftable/chest/chest.tscn" id="19_1dxaq"]
 [ext_resource type="PackedScene" uid="uid://bppifb3ojbfp1" path="res://ui/scenes/dialog_controller.tscn" id="20_es6ge"]
 
-[sub_resource type="Resource" id="Resource_eiaat"]
-script = ExtResource("6_mi58r")
-
-[sub_resource type="Resource" id="Resource_o8hvb"]
-script = ExtResource("7_4r3bj")
-
-[sub_resource type="Resource" id="Resource_5rv7y"]
-script = ExtResource("9_8c46t")
-expectedDistance = 28.0
-
 [sub_resource type="Resource" id="Resource_w2jn4"]
 script = ExtResource("15_0if8g")
-Item = ExtResource("14_jocx5")
-Amount = 5
+Item = ExtResource("18_mlbgd")
+Amount = 1
 
 [sub_resource type="Resource" id="Resource_b5cep"]
 script = ExtResource("15_0if8g")
-Item = ExtResource("18_cgawv")
+Item = ExtResource("11_6uhra")
 Amount = 10
 
 [node name="Playground" type="Node2D"]
@@ -57,15 +40,6 @@ placementLayer = NodePath("../PlacementLayer")
 
 [node name="Player" parent="." instance=ExtResource("3_k7md7")]
 
-[node name="GridComponent" parent="." instance=ExtResource("4_afa8j")]
-placementRules = Array[Resource]([SubResource("Resource_eiaat"), SubResource("Resource_o8hvb"), SubResource("Resource_5rv7y")])
-
-[node name="Crosshair" parent="." instance=ExtResource("9_6i2ad")]
-
-[node name="PlacingControllerComponent" parent="." node_paths=PackedStringArray("gridComponent") instance=ExtResource("11_5wcf1")]
-Object = ExtResource("12_4yc6f")
-gridComponent = NodePath("../GridComponent")
-
 [node name="PickableItem" parent="." instance=ExtResource("13_sa8ti")]
 position = Vector2(-76, 49)
 inventoryItem = SubResource("Resource_w2jn4")
@@ -82,3 +56,7 @@ inventoryItem = SubResource("Resource_b5cep")
 position = Vector2(-50, -34)
 
 [node name="DialogController" parent="." instance=ExtResource("20_es6ge")]
+
+[node name="PickableItem3" parent="." instance=ExtResource("13_sa8ti")]
+position = Vector2(71, 12)
+inventoryItem = SubResource("Resource_b5cep")

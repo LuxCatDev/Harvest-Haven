@@ -4,54 +4,50 @@
 [ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="1_50xmb"]
 [ext_resource type="StyleBox" uid="uid://6p6xqbiuixfq" path="res://ui/themes/slot_active_style.tres" id="3_css7j"]
 [ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="3_k1011"]
-[ext_resource type="StyleBox" uid="uid://b1ylojw0dcq1" path="res://ui/themes/slot_alt_style.tres" id="3_nmp1l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yaaqc"]
 
 [node name="InventorySlot" type="Panel"]
-custom_minimum_size = Vector2(32, 41)
+custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
-offset_bottom = 41.0
+offset_bottom = 32.0
 mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yaaqc")
 script = ExtResource("1_8l82e")
 style = ExtResource("1_50xmb")
 activeStyle = ExtResource("3_css7j")
 
 [node name="Icon" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_right = 32.0
-offset_bottom = 30.0
+offset_bottom = 32.0
 mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_50xmb")
 
 [node name="Texture" type="TextureRect" parent="Icon"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Panel" type="Panel" parent="."]
+[node name="AccessNumber" type="Label" parent="."]
+visible = false
 layout_mode = 0
-offset_top = 29.0
-offset_right = 32.0
-offset_bottom = 41.0
-mouse_filter = 2
-theme_override_styles/panel = ExtResource("3_nmp1l")
-
-[node name="Amount" type="Label" parent="Panel"]
-layout_mode = 1
-offset_left = -2.0
+offset_left = 3.0
 offset_top = -1.0
-offset_right = 30.0
-offset_bottom = 12.0
+offset_right = 43.0
+offset_bottom = 22.0
 theme = ExtResource("3_k1011")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "
-"
+text = "1"
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 2
+offset_left = -13.0
+offset_top = 11.0
+offset_right = 30.0
+offset_bottom = 32.0
+theme = ExtResource("3_k1011")
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="AccessNumber" type="Label" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 44.0
-offset_bottom = 23.0
-theme = ExtResource("3_k1011")
-theme_override_colors/font_color = Color(0, 0, 0, 1)

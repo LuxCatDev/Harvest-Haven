@@ -101,7 +101,7 @@ public partial class InventorySlot: Control
 		
 		if (InventoryItem != null)
 		{
-			if (InventoryItem.Item == inventorySlot.InventoryItem.Item) {
+			if (InventoryItem.Item == inventorySlot.InventoryItem.Item && InventoryItem.Item.Stackable) {
 				Inventory.AddItem(inventorySlot.InventoryItem);
 				inventorySlot.Inventory.RemoveItemAt(inventorySlot.Index);
 			} else {
@@ -121,7 +121,7 @@ public partial class InventorySlot: Control
 	{
 		InventoryItem = inventoryItem;
 		texture.Texture = inventoryItem.Item.Texture;
-		amount.Text = inventoryItem.Amount.ToString();	
+		amount.Text = inventoryItem.Item.Stackable ? inventoryItem.Amount.ToString() : "";	
 		if (InformationPanel != null && InformationPanel.CurrentItem == inventoryItem.Item)
 		{
 			icon.AddThemeStyleboxOverride("panel", activeStyle);

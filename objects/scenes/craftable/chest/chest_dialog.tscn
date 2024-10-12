@@ -20,19 +20,25 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gjsv6")
 
 [node name="PlayerInventory" parent="." instance=ExtResource("1_3molw")]
+offset_left = 57.0
+offset_top = -124.0
+offset_right = 249.0
+offset_bottom = 140.0
 name = "Inventory"
 
 [node name="ChestInventory" parent="." instance=ExtResource("1_3molw")]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -233.0
-offset_right = -41.0
+offset_left = -249.0
+offset_top = -124.0
+offset_right = -57.0
+offset_bottom = 140.0
 grow_horizontal = 0
 name = "Chest"
 
 [node name="ItemInformationPanel" parent="." instance=ExtResource("4_dbtq6")]
-offset_left = -88.0
-offset_top = -132.0
-offset_right = 88.0
-offset_bottom = 132.0
+offset_left = -68.5
+offset_top = -124.0
+offset_right = 68.5
+offset_bottom = 140.0

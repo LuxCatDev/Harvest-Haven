@@ -8,12 +8,11 @@ namespace Common;
 [Scene]
 public partial class GridComponent : Node2D
 {
-
     public override void _Notification(int what)
     {
         if (what == NotificationSceneInstantiated)
         {
-            WireNodes(); // this is a generated method
+            WireNodes();
         }
     }
 
@@ -21,7 +20,7 @@ public partial class GridComponent : Node2D
     public delegate void OnInteractionEventHandler();
 
     [Export]
-    private Godot.Collections.Array<PlacementRule> placementRules;
+    public Godot.Collections.Array<PlacementRule> placementRules;
 
     public Vector2 CrosshairSize;
 
@@ -30,21 +29,30 @@ public partial class GridComponent : Node2D
     public bool IsValid = true;
 
     public bool IsActive { get; private set; } = false;
-
+    
+    [Node]
     private Crosshair crosshair;
+
+    public override void _Ready()
+    {
+        GameManager.Instance.Crosshair = crosshair;
+    }
 
     public void Enable()
     {
         IsActive = true;
         Visible = true;
-        crosshair = GameManager.Instance.Crosshair;
         crosshair.Size = CrosshairSize * 16;
 
         crosshair.ShowCrosshair();
         
-        Preview.Position = crosshair.Center;
+        if (Preview != null)
+        {
+            Preview.Position = crosshair.Center;
 
-        AddChild(Preview);
+            AddChild(Preview);
+        }
+    
     }
 
     public void Disable()
@@ -52,7 +60,7 @@ public partial class GridComponent : Node2D
         IsActive = false;
         Visible = false;
         crosshair.HideCrosshair();
-        Preview.QueueFree();
+        Preview?.QueueFree();
         Preview = null;
     }
 

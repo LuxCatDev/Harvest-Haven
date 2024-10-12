@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c126d6k7tkm4x"]
+[gd_scene load_steps=42 format=3 uid="uid://c126d6k7tkm4x"]
 
 [ext_resource type="Script" path="res://entities/scripts/player/Player.cs" id="1_suvfo"]
 [ext_resource type="Texture2D" uid="uid://bkrpeo4ijhhf" path="res://assets/sprites/common/sprites/shadow.png" id="2_4ify6"]
@@ -8,9 +8,14 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_2caso"]
 [ext_resource type="PackedScene" uid="uid://di0qpjv1msusv" path="res://components/scenes/state/state_machine_component.tscn" id="6_i84qg"]
 [ext_resource type="Script" path="res://entities/scripts/player/PlayerIdleState.cs" id="7_vtctx"]
+[ext_resource type="Script" path="res://entities/scripts/player/OnToolUsed.cs" id="8_d8em8"]
 [ext_resource type="Script" path="res://components/scripts/state/StateEvent.cs" id="8_sx4xc"]
 [ext_resource type="Script" path="res://entities/scripts/player/PlayerMoveState.cs" id="9_wnbqj"]
 [ext_resource type="PackedScene" uid="uid://p1oeutw1j6p0" path="res://components/scenes/inventory_component.tscn" id="11_opfh0"]
+[ext_resource type="Script" path="res://entities/scripts/player/PlayerUsingState.cs" id="12_ml2wi"]
+[ext_resource type="PackedScene" uid="uid://ctp76rxn1357f" path="res://components/scenes/placing_controller_component.tscn" id="13_0g664"]
+[ext_resource type="PackedScene" uid="uid://bvjrc7dtfc852" path="res://components/scenes/grid_component.tscn" id="13_oqws5"]
+[ext_resource type="PackedScene" uid="uid://xelx5dx3df0h" path="res://components/scenes/equipment_controller_component.tscn" id="15_2e6pq"]
 
 [sub_resource type="Animation" id="Animation_ghxxq"]
 length = 0.001
@@ -25,6 +30,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_wu38p"]
@@ -195,6 +212,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [38, 39]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-4, -4), Vector2(-5, 15)]
+}
 
 [sub_resource type="Animation" id="Animation_76145"]
 resource_name = "tool_side"
@@ -211,6 +240,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [36, 37]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-7, 4), Vector2(4, 9)]
+}
 
 [sub_resource type="Animation" id="Animation_lnfa2"]
 resource_name = "tool_up"
@@ -226,6 +267,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [40, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(5, -3), Vector2(5, 7)]
 }
 
 [sub_resource type="Animation" id="Animation_1en4t"]
@@ -276,15 +329,201 @@ tracks/0/keys = {
 "values": [52, 53]
 }
 
+[sub_resource type="Animation" id="Animation_ri72k"]
+resource_name = "idle_carry_side"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textures/Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -13), Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_getgm"]
+resource_name = "idle_carry_down"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textures/Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [66, 67, 68, 69]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -13), Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_us31t"]
+resource_name = "idle_carry_up"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textures/Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [78, 79, 80, 81]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -13), Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_ridtm"]
+resource_name = "move_carry_side"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textures/Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -14), Vector2(0, -13), Vector2(0, -12), Vector2(0, -14), Vector2(0, -13), Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_4edlm"]
+resource_name = "move_carry_down"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textures/Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76, 77]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -14), Vector2(0, -13), Vector2(0, -12), Vector2(0, -14), Vector2(0, -13), Vector2(0, -12)]
+}
+
+[sub_resource type="Animation" id="Animation_88x6b"]
+resource_name = "move_carry_up"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Textures/Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 88, 89]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Textures/EquipedItemWrapper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-0.5, -14), Vector2(0, -13), Vector2(0, -12), Vector2(0, -14), Vector2(0, -13), Vector2(0, -12)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sqdj"]
 _data = {
 "RESET": SubResource("Animation_ghxxq"),
 "axe_down": SubResource("Animation_wu38p"),
 "axe_side": SubResource("Animation_dpnbp"),
 "axe_up": SubResource("Animation_3wwun"),
+"idle_carry_down": SubResource("Animation_getgm"),
+"idle_carry_side": SubResource("Animation_ri72k"),
+"idle_carry_up": SubResource("Animation_us31t"),
 "idle_down": SubResource("Animation_06h2r"),
 "idle_side": SubResource("Animation_pxhbb"),
 "idle_up": SubResource("Animation_i2kvm"),
+"move_carry_down": SubResource("Animation_4edlm"),
+"move_carry_side": SubResource("Animation_ridtm"),
+"move_carry_up": SubResource("Animation_88x6b"),
 "move_down": SubResource("Animation_vflu2"),
 "move_side": SubResource("Animation_7sl4y"),
 "move_up": SubResource("Animation_u4r6k"),
@@ -313,14 +552,18 @@ script = ExtResource("1_suvfo")
 
 [node name="Textures" type="Node2D" parent="."]
 
+[node name="EquipedItemWrapper" type="Node2D" parent="Textures"]
+position = Vector2(-7, 4)
+
 [node name="Shadow" type="Sprite2D" parent="Textures"]
 position = Vector2(-1, 8)
 texture = ExtResource("2_4ify6")
 
 [node name="Texture" type="Sprite2D" parent="Textures"]
+position = Vector2(0.5, 0)
 texture = ExtResource("3_jwjgp")
 hframes = 6
-vframes = 9
+vframes = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -329,7 +572,7 @@ libraries = {
 autoplay = "idle_side"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 8)
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_in4t4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -351,21 +594,48 @@ follow_damping = true
 player = NodePath("..")
 initialState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("launchEvents")]
+[node name="OnToolUsed" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("equipmentController", "itemWrapper")]
+script = ExtResource("8_d8em8")
+equipmentController = NodePath("../../Components/EquipmentControllerComponent")
+itemWrapper = NodePath("../../Textures/EquipedItemWrapper")
+
+[node name="Idle" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("equipmentControllerComponent", "launchEvents")]
 script = ExtResource("7_vtctx")
-launchEvents = [NodePath("../Move/OnPlayerStopMoving")]
+equipmentControllerComponent = NodePath("../../Components/EquipmentControllerComponent")
+launchEvents = [NodePath("../Move/OnPlayerStopMoving"), NodePath("../Using/OnUsingFinished")]
 
 [node name="OnPlayerMove" type="Node" parent="StateMachineComponent/Idle"]
 script = ExtResource("8_sx4xc")
 
-[node name="Move" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("launchEvents")]
+[node name="Move" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("equipmentControllerComponent", "launchEvents")]
 script = ExtResource("9_wnbqj")
+equipmentControllerComponent = NodePath("../../Components/EquipmentControllerComponent")
 launchEvents = [NodePath("../Idle/OnPlayerMove")]
 
 [node name="OnPlayerStopMoving" type="Node" parent="StateMachineComponent/Move"]
 script = ExtResource("8_sx4xc")
 
+[node name="Using" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("equipmentControllerComponent", "launchEvents")]
+script = ExtResource("12_ml2wi")
+equipmentControllerComponent = NodePath("../../Components/EquipmentControllerComponent")
+launchEvents = [NodePath("../OnToolUsed")]
+
+[node name="OnUsingFinished" type="Node" parent="StateMachineComponent/Using"]
+script = ExtResource("8_sx4xc")
+
 [node name="Components" type="Node2D" parent="."]
 
 [node name="InventoryComponent" parent="Components" instance=ExtResource("11_opfh0")]
-Size = 32
+Size = 40
+
+[node name="GridComponent" parent="Components" instance=ExtResource("13_oqws5")]
+visible = true
+
+[node name="PlacingControllerComponent" parent="Components" node_paths=PackedStringArray("gridComponent") instance=ExtResource("13_0g664")]
+gridComponent = NodePath("../GridComponent")
+
+[node name="EquipmentControllerComponent" parent="Components" node_paths=PackedStringArray("inventoryComponent", "gridComponent", "placingController", "itemWrapper") instance=ExtResource("15_2e6pq")]
+inventoryComponent = NodePath("../InventoryComponent")
+gridComponent = NodePath("../GridComponent")
+placingController = NodePath("../PlacingControllerComponent")
+itemWrapper = NodePath("../../Textures/EquipedItemWrapper")

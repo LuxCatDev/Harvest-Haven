@@ -14,5 +14,6 @@ Name = "Potatoe Seed Pack"
 Description = "Seed Pack For Planting A Potatoe Plant"
 Texture = ExtResource("2_78plt")
 Value = 10
+Stackable = true
 Type = 1
 Data = SubResource("Resource_1v3tp")

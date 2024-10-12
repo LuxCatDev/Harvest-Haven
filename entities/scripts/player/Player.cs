@@ -1,7 +1,10 @@
+using Common;
 using Components.InventoryComponent;
 using Components.State;
 using Godot;
 using GodotUtilities;
+using Items;
+using Namespace;
 using System;
 
 namespace Entities.Player;
@@ -56,6 +59,9 @@ public partial class Player : CharacterBody2D
 	[Node("Components/InventoryComponent")]
 	public InventoryComponent InventoryComponent { get; private set; }
 
+	[Node("Components/EquipmentControllerComponent")]
+	public EquipmentControllerComponent equipmentControllerComponent;
+
     public override void _Ready()
     {
 		stateMachineComponent.Init();
@@ -88,6 +94,11 @@ public partial class Player : CharacterBody2D
 
 	public void UpdateAnimation(string anim)
 	{
-		AnimationPlayer.Play(anim + "_" + AnimationDirection);
+		if (equipmentControllerComponent.CurrentItem != null && equipmentControllerComponent.CurrentItem.Item.Type != ItemType.Tool && (anim == "move" || anim == "idle"))
+		{
+			AnimationPlayer.Play(anim + "_carry_" + AnimationDirection);
+		} else {
+			AnimationPlayer.Play(anim + "_" + AnimationDirection);
+		}
 	}
 }

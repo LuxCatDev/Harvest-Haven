@@ -1,18 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxukauo4xnkw1"]
+[gd_scene load_steps=6 format=3 uid="uid://dxukauo4xnkw1"]
 
-[ext_resource type="Texture2D" uid="uid://cfwla708hog87" path="res://assets/ui/GUI.png" id="1_0j1fs"]
 [ext_resource type="Script" path="res://ui/scripts/PlayerInventoryPage.cs" id="1_q5xp4"]
 [ext_resource type="PackedScene" uid="uid://cgafiice6h2p1" path="res://ui/scenes/item_information_panel.tscn" id="2_m6bgw"]
 [ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="2_xbxr4"]
 [ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="3_60ce4"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f0unb"]
-texture = ExtResource("1_0j1fs")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 7.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(0, 0, 32, 32)
+[ext_resource type="StyleBox" uid="uid://2d3sa4vomdme" path="res://ui/themes/container.tres" id="3_gpfyi"]
 
 [node name="PlayerInventoryPage" type="Control"]
 layout_mode = 3
@@ -28,7 +20,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -193.0
 offset_top = -132.0
-offset_right = -17.0
+offset_right = -56.0
 offset_bottom = 132.0
 grow_horizontal = 0
 
@@ -39,19 +31,18 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 24.0
 offset_top = -132.0
-offset_right = 368.0
+offset_right = 360.0
 offset_bottom = 132.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_f0unb")
+theme_override_styles/panel = ExtResource("3_gpfyi")
 
 [node name="Label" type="Label" parent="Content"]
 layout_mode = 1
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 120.0
-offset_bottom = 48.0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 112.0
+offset_bottom = 44.0
 theme = ExtResource("2_xbxr4")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_60ce4")
 text = " INVENTORY"
@@ -59,8 +50,8 @@ vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="Content"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 24.0
 offset_top = 56.0
-offset_right = 136.0
+offset_right = 128.0
 offset_bottom = 104.0
 columns = 8

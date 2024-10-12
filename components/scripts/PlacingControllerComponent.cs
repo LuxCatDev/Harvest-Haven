@@ -29,7 +29,6 @@ public partial class PlacingControllerComponent : Node
 
 	private void OnInteraction()
 	{
-
 		Node2D objectInstance = Object.Scene.Instantiate<Node2D>();
 
 		GameManager.Instance.PlacementLayer.SetCells(crosshair.GetTargetetCells());

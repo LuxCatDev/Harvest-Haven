@@ -44,7 +44,7 @@ public partial class InventoryComponent: Node
 
     public void AddItem(InventoryItem inventoryItem)
     {
-        if (IsFull) {
+        if (IsFull && inventoryItem.Item.Stackable) {
             int itemIndex = items.FindIndex((item) => item.Item == inventoryItem.Item);
 
             if (itemIndex != -1)
@@ -56,7 +56,7 @@ public partial class InventoryComponent: Node
             int itemIndex = items.FindIndex((item) => item != null && item.Item == inventoryItem.Item);
 
 
-            if (itemIndex != -1)
+            if (itemIndex != -1 && inventoryItem.Item.Stackable)
             {
                 items[itemIndex].Amount += inventoryItem.Amount;
             } else if (FreeSlotIndex != -1)
@@ -90,7 +90,7 @@ public partial class InventoryComponent: Node
         {
             items[index] = inventoryItem;
             EmitSignal(SignalName.Updated);
-        } else if(slot.Item == inventoryItem.Item)
+        } else if(slot.Item == inventoryItem.Item && inventoryItem.Item.Stackable)
         {
             items[index].Amount += inventoryItem.Amount;
             EmitSignal(SignalName.Updated);

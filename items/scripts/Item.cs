@@ -26,14 +26,17 @@ public partial class Item : Resource
 	public int Value;
 
 	[Export]
+	public bool Stackable = true;
+
+	[Export]
 	public ItemType Type;
 
 	[Export]
 	public ItemData Data;
 
-	Item() : this("", "", null, 0, ItemType.Item, null) {}
+	Item() : this("", "", null, 0, ItemType.Item, null, true) {}
 
-	public Item(string name, string description, CompressedTexture2D texture, int value, ItemType type, ItemData data)
+	public Item(string name, string description, CompressedTexture2D texture, int value, ItemType type, ItemData data, bool stackable)
 	{
 		Name = name;
 		Description = description;
@@ -41,6 +44,7 @@ public partial class Item : Resource
 		Value = value;
 		Type = type;
 		Data = data;
+		Stackable = stackable;
 	}
 }
 

@@ -3,13 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cfwla708hog87" path="res://assets/ui/GUI.png" id="1_rv6jm"]
 
 [resource]
-content_margin_left = 4.0
 content_margin_top = 0.0
 content_margin_right = 4.0
-content_margin_bottom = 0.0
+content_margin_bottom = 4.0
 texture = ExtResource("1_rv6jm")
 texture_margin_left = 5.0
 texture_margin_top = 6.0
 texture_margin_right = 4.0
-texture_margin_bottom = 5.0
-region_rect = Rect2(32, 0, 32, 32)
+texture_margin_bottom = 6.0
+region_rect = Rect2(48, 0, 32, 32)

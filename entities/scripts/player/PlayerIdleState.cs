@@ -1,15 +1,26 @@
 using Components.State;
 using Godot;
+using Namespace;
 
 namespace Entities.Player;
 
 public partial class PlayerIdleState: State
 {
+
+    [Export]
+    public EquipmentControllerComponent equipmentControllerComponent;
+
     public override void Enter() {
         player.UpdateAnimation("idle");
+        equipmentControllerComponent.OnEquipmentChanged += OnEquipmentChanged;
     }
     public override void Exit() {
+        equipmentControllerComponent.OnEquipmentChanged -= OnEquipmentChanged;
+    }
 
+    public void OnEquipmentChanged()
+    {
+        player.UpdateAnimation("idle");
     }
     public override void HandleProcess(double delta) {
         if (player.Direction != Vector2.Zero)

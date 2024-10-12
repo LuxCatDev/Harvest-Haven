@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://cafnkedsbi4eb"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cafnkedsbi4eb"]
 
 [ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_4cfrf"]
 [ext_resource type="Script" path="res://items/scripts/ToolData.cs" id="1_fd5ei"]
+[ext_resource type="PackedScene" uid="uid://cwxctkkahiqwg" path="res://items/scenes/tools/pickaxe.tscn" id="1_usriu"]
 [ext_resource type="Texture2D" uid="uid://tbtc6y1m0nvw" path="res://assets/sprites/items/sprites/tools/pickaxe.png" id="2_gjcrs"]
 
 [sub_resource type="Resource" id="Resource_y3cll"]
 script = ExtResource("1_fd5ei")
+Scene = ExtResource("1_usriu")
 
 [resource]
 script = ExtResource("1_4cfrf")
@@ -13,5 +15,6 @@ Name = "Pickaxe"
 Description = "Tool For Mining"
 Texture = ExtResource("2_gjcrs")
 Value = 550
+Stackable = false
 Type = 2
 Data = SubResource("Resource_y3cll")

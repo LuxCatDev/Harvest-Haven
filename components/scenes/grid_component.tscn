@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvjrc7dtfc852"]
+[gd_scene load_steps=3 format=3 uid="uid://bvjrc7dtfc852"]
 
 [ext_resource type="Script" path="res://components/scripts/grid_component/GridComponent.cs" id="1_rff7d"]
+[ext_resource type="PackedScene" uid="uid://cq35qq65agd27" path="res://common/scenes/crosshair.tscn" id="2_k1irk"]
 
 [node name="GridComponent" type="Node2D"]
 visible = false
 z_index = 5
 script = ExtResource("1_rff7d")
+
+[node name="Crosshair" parent="." instance=ExtResource("2_k1irk")]
