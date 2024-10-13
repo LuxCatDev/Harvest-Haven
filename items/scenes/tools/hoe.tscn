@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwxctkkahiqwg"]
+[gd_scene load_steps=9 format=3 uid="uid://dprsg4pupagn3"]
 
-[ext_resource type="Script" path="res://items/scripts/Tool.cs" id="1_yxrgv"]
-[ext_resource type="Texture2D" uid="uid://b8o4vwyhjlokb" path="res://assets/sprites/items/sprites/tools/pickaxe_animations.png" id="3_3kvr7"]
+[ext_resource type="Script" path="res://items/scripts/Tool.cs" id="1_cn640"]
+[ext_resource type="Texture2D" uid="uid://cm3oxpjfjj8pb" path="res://assets/sprites/items/sprites/tools/hoe_animations.png" id="2_khfvk"]
 
 [sub_resource type="Animation" id="Animation_1ng30"]
 length = 0.001
@@ -64,6 +64,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:flip_v")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_wx2f0"]
@@ -161,7 +173,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0.0, 2.35619]
+"values": [-1.5708, 0.785398]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -185,7 +197,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, -5)]
+"values": [Vector2(4, -4)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -235,10 +247,10 @@ tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -6)]
+"values": [Vector2(0, -4), Vector2(0, -6)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -276,6 +288,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:flip_v")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5e0ti"]
 _data = {
@@ -286,14 +310,13 @@ _data = {
 "use_up": SubResource("Animation_8v80e")
 }
 
-[node name="Pickaxe" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("1_yxrgv")
+[node name="Hoe" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("1_cn640")
 animationPlayer = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-5, -5)
-texture = ExtResource("3_3kvr7")
-flip_h = true
+texture = ExtResource("2_khfvk")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

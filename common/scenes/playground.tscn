@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://503hfj7s0rqf" path="res://common/scenes/terrain_layer.tscn" id="2_820n3"]
 [ext_resource type="PackedScene" uid="uid://c126d6k7tkm4x" path="res://entities/scenes/player/player.tscn" id="3_k7md7"]
 [ext_resource type="PackedScene" uid="uid://8kkksc7ado7l" path="res://common/scenes/placement_layer.tscn" id="5_rr8bq"]
-[ext_resource type="Resource" uid="uid://bs26246ytctxi" path="res://items/data/plants/potatoe_seed_pack.tres" id="11_6uhra"]
+[ext_resource type="Resource" uid="uid://cd3o7j3we0qnd" path="res://items/data/tools/watering_can.tres" id="11_hjd76"]
 [ext_resource type="PackedScene" uid="uid://be1wsht6aor3n" path="res://common/scenes/pickable_item.tscn" id="13_sa8ti"]
 [ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="15_0if8g"]
 [ext_resource type="PackedScene" uid="uid://c5kgpxuwj5c2h" path="res://ui/scenes/menu.tscn" id="16_7nmh8"]
@@ -21,8 +21,8 @@ Amount = 1
 
 [sub_resource type="Resource" id="Resource_b5cep"]
 script = ExtResource("15_0if8g")
-Item = ExtResource("11_6uhra")
-Amount = 10
+Item = ExtResource("11_hjd76")
+Amount = 1
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -56,7 +56,3 @@ inventoryItem = SubResource("Resource_b5cep")
 position = Vector2(-50, -34)
 
 [node name="DialogController" parent="." instance=ExtResource("20_es6ge")]
-
-[node name="PickableItem3" parent="." instance=ExtResource("13_sa8ti")]
-position = Vector2(71, 12)
-inventoryItem = SubResource("Resource_b5cep")

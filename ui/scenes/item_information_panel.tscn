@@ -18,7 +18,7 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(48, 0, 32, 32)
 
 [node name="ItemInformationPanel" type="Panel"]
-custom_minimum_size = Vector2(137, 264)
+custom_minimum_size = Vector2(153, 264)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,7 +26,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 103.0
 offset_top = -152.0
-offset_right = 240.0
+offset_right = 256.0
 offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -37,7 +37,7 @@ script = ExtResource("2_tty2i")
 layout_mode = 0
 offset_left = 16.0
 offset_top = 20.0
-offset_right = 120.0
+offset_right = 137.0
 offset_bottom = 44.0
 theme = ExtResource("2_1k36n")
 theme_override_font_sizes/font_size = 16
@@ -48,9 +48,9 @@ uppercase = true
 
 [node name="Icon" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 89.0
+offset_left = 105.0
 offset_top = 52.0
-offset_right = 121.0
+offset_right = 137.0
 offset_bottom = 84.0
 theme_override_styles/panel = ExtResource("3_psluc")
 
@@ -64,7 +64,7 @@ stretch_mode = 5
 layout_mode = 0
 offset_left = 16.0
 offset_top = 52.0
-offset_right = 81.0
+offset_right = 97.0
 offset_bottom = 76.0
 theme_override_styles/panel = ExtResource("3_psluc")
 
@@ -99,13 +99,13 @@ custom_minimum_size = Vector2(0, 27)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 89.0
-offset_right = 121.0
+offset_right = 137.0
 offset_bottom = 116.0
 size_flags_vertical = 1
 theme = ExtResource("2_1k36n")
 theme_override_constants/line_spacing = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_woe6e")
 text = "Description"
-autowrap_mode = 1
+autowrap_mode = 3
 justification_flags = 35
 uppercase = true

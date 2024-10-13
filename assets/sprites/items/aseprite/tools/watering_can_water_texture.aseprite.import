@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bk7b424f5122t"
+path="res://.godot/imported/watering_can_water_texture.aseprite-026c9bffcc2123118cb6535b176268dc.res"
+
+[deps]
+
+source_file="res://assets/sprites/items/aseprite/tools/watering_can_water_texture.aseprite"
+dest_files=["res://.godot/imported/watering_can_water_texture.aseprite-026c9bffcc2123118cb6535b176268dc.res"]
+
+[params]
+
