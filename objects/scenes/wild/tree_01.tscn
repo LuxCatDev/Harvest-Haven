@@ -1,17 +1,125 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccua5xexfi3a8"]
+[gd_scene load_steps=19 format=3 uid="uid://ccua5xexfi3a8"]
 
 [ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_lp2jj"]
-[ext_resource type="Texture2D" uid="uid://dbd6bdh3jxt1r" path="res://assets/sprites/objects/sprites/wild/tree_01.png" id="2_a3nwv"]
+[ext_resource type="Script" path="res://objects/scripts/tree/Tree.cs" id="2_3ef2p"]
+[ext_resource type="Texture2D" uid="uid://ddqme3aslmo2h" path="res://assets/sprites/objects/sprites/wild/tree_01.png" id="2_a3nwv"]
+[ext_resource type="Shader" path="res://assets/shaders/flashing.gdshader" id="2_ob1i4"]
+[ext_resource type="Texture2D" uid="uid://6qwx5l43anpv" path="res://assets/sprites/objects/sprites/tree_shadow.png" id="3_gpqoh"]
+[ext_resource type="PackedScene" uid="uid://cbdxn2ju2toak" path="res://components/scenes/health_component.tscn" id="4_ncrea"]
+[ext_resource type="PackedScene" uid="uid://c54au5cqtmdgx" path="res://components/scenes/hit_box_component.tscn" id="5_n34d4"]
+[ext_resource type="PackedScene" uid="uid://bk5wf246spjyv" path="res://components/scenes/dropper_component.tscn" id="8_nxtp4"]
+[ext_resource type="Resource" uid="uid://ctes2xtecpa3a" path="res://items/data/products/wood.tres" id="9_aiepy"]
+[ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="10_8ev0y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmx7b"]
+shader = ExtResource("2_ob1i4")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6071"]
-size = Vector2(20, 10)
+size = Vector2(19, 12)
+
+[sub_resource type="Animation" id="Animation_sa1oa"]
+resource_name = "hited"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4fweg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_66jwe"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.0, 0.5, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6i3nj"]
+_data = {
+"RESET": SubResource("Animation_4fweg"),
+"death": SubResource("Animation_66jwe"),
+"hited": SubResource("Animation_sa1oa")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fc0n"]
+size = Vector2(19, 16)
+
+[sub_resource type="Resource" id="Resource_wbi7e"]
+script = ExtResource("10_8ev0y")
+Item = ExtResource("9_aiepy")
+Amount = 1
 
 [node name="Tree_01" instance=ExtResource("1_lp2jj")]
+script = ExtResource("2_3ef2p")
 
-[node name="Texture" parent="." index="0"]
-position = Vector2(0, -21)
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+position = Vector2(1, 2)
+texture = ExtResource("3_gpqoh")
+
+[node name="Texture" parent="." index="1"]
+material = SubResource("ShaderMaterial_qmx7b")
 texture = ExtResource("2_a3nwv")
+offset = Vector2(0, -28)
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 3)
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_q6071")
+
+[node name="HealthComponent" parent="." index="3" instance=ExtResource("4_ncrea")]
+max_hp = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_6i3nj")
+}
+autoplay = "RESET"
+
+[node name="HitBoxComponent" parent="." index="5" node_paths=PackedStringArray("healthComponent") instance=ExtResource("5_n34d4")]
+healthComponent = NodePath("../HealthComponent")
+scope = Array[int]([0])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_1fc0n")
+
+[node name="DropperComponent" parent="." index="6" instance=ExtResource("8_nxtp4")]
+items = Array[Object]([SubResource("Resource_wbi7e")])
+maxNumberOfDrops = 6
+minNumberOfDrops = 2
+random = true
+
+[connection signal="OnDeath" from="HealthComponent" to="." method="OnDeath"]
+[connection signal="OnHpChanged" from="HealthComponent" to="." method="OnTakeDamage"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationFinished"]

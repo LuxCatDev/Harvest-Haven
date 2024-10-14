@@ -13,7 +13,8 @@ namespace Entities.Player;
 public partial class Player : CharacterBody2D
 {
 
-	public override void _Notification(int what) {
+	public override void _Notification(int what)
+	{
 		if (what == NotificationSceneInstantiated)
 		{
 			WireNodes(); // this is a generated method
@@ -30,9 +31,14 @@ public partial class Player : CharacterBody2D
 	private StateMachineComponent stateMachineComponent;
 
 	private Vector2 direction;
-	private Vector2 cardinalDirection = Vector2.Down;
+	public Vector2 CardinalDirection
+	{
+		get;
+		private set;
+	}
 
-	public Vector2 Direction {
+	public Vector2 Direction
+	{
 		get => direction;
 	}
 
@@ -40,11 +46,11 @@ public partial class Player : CharacterBody2D
 	{
 		get
 		{
-			if (cardinalDirection == Vector2.Down)
+			if (CardinalDirection == Vector2.Down)
 			{
 				return "down";
 			}
-			else if (cardinalDirection == Vector2.Up)
+			else if (CardinalDirection == Vector2.Up)
 			{
 				return "up";
 			}
@@ -62,17 +68,18 @@ public partial class Player : CharacterBody2D
 	[Node("Components/EquipmentControllerComponent")]
 	public EquipmentControllerComponent equipmentControllerComponent;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
+		CardinalDirection = Vector2.Down;
 		stateMachineComponent.Init();
-    }
+	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		direction = new Vector2(Input.GetAxis("left", "right"), Input.GetAxis("up", "down")).Normalized();
-    }
+	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		MoveAndSlide();
 	}
@@ -81,13 +88,13 @@ public partial class Player : CharacterBody2D
 	{
 		if (direction == Vector2.Zero) return false;
 
-        Vector2 newCardinalDirection = direction.Snapped(Vector2.One);
+		Vector2 newCardinalDirection = direction.Snapped(Vector2.One);
 
-		if (newCardinalDirection == cardinalDirection) return false;
+		if (newCardinalDirection == CardinalDirection) return false;
 
-		cardinalDirection = newCardinalDirection;
-		
-		textures.Scale = new(cardinalDirection.X < 0 ? -1 : 1, 1);
+		CardinalDirection = newCardinalDirection;
+
+		textures.Scale = new(CardinalDirection.X < 0 ? -1 : 1, 1);
 
 		return true;
 	}
@@ -97,7 +104,9 @@ public partial class Player : CharacterBody2D
 		if (equipmentControllerComponent.CurrentItem != null && equipmentControllerComponent.CurrentItem.Item.Type != ItemType.Tool && (anim == "move" || anim == "idle"))
 		{
 			AnimationPlayer.Play(anim + "_carry_" + AnimationDirection);
-		} else {
+		}
+		else
+		{
 			AnimationPlayer.Play(anim + "_" + AnimationDirection);
 		}
 	}

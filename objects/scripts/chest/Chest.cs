@@ -5,7 +5,7 @@ using GodotUtilities;
 namespace Objects;
 
 [Scene]
-public partial class Chest : StaticBody2D
+public partial class Chest : Object
 {
 	public override void _Notification(int what)
 	{

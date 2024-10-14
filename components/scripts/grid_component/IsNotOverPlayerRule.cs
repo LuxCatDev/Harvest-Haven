@@ -1,14 +1,14 @@
 using Common;
-using Entities.Player;
 using Godot;
+using Objects;
 
 namespace Components.GridComponent;
 
 [GlobalClass]
-public partial class IsNotOverPlayerRule: PlacementRule
+public partial class IsNotOverPlayerRule: ValidationRule
 {
-    public override bool IsValid()
+    public override bool IsValid(Object objectInstance, GridValidationComponent validationComponent)
     {
-        return !GameManager.Instance.Crosshair.IsOnPlayer;
+        return !objectInstance.placingArea.IsOnPlayer;
     }
 }

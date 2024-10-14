@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_y3cll"]
 script = ExtResource("1_fd5ei")
 Scene = ExtResource("1_usriu")
+Type = 0
 
 [resource]
 script = ExtResource("1_4cfrf")

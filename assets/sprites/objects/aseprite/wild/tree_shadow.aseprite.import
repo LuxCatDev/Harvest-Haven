@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b38ie8mj2ki30"
+path="res://.godot/imported/tree_shadow.aseprite-c9eb25304b3172db0ab75e73b4110982.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/wild/tree_shadow.aseprite"
+dest_files=["res://.godot/imported/tree_shadow.aseprite-c9eb25304b3172db0ab75e73b4110982.res"]
+
+[params]
+

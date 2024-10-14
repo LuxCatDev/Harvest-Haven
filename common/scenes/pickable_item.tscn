@@ -1,20 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://be1wsht6aor3n"]
+[gd_scene load_steps=6 format=3 uid="uid://be1wsht6aor3n"]
 
 [ext_resource type="Script" path="res://common/scripts/PickableItem.cs" id="1_exlgg"]
+[ext_resource type="Texture2D" uid="uid://peah1gowjvpy" path="res://assets/sprites/items/sprites/products/wood.png" id="2_tgeji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qljx8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ncdw6"]
-radius = 25.0
+radius = 32.0
 
-[node name="PickableItem" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7kji"]
+
+[node name="PickableItem" type="StaticBody2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_exlgg")
 
 [node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_tgeji")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="."]
+
+[node name="PickingArea" type="Area2D" parent="."]
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickingArea"]
+shape = SubResource("CircleShape2D_qljx8")
+
+[node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_ncdw6")
 
-[connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c7kji")
+
+[connection signal="body_entered" from="PickingArea" to="." method="OnPickingAreaBodyEntered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="OnDetectionAreaBodyEntered"]

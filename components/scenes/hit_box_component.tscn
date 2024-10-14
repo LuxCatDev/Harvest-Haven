@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c54au5cqtmdgx"]
+
+[ext_resource type="Script" path="res://components/scripts/HitBoxComponent.cs" id="1_rxs0x"]
+
+[node name="HitBoxComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("1_rxs0x")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

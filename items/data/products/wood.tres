@@ -14,5 +14,6 @@ Name = "Wood"
 Description = "Raw Wood"
 Texture = ExtResource("2_7lk86")
 Value = 15
+Stackable = true
 Type = 1
 Data = SubResource("Resource_760ei")

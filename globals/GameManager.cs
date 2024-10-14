@@ -8,9 +8,7 @@ public partial class GameManager : Node
 
 	public Player Player { get; set; }
 
-	public PlacementLayer PlacementLayer { get; set; }
-
-	public Crosshair Crosshair { get; set; }
+	public TileMapLayer TerrainLayer { get; set; }
 
 	public DialogController DialogController { get; set; }
 

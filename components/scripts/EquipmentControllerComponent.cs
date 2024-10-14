@@ -1,4 +1,5 @@
 using Common;
+using Components;
 using Components.InventoryComponent;
 using Entities.Player;
 using Godot;
@@ -26,9 +27,6 @@ public partial class EquipmentControllerComponent : Node2D
 
 	[Export]
 	private InventoryComponent inventoryComponent;
-
-	[Export]
-	private GridComponent gridComponent;
 
 	[Export]
 	private PlacingControllerComponent placingController;
@@ -124,7 +122,7 @@ public partial class EquipmentControllerComponent : Node2D
 			itemWrapper.RemoveChild(itemWrapper.GetChild(0));
 		}
 
-		gridComponent.Disable();
+		placingController.Disable();
 
 		if (CurrentItem == null) return;
 

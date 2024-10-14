@@ -1,14 +1,15 @@
 using Common;
 using Entities.Player;
 using Godot;
+using Objects;
 
 namespace Components.GridComponent;
 
 [GlobalClass]
-public partial class IsCellFreeRule: PlacementRule
+public partial class IsCellFreeRule: ValidationRule
 {
-    public override bool IsValid()
+    public override bool IsValid(Object objectInstance, GridValidationComponent validationComponent)
     {
-        return !GameManager.Instance.Crosshair.IsOnRestrictedCell;
+        return !objectInstance.placingArea.IsOnRestrictedCell;
     }
 }

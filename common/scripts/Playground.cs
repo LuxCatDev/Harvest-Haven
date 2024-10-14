@@ -1,6 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
 using Entities.Player;
 using Godot;
 using GodotUtilities;
+using Models;
+using Objects;
 
 namespace Common;
 
@@ -16,7 +20,7 @@ public partial class Playground: Node2D
 	}
 
 	[Node]
-	private PlacementLayer placementLayer;
+	private TileMapLayer terrainLayer;
 
 	[Node]
 	private Player player;
@@ -24,12 +28,15 @@ public partial class Playground: Node2D
 	[Node]
 	private DialogController dialogController;
 
+	[Export]
+	private PlacesableObject placesableObject;
+
     public override void _Ready()
     {
 		GameManager.Instance.Player = player;
 		GameManager.Instance.Level = this;
 		GameManager.Instance.DialogController = dialogController;
-		GameManager.Instance.PlacementLayer = placementLayer;
+		GameManager.Instance.TerrainLayer = terrainLayer;
     }
 
 	public void SpawnNode(Node2D node)

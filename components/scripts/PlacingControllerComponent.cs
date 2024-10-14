@@ -1,38 +1,56 @@
 using Common;
 using Godot;
 using Models;
+using Objects;
+
+namespace Components;
 
 public partial class PlacingControllerComponent : Node
 {
 	[Export]
-	public PlacesableObject Object;
+	public PlacesableObject PlacesableObject;
 
 	[Export]
-	private GridComponent gridComponent;
+	private GridValidationComponent gridValidation;
 
     private Crosshair crosshair;
 
+	private Object objectInstance;
+
+    public override void _Process(double delta)
+    {
+		if (objectInstance != null)
+		{
+			objectInstance.GlobalPosition = crosshair.CenterGlobalPosition;
+		}
+    }
+
     public void Enable()
     {
-		crosshair = GameManager.Instance.Crosshair;
-		gridComponent.Connect(GridComponent.SignalName.OnInteraction, Callable.From(OnInteraction));
-		gridComponent.Preview = Object.Preview.Instantiate<Node2D>();
-		gridComponent.CrosshairSize = Object.Size;
-		gridComponent.Enable();
+		objectInstance = PlacesableObject.Scene.Instantiate<Object>();
+		objectInstance.collisionShape.Disabled = true;
+		AddChild(objectInstance);
+		crosshair =	gridValidation.Crosshair;
+		gridValidation.Connect(GridValidationComponent.SignalName.OnInteraction, Callable.From(OnInteraction));
+		gridValidation.CrosshairSize = PlacesableObject.Size;
+		gridValidation.Enable();
     }
 
 	public void Disable()
 	{
-		gridComponent.Disconnect(GridComponent.SignalName.OnInteraction, Callable.From(OnInteraction));
-		gridComponent.Disable();
+		objectInstance.QueueFree();
+		objectInstance = null;
+		RemoveChild(objectInstance);
+		gridValidation.Disconnect(GridValidationComponent.SignalName.OnInteraction, Callable.From(OnInteraction));
+		gridValidation.Disable();
 	}
 
 	private void OnInteraction()
 	{
-		Node2D objectInstance = Object.Scene.Instantiate<Node2D>();
+		RemoveChild(objectInstance);
+		objectInstance.collisionShape.Disabled = false;
+		objectInstance.GlobalPosition = gridValidation.Crosshair.CenterGlobalPosition;
 
-		GameManager.Instance.PlacementLayer.SetCells(crosshair.GetTargetetCells());
-		objectInstance.GlobalPosition = crosshair.CenterGlobalPosition;
 		GetParent<Playground>().SpawnNode(objectInstance);
 	}
 }

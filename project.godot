@@ -46,7 +46,7 @@ project/assembly_name="Harvest Haven"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_resource_groups/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [godot_resource_groups]
 
@@ -157,6 +157,7 @@ prev_item={
 2d_physics/layer_2="Terrain"
 2d_physics/layer_3="Objects"
 2d_physics/layer_4="PlacementRestriction"
+2d_physics/layer_5="HurtBoxes"
 
 [rendering]
 

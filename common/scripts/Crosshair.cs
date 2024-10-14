@@ -25,12 +25,6 @@ public partial class Crosshair : Node2D
 	[Node]
 	private Panel restricted;
 
-	[Node("Area2D/CollisionShape2D")]
-	private CollisionShape2D collisionShape2D;
-
-	[Node]
-	private Area2D area2D;
-
 	[Export]
 	public Vector2 Size = new(16, 16);
 
@@ -54,10 +48,6 @@ public partial class Crosshair : Node2D
 		}
 		private set { }
 	}
-
-	public bool IsOnPlayer = false;
-
-	public bool IsOnRestrictedCell = false;
 
 	public bool State
 	{
@@ -84,8 +74,6 @@ public partial class Crosshair : Node2D
 		free.Size = Size;
 		restricted.Size = Size;
 		Center = new(-8 + (Size.X / 16 * 8), -8 + (Size.Y / 16 * 8));
-		area2D.Position = Center;
-		collisionShape2D.Shape.Set("size", new Vector2(Size.X - 1, Size.Y - 1));
 	}
 
 	public void HideCrosshair()
@@ -97,7 +85,7 @@ public partial class Crosshair : Node2D
 	{
 		if (!Visible) return;
 
-		TileMapLayer map = GameManager.Instance.PlacementLayer;
+		TileMapLayer map = GameManager.Instance.TerrainLayer;
 
 		Vector2 mousePosition = map.ToLocal(GetGlobalMousePosition());
 
@@ -111,7 +99,7 @@ public partial class Crosshair : Node2D
 
 	public List<Vector2I> GetTargetetCells()
 	{
-		PlacementLayer map = GameManager.Instance.PlacementLayer;
+		TileMapLayer map = GameManager.Instance.TerrainLayer;
 		Vector2I firstCell = map.LocalToMap(free.GlobalPosition);
 		Vector2I lastCell = map.LocalToMap(free.GlobalPosition + Size - Center);
 
@@ -127,29 +115,5 @@ public partial class Crosshair : Node2D
 		}
 
 		return cells;
-	}
-
-	private void OnBodyEntered(Node2D body)
-	{
-		if (body is Player)
-		{
-			IsOnPlayer = true;
-
-			return;
-		}
-
-		IsOnRestrictedCell = true;
-	}
-
-	private void OnBodyExited(Node2D body)
-	{
-		if (body is Player)
-		{
-			IsOnPlayer = false;
-
-			return;
-		}
-
-		IsOnRestrictedCell = false;
 	}
 }
