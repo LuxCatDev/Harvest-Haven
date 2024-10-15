@@ -1,20 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bk3j5ybuafb7m"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bk3j5ybuafb7m"]
 
+[ext_resource type="Script" path="res://items/scripts/Consumable.cs" id="1_32ra8"]
 [ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_82utx"]
-[ext_resource type="Script" path="res://items/scripts/ConsumableData.cs" id="1_vvgaf"]
-[ext_resource type="Script" path="res://items/scripts/Product.cs" id="2_sfghy"]
 [ext_resource type="Texture2D" uid="uid://k0dfh3d52w5c" path="res://assets/sprites/items/sprites/plants/potatoe.png" id="3_hv678"]
 
-[sub_resource type="Resource" id="Resource_hb7jb"]
-script = ExtResource("1_vvgaf")
-FoodMod = 25
+[sub_resource type="Resource" id="Resource_pn11v"]
+script = ExtResource("1_32ra8")
+FoodMod = 0
 WaterhMod = 0
-EnergyMod = 25
-
-[sub_resource type="Resource" id="Resource_nfc67"]
-script = ExtResource("2_sfghy")
-Type = 1
-Data = SubResource("Resource_hb7jb")
+EnergyMod = 0
 
 [resource]
 script = ExtResource("1_82utx")
@@ -22,5 +16,5 @@ Name = "Potatoe"
 Description = "Vegetable"
 Texture = ExtResource("3_hv678")
 Value = 25
-Type = 1
-Data = SubResource("Resource_nfc67")
+Stackable = true
+Data = SubResource("Resource_pn11v")

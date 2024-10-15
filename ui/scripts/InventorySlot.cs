@@ -1,4 +1,4 @@
-using Components.InventoryComponent;
+using Components;
 using Godot;
 using GodotUtilities;
 using Items;

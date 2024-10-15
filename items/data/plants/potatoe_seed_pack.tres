@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bs26246ytctxi"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bs26246ytctxi"]
 
-[ext_resource type="Script" path="res://items/scripts/Product.cs" id="1_6yyde"]
+[ext_resource type="Resource" uid="uid://cog1xdopqlbex" path="res://objects/data/plants/potatoe_plant.tres" id="1_q0poj"]
 [ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_rneji"]
 [ext_resource type="Texture2D" uid="uid://d341f1u8oi44c" path="res://assets/sprites/items/sprites/plants/potatoe_seed_pack.png" id="2_78plt"]
+[ext_resource type="Script" path="res://items/scripts/SeedPack.cs" id="2_rewsl"]
 
-[sub_resource type="Resource" id="Resource_1v3tp"]
-script = ExtResource("1_6yyde")
-Type = 0
+[sub_resource type="Resource" id="Resource_cggbm"]
+script = ExtResource("2_rewsl")
+PlacesableObject = ExtResource("1_q0poj")
 
 [resource]
 script = ExtResource("1_rneji")
@@ -15,5 +16,4 @@ Description = "Seed Pack For Planting A Potatoe Plant"
 Texture = ExtResource("2_78plt")
 Value = 10
 Stackable = true
-Type = 1
-Data = SubResource("Resource_1v3tp")
+Data = SubResource("Resource_cggbm")

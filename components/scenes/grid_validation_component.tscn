@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvjrc7dtfc852"]
+[gd_scene load_steps=4 format=3 uid="uid://bvjrc7dtfc852"]
 
-[ext_resource type="Script" path="res://components/scripts/grid_component/GridComponent.cs" id="1_rff7d"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/GridValidationComponent.cs" id="1_oc1cp"]
 [ext_resource type="PackedScene" uid="uid://cq35qq65agd27" path="res://common/scenes/crosshair.tscn" id="2_k1irk"]
+[ext_resource type="PackedScene" uid="uid://b8pjw2vci2p7f" path="res://components/scenes/grid_validation_area_component.tscn" id="3_edw84"]
 
-[node name="GridComponent" type="Node2D"]
+[node name="GridValidationComponent" type="Node2D"]
 visible = false
 z_index = 5
-script = ExtResource("1_rff7d")
+script = ExtResource("1_oc1cp")
 
 [node name="Crosshair" parent="." instance=ExtResource("2_k1irk")]
+
+[node name="GridValidationAreaComponent" parent="." instance=ExtResource("3_edw84")]

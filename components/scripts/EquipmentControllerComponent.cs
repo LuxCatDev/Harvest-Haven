@@ -1,12 +1,10 @@
-using Common;
-using Components;
-using Components.InventoryComponent;
+using Components.GridComponent;
 using Entities.Player;
 using Godot;
 using GodotUtilities;
 using Items;
 
-namespace Namespace;
+namespace Components;
 
 [Scene]
 public partial class EquipmentControllerComponent : Node2D
@@ -29,7 +27,10 @@ public partial class EquipmentControllerComponent : Node2D
 	private InventoryComponent inventoryComponent;
 
 	[Export]
-	private PlacingControllerComponent placingController;
+	public PlacingControllerComponent PlacingController;
+
+	[Export]
+	public GridValidationComponent GridValidation;
 
 	[Export]
 	private Node2D itemWrapper;
@@ -39,6 +40,8 @@ public partial class EquipmentControllerComponent : Node2D
 	public InventoryItem CurrentItem = null;
 
 	private int currentIndex;
+
+	public bool CarryAnimation;
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -116,31 +119,71 @@ public partial class EquipmentControllerComponent : Node2D
 		CurrentItem = inventoryComponent.items[index];
 
 		EmitSignal(SignalName.OnEquipmentChanged);
-		
+
 		if (itemWrapper.GetChildCount() > 0)
 		{
 			itemWrapper.RemoveChild(itemWrapper.GetChild(0));
 		}
 
-		placingController.Disable();
+		if (PlacingController.IsActive)
+		{
+			PlacingController.Disable();
+		}
 
-		if (CurrentItem == null) return;
+		if (CurrentItem == null) {
+			CarryAnimation = false;
+			EmitSignal(SignalName.OnEquipmentChanged);
+			return;
+		}
 
-		if (CurrentItem.Item.Type == ItemType.Tool && CurrentItem.Item.Data is ToolData toolData)
+		Item item = CurrentItem.Item;
+		CarryAnimation = false;
+
+		if (item.Data is ToolData toolData)
 		{
 			Tool tool = toolData.Scene.Instantiate<Tool>();
+
+			tool.equipmentController = this;
 
 			itemWrapper.AddChild(tool);
 
 			EmitSignal(SignalName.OnToolSpawned);
 		}
-		else
+		else if (item.Data is Consumable consumable)
 		{
-			Sprite2D texture = new() {
+			CarryAnimation = true;
+		}
+		else if (item.Data is Placesable placesableData)
+		{
+			PlacingController.ShowPreview = true;
+			PlacingController.PlacesableObject = placesableData.PlacesableObject;
+			PlacingController.Enable();
+		}
+		else if (item.Data is SeedPack seedPack)
+		{
+			PlacingController.ShowPreview = false;
+			CarryAnimation = true;
+			PlacingController.PlacesableObject = seedPack.PlacesableObject;
+			PlacingController.Enable();
+
+			Sprite2D texture = new()
+			{
 				Texture = CurrentItem.Item.Texture
 			};
 
 			itemWrapper.AddChild(texture);
 		}
+		else
+		{
+			CarryAnimation = true;
+			Sprite2D texture = new()
+			{
+				Texture = CurrentItem.Item.Texture
+			};
+
+			itemWrapper.AddChild(texture);
+		}
+
+		EmitSignal(SignalName.OnEquipmentChanged);
 	}
 }

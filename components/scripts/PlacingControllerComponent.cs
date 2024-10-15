@@ -1,56 +1,90 @@
+using System.Collections.Generic;
 using Common;
+using Components.GridComponent;
 using Godot;
 using Models;
 using Objects;
 
 namespace Components;
 
-public partial class PlacingControllerComponent : Node
+public partial class PlacingControllerComponent : Node2D
 {
 	[Export]
 	public PlacesableObject PlacesableObject;
 
 	[Export]
-	private GridValidationComponent gridValidation;
+	public GridValidationComponent GridValidation;
 
-    private Crosshair crosshair;
+	[Export]
+	public InventoryComponent InventoryComponent;
 
-	private Object objectInstance;
+	private Crosshair crosshair;
 
-    public override void _Process(double delta)
-    {
-		if (objectInstance != null)
+	public Object Preview { get; private set; }
+
+	public bool ShowPreview;
+
+	public bool IsActive;
+
+	public override void _Process(double delta)
+	{
+		if (Preview != null)
 		{
-			objectInstance.GlobalPosition = crosshair.CenterGlobalPosition;
+			Preview.GlobalPosition = crosshair.CenterGlobalPosition;
 		}
+	}
+
+    public override void _Ready()
+    {
+		GridValidation.OnInteraction += OnInteraction;
     }
 
     public void Enable()
-    {
-		objectInstance = PlacesableObject.Scene.Instantiate<Object>();
-		objectInstance.collisionShape.Disabled = true;
-		AddChild(objectInstance);
-		crosshair =	gridValidation.Crosshair;
-		gridValidation.Connect(GridValidationComponent.SignalName.OnInteraction, Callable.From(OnInteraction));
-		gridValidation.CrosshairSize = PlacesableObject.Size;
-		gridValidation.Enable();
-    }
+	{
+		IsActive = true;
+		if (ShowPreview)
+		{
+			Preview = PlacesableObject.Scene.Instantiate<Object>();
+			Preview.collisionShape.Disabled = true;
+			AddChild(Preview);
+		}
+
+		crosshair = GridValidation.Crosshair;
+		GridValidation.CrosshairSize = PlacesableObject.Size;
+		GridValidation.PlacesableObject = PlacesableObject;
+		GridValidation.Enable();
+	}
 
 	public void Disable()
 	{
-		objectInstance.QueueFree();
-		objectInstance = null;
-		RemoveChild(objectInstance);
-		gridValidation.Disconnect(GridValidationComponent.SignalName.OnInteraction, Callable.From(OnInteraction));
-		gridValidation.Disable();
+		IsActive = false;
+		if (Preview != null)
+		{
+			Preview.QueueFree();
+			Preview = null;
+		}
+		GridValidation.Disable();
 	}
 
-	private void OnInteraction()
+	public void OnInteraction()
 	{
-		RemoveChild(objectInstance);
-		objectInstance.collisionShape.Disabled = false;
-		objectInstance.GlobalPosition = gridValidation.Crosshair.CenterGlobalPosition;
+		if (!IsActive) return;
 
-		GetParent<Playground>().SpawnNode(objectInstance);
+		List<bool> validations = new();
+
+		foreach(PlacementTrait placementTrait in PlacesableObject.PlacementTraits)
+		{
+			validations.Add(placementTrait.IsValid(this));
+		}
+
+		if (validations.FindIndex((item) => item == false) != -1)
+		{
+			return;
+		}
+
+		foreach(PlacementTrait placementTrait in PlacesableObject.PlacementTraits)
+		{
+			placementTrait.Execute(this);
+		}
 	}
 }

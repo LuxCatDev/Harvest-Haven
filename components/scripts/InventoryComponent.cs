@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-namespace Components.InventoryComponent;
+namespace Components;
 
 public partial class InventoryComponent: Node
 {

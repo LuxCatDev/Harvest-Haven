@@ -17,5 +17,4 @@ Description = "Tool For Choping Trees Down"
 Texture = ExtResource("2_eoyrl")
 Value = 500
 Stackable = false
-Type = 2
 Data = SubResource("Resource_b2uqr")

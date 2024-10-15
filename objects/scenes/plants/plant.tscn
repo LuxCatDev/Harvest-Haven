@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://u45p22htiyh4"]
+[gd_scene load_steps=13 format=3 uid="uid://u45p22htiyh4"]
 
 [ext_resource type="Texture2D" uid="uid://cf7csrmcakgt4" path="res://assets/sprites/objects/sprites/plants/melon_plant.png" id="1_nwmv0"]
+[ext_resource type="Script" path="res://objects/scripts/Plant.cs" id="1_uutok"]
+[ext_resource type="PackedScene" uid="uid://bu021p1lybokd" path="res://components/scenes/placing_area_component.tscn" id="2_ia6m4"]
 
 [sub_resource type="Animation" id="Animation_42mlk"]
 length = 0.001
@@ -134,11 +136,12 @@ _data = {
 
 [node name="Plant" type="StaticBody2D"]
 z_index = 1
-y_sort_enabled = true
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_uutok")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("1_nwmv0")
 hframes = 6
 
@@ -150,3 +153,6 @@ autoplay = "seed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lhij4")
+disabled = true
+
+[node name="PlacingAreaComponent" parent="." instance=ExtResource("2_ia6m4")]

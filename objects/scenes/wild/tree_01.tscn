@@ -1,7 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://ccua5xexfi3a8"]
 
 [ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_lp2jj"]
-[ext_resource type="Script" path="res://objects/scripts/tree/Tree.cs" id="2_3ef2p"]
 [ext_resource type="Texture2D" uid="uid://ddqme3aslmo2h" path="res://assets/sprites/objects/sprites/wild/tree_01.png" id="2_a3nwv"]
 [ext_resource type="Shader" path="res://assets/shaders/flashing.gdshader" id="2_ob1i4"]
 [ext_resource type="Texture2D" uid="uid://6qwx5l43anpv" path="res://assets/sprites/objects/sprites/tree_shadow.png" id="3_gpqoh"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bk5wf246spjyv" path="res://components/scenes/dropper_component.tscn" id="8_nxtp4"]
 [ext_resource type="Resource" uid="uid://ctes2xtecpa3a" path="res://items/data/products/wood.tres" id="9_aiepy"]
 [ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="10_8ev0y"]
+[ext_resource type="PackedScene" uid="uid://cpnpaeskb5g3v" path="res://components/scenes/breakable_component.tscn" id="11_qye3h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmx7b"]
 shader = ExtResource("2_ob1i4")
@@ -17,23 +17,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6071"]
-size = Vector2(19, 12)
-
-[sub_resource type="Animation" id="Animation_sa1oa"]
-resource_name = "hited"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.5, 0.0, 0.5, 0.0]
-}
+size = Vector2(19, 14)
 
 [sub_resource type="Animation" id="Animation_4fweg"]
 length = 0.001
@@ -66,6 +50,22 @@ tracks/0/keys = {
 "values": [0.5, 0.0, 0.5, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_sa1oa"]
+resource_name = "hited"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.0, 0.5, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6i3nj"]
 _data = {
 "RESET": SubResource("Animation_4fweg"),
@@ -82,7 +82,6 @@ Item = ExtResource("9_aiepy")
 Amount = 1
 
 [node name="Tree_01" instance=ExtResource("1_lp2jj")]
-script = ExtResource("2_3ef2p")
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 position = Vector2(1, 2)
@@ -97,16 +96,17 @@ offset = Vector2(0, -28)
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_q6071")
 
-[node name="HealthComponent" parent="." index="3" instance=ExtResource("4_ncrea")]
-max_hp = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_6i3nj")
 }
 autoplay = "RESET"
 
+[node name="HealthComponent" parent="." index="4" instance=ExtResource("4_ncrea")]
+max_hp = 3
+
 [node name="HitBoxComponent" parent="." index="5" node_paths=PackedStringArray("healthComponent") instance=ExtResource("5_n34d4")]
+position = Vector2(0, -4)
 healthComponent = NodePath("../HealthComponent")
 scope = Array[int]([0])
 
@@ -120,6 +120,11 @@ maxNumberOfDrops = 6
 minNumberOfDrops = 2
 random = true
 
-[connection signal="OnDeath" from="HealthComponent" to="." method="OnDeath"]
-[connection signal="OnHpChanged" from="HealthComponent" to="." method="OnTakeDamage"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationFinished"]
+[node name="PlacingAreaComponent" parent="." index="7"]
+size = Vector2(2, 2)
+
+[node name="BreakableComponent" parent="." index="8" node_paths=PackedStringArray("hitBox", "healthComponent", "dropperComponent", "animationPlayer") instance=ExtResource("11_qye3h")]
+hitBox = NodePath("../HitBoxComponent")
+healthComponent = NodePath("../HealthComponent")
+dropperComponent = NodePath("../DropperComponent")
+animationPlayer = NodePath("../AnimationPlayer")

@@ -12,12 +12,12 @@ public partial class Object: StaticBody2D
 		if (what == NotificationSceneInstantiated)
 		{
 			WireNodes(); // this is a generated method
-		}
+		} 
 	}
 
-	[Node]
+	[Node("CollisionShape2D")]
 	public CollisionShape2D collisionShape;
 
-	[Node]
+	[Node("PlacingAreaComponent")]
 	public PlacingAreaComponent placingArea;
 }

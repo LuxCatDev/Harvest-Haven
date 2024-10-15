@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="PlacesableObject" load_steps=4 format=3 uid="uid://boulnattbg6w"]
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=3 format=3 uid="uid://boulnattbg6w"]
 
 [ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_7ifd8"]
 [ext_resource type="PackedScene" uid="uid://ccua5xexfi3a8" path="res://objects/scenes/wild/tree_01.tscn" id="1_26paa"]
-[ext_resource type="Texture2D" uid="uid://ddqme3aslmo2h" path="res://assets/sprites/objects/sprites/wild/tree_01.png" id="1_nga4b"]
 
 [resource]
 script = ExtResource("1_7ifd8")
 Scene = ExtResource("1_26paa")
-Logo = ExtResource("1_nga4b")
 Size = Vector2(2, 2)
 Category = 0
 ValidationRules = Array[Object]([])
-PlacementRules = null
+PlacementTraits = Array[Object]([])

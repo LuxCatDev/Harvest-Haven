@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwxctkkahiqwg"]
+[gd_scene load_steps=11 format=3 uid="uid://cwxctkkahiqwg"]
 
 [ext_resource type="Script" path="res://items/scripts/Tool.cs" id="1_yxrgv"]
 [ext_resource type="Texture2D" uid="uid://b8o4vwyhjlokb" path="res://assets/sprites/items/sprites/tools/pickaxe_animations.png" id="3_3kvr7"]
+[ext_resource type="PackedScene" uid="uid://bu3xpylpp6p2v" path="res://components/scenes/hurt_box_component.tscn" id="3_dmeup"]
 
 [sub_resource type="Animation" id="Animation_1ng30"]
 length = 0.001
@@ -146,6 +147,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 1]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HurtBoxComponent:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_ujtef"]
 resource_name = "use_side"
@@ -210,6 +223,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HurtBoxComponent:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_8v80e"]
@@ -276,6 +301,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HurtBoxComponent:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5e0ti"]
 _data = {
@@ -286,9 +323,14 @@ _data = {
 "use_up": SubResource("Animation_8v80e")
 }
 
-[node name="Pickaxe" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45adh"]
+size = Vector2(16, 16)
+
+[node name="Pickaxe" type="Node2D" node_paths=PackedStringArray("animationPlayer", "hurtBox")]
+y_sort_enabled = true
 script = ExtResource("1_yxrgv")
 animationPlayer = NodePath("AnimationPlayer")
+hurtBox = NodePath("HurtBoxComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-5, -5)
@@ -301,3 +343,12 @@ libraries = {
 "": SubResource("AnimationLibrary_5e0ti")
 }
 autoplay = "idle"
+
+[node name="HurtBoxComponent" parent="." instance=ExtResource("3_dmeup")]
+top_level = true
+monitorable = false
+Type = 1
+Damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("RectangleShape2D_45adh")

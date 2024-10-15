@@ -1,11 +1,8 @@
-using Common;
-using Components.InventoryComponent;
+using Components;
 using Components.State;
 using Godot;
 using GodotUtilities;
 using Items;
-using Namespace;
-using System;
 
 namespace Entities.Player;
 
@@ -101,7 +98,7 @@ public partial class Player : CharacterBody2D
 
 	public void UpdateAnimation(string anim)
 	{
-		if (equipmentControllerComponent.CurrentItem != null && equipmentControllerComponent.CurrentItem.Item.Type != ItemType.Tool && (anim == "move" || anim == "idle"))
+		if (equipmentControllerComponent.CarryAnimation && (anim == "move" || anim == "idle"))
 		{
 			AnimationPlayer.Play(anim + "_carry_" + AnimationDirection);
 		}

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=9 format=3 uid="uid://ckbb7cogarpbu"]
+
+[ext_resource type="PackedScene" uid="uid://q5c867i3c22k" path="res://objects/scenes/plants/soil.tscn" id="1_lktyi"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/traits/PlaceTrait.cs" id="1_sx5l1"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_y0hwy"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/rules/IsCellFreeRule.cs" id="3_urqbu"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/rules/IsCloseToPlayerRule.cs" id="4_u2hel"]
+
+[sub_resource type="Resource" id="Resource_gvpo1"]
+script = ExtResource("1_sx5l1")
+
+[sub_resource type="Resource" id="Resource_ffrfg"]
+script = ExtResource("3_urqbu")
+
+[sub_resource type="Resource" id="Resource_n2tq8"]
+script = ExtResource("4_u2hel")
+expectedDistance = 16.0
+
+[resource]
+script = ExtResource("1_y0hwy")
+Scene = ExtResource("1_lktyi")
+Size = Vector2(1, 1)
+Category = 3
+ValidationRules = Array[Object]([SubResource("Resource_ffrfg"), SubResource("Resource_n2tq8")])
+PlacementTraits = Array[Object]([SubResource("Resource_gvpo1")])

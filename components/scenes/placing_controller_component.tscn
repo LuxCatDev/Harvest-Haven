@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://components/scripts/PlacingControllerComponent.cs" id="1_vlku5"]
 
-[node name="PlacingControllerComponent" type="Node"]
+[node name="PlacingControllerComponent" type="Node2D"]
 script = ExtResource("1_vlku5")

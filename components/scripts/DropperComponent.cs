@@ -22,6 +22,9 @@ public partial class DropperComponent : Node2D
 	[Export]
 	private bool random;
 
+	[Export]
+	private float itemDropVelocity = 75;
+
 	private PackedScene itemScene = GD.Load<PackedScene>("res://common/scenes/pickable_item.tscn");
 
 	private RandomNumberGenerator randomNumberGenerator = new();
@@ -39,6 +42,8 @@ public partial class DropperComponent : Node2D
 		{
 			int dropCount = randomNumberGenerator.RandiRange(minNumberOfDrops, maxNumberOfDrops);
 
+			GD.Print(dropCount);
+
 			foreach (int i in Enumerable.Range(0, dropCount))
 			{
 				int itemIndex = randomNumberGenerator.RandiRange(0, items.Count - 1);
@@ -55,7 +60,7 @@ public partial class DropperComponent : Node2D
 		PickableItem pickableItem = itemScene.Instantiate<PickableItem>();
 
 		pickableItem.InventoryItem = item;
-		pickableItem.velocity = Vector2.Right.Rotated(randomNumberGenerator.Randf() * 2.0f * MathF.PI) * 50 * randomNumberGenerator.RandfRange(0.5f, 1);
+		pickableItem.velocity = Vector2.Right.Rotated(randomNumberGenerator.Randf() * 2.0f * MathF.PI) * itemDropVelocity * randomNumberGenerator.RandfRange(0.5f, 1);
 
 		GameManager.Instance.Level.AddChild(pickableItem);
 

@@ -7,7 +7,7 @@ namespace Components.GridComponent;
 [GlobalClass]
 public partial class ValidationRule: Resource
 {
-    public virtual bool IsValid(Object objectInstance, GridValidationComponent validationComponent)
+    public virtual bool IsValid(GridValidationAreaComponent gridValidationArea, GridValidationComponent validationComponent)
     {
         return true;
     }

@@ -20,6 +20,9 @@ public partial class Playground: Node2D
 	}
 
 	[Node]
+	private TileMapSystem tileMapSystem;
+
+	[Node]
 	private TileMapLayer terrainLayer;
 
 	[Node]
@@ -37,6 +40,7 @@ public partial class Playground: Node2D
 		GameManager.Instance.Level = this;
 		GameManager.Instance.DialogController = dialogController;
 		GameManager.Instance.TerrainLayer = terrainLayer;
+		GameManager.Instance.TileMapSystem = tileMapSystem;
     }
 
 	public void SpawnNode(Node2D node)

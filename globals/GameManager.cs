@@ -14,6 +14,8 @@ public partial class GameManager : Node
 
 	public Node2D Level { get; set; }
 
+	public TileMapSystem TileMapSystem { get; set; }
+
     public override void _Ready()
     {
 		Instance = this;

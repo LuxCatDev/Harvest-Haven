@@ -1,11 +1,15 @@
+using System.Collections.Generic;
+using System.Drawing;
+using Components.GridComponent;
 using Entities.Player;
 using Godot;
 using GodotUtilities;
+using Objects;
 
 namespace Components;
 
 [Scene]
-public partial class PlacingAreaComponent: Area2D 
+public partial class PlacingAreaComponent : Area2D
 {
 	public override void _Notification(int what)
 	{
@@ -16,41 +20,17 @@ public partial class PlacingAreaComponent: Area2D
 	}
 
 	[Node]
-	private CollisionShape2D collisionShape;
+	private CollisionShape2D collisionShape2D;
 
 	[Export]
-	private Vector2 size = new(1,1);
-
-	public bool IsOnPlayer = false;
-
-	public bool IsOnRestrictedCell = false;
+	private Vector2 size = new(1, 1);
 
 	public override void _Ready()
 	{
-		collisionShape.Shape.Set("size", size * 16);
-	}
-
-	private void OnBodyEntered(Node2D body)
-	{
-		if (body is Player)
+		size = new(size.X * 16 - 1, size.Y * 16 - 1);
+		collisionShape2D.Shape = new RectangleShape2D()
 		{
-			IsOnPlayer = true;
-
-			return;
-		}
-
-		IsOnRestrictedCell = true;
-	}
-
-	private void OnBodyExited(Node2D body)
-	{
-		if (body is Player)
-		{
-			IsOnPlayer = false;
-
-			return;
-		}
-
-		IsOnRestrictedCell = false;
+			Size = size
+		};
 	}
 }

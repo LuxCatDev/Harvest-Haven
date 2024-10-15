@@ -1,7 +1,7 @@
+using Components;
 using Components.State;
 using Godot;
 using Items;
-using Namespace;
 
 namespace Entities.Player;
 

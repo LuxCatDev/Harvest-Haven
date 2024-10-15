@@ -17,5 +17,4 @@ Description = "Tool For Watering Your Plants Daily"
 Texture = ExtResource("2_niqi2")
 Value = 300
 Stackable = false
-Type = 2
 Data = SubResource("Resource_b3de2")

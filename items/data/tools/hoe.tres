@@ -17,5 +17,4 @@ Description = "Tool For Preparing The Dirt For Planting"
 Texture = ExtResource("2_1uuo2")
 Value = 350
 Stackable = false
-Type = 2
 Data = SubResource("Resource_6aaml")

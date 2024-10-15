@@ -1,7 +1,4 @@
-using Common;
 using Components;
-using Components.GridComponent;
-using Entities.Player;
 using Godot;
 using GodotUtilities;
 
@@ -27,6 +24,9 @@ public partial class Tool : Node2D
 	[Export]
 	private HurtBoxComponent hurtBox;
 
+	[Export]
+	public EquipmentControllerComponent equipmentController;
+
 	public override void _Process(double delta)
 	{
 		TileMapLayer map = GameManager.Instance.TerrainLayer;
@@ -36,7 +36,10 @@ public partial class Tool : Node2D
 		Vector2I mapPosition = map.LocalToMap(position);
 		Vector2 tile = map.MapToLocal(mapPosition);
 
-		hurtBox.GlobalPosition = tile;
+		if (hurtBox != null)
+		{
+			hurtBox.GlobalPosition = tile;
+		}
 	}
 
 	public void Use()

@@ -1,20 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://70d656n1t7t"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://70d656n1t7t"]
 
-[ext_resource type="Script" path="res://items/scripts/ConsumableData.cs" id="1_anwpi"]
 [ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_dgc3s"]
-[ext_resource type="Script" path="res://items/scripts/Product.cs" id="2_jf3gj"]
+[ext_resource type="Script" path="res://items/scripts/Consumable.cs" id="1_g4ujh"]
 [ext_resource type="Texture2D" uid="uid://bj5y6622x7lxf" path="res://assets/sprites/items/sprites/plants/melon.png" id="3_6gomi"]
 
-[sub_resource type="Resource" id="Resource_5s0dl"]
-script = ExtResource("1_anwpi")
-FoodMod = 65
-WaterhMod = 25
-EnergyMod = 50
-
-[sub_resource type="Resource" id="Resource_trmka"]
-script = ExtResource("2_jf3gj")
-Type = 0
-Data = SubResource("Resource_5s0dl")
+[sub_resource type="Resource" id="Resource_nyabj"]
+script = ExtResource("1_g4ujh")
+FoodMod = 0
+WaterhMod = 0
+EnergyMod = 0
 
 [resource]
 script = ExtResource("1_dgc3s")
@@ -22,5 +16,5 @@ Name = "Melon"
 Description = "Fruit"
 Texture = ExtResource("3_6gomi")
 Value = 50
-Type = 1
-Data = SubResource("Resource_trmka")
+Stackable = true
+Data = SubResource("Resource_nyabj")

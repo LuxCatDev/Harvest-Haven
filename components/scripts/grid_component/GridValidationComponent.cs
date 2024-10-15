@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Components.GridComponent;
+using Common;
 using Godot;
 using GodotUtilities;
 using Models;
-using Objects;
 
-namespace Common;
+namespace Components.GridComponent;
 
 [Scene]
 public partial class GridValidationComponent : Node2D
@@ -21,12 +20,9 @@ public partial class GridValidationComponent : Node2D
     [Signal]
     public delegate void OnInteractionEventHandler();
 
-    [Export]
-    public Godot.Collections.Array<ValidationRule> validationRules;
+    private Godot.Collections.Array<ValidationRule> validationRules;
 
     public Vector2 CrosshairSize;
-
-    public Node2D Preview;
 
     public bool IsValid = true;
 
@@ -35,32 +31,29 @@ public partial class GridValidationComponent : Node2D
     [Node]
     public Crosshair Crosshair;
 
-    public Object ObjectInstance;
+    [Node("GridValidationAreaComponent")]
+    public GridValidationAreaComponent GridValidationArea;
+
+    public PlacesableObject PlacesableObject;
 
     public void Enable()
     {
+        validationRules = PlacesableObject.ValidationRules;
         IsActive = true;
         Visible = true;
         Crosshair.Size = CrosshairSize * 16;
+        GridValidationArea.Size = CrosshairSize;
+        GridValidationArea.Enable();
 
-        Crosshair.ShowCrosshair();
-        
-        if (Preview != null)
-        {
-            Preview.Position = Crosshair.Center;
-
-            AddChild(Preview);
-        }
-    
+        Crosshair.ShowCrosshair(); 
     }
 
     public void Disable()
     {
         IsActive = false;
         Visible = false;
+        GridValidationArea.Disable();
         Crosshair.HideCrosshair();
-        Preview?.QueueFree();
-        Preview = null;
     }
 
     public override void _Process(double delta)
@@ -72,7 +65,7 @@ public partial class GridValidationComponent : Node2D
 
         foreach (ValidationRule validationRule in validationRules)
         {
-            validation.Add(validationRule.IsValid(ObjectInstance, this));
+            validation.Add(validationRule.IsValid(GridValidationArea, this));
         }
 
         IsValid = validation.FindIndex((rule) => rule == false) == -1;

@@ -4,7 +4,7 @@ using System;
 namespace Items;
 
 [GlobalClass]
-public partial class ConsumableData : ProductData
+public partial class Consumable : ItemData
 {
 	[Export]
     public int FoodMod;
@@ -15,9 +15,9 @@ public partial class ConsumableData : ProductData
     [Export]
     public int EnergyMod;
 
-    ConsumableData(): this(0,0,0) {}
+    Consumable(): this(0,0,0) {}
 
-    public ConsumableData(int foodMod, int waterhMod, int energyMod)
+    public Consumable(int foodMod, int waterhMod, int energyMod)
     {
         FoodMod = foodMod;
         WaterhMod = waterhMod;

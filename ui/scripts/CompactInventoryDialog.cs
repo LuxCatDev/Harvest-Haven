@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Components.InventoryComponent;
+using Components;
 using Godot;
 using GodotUtilities;
 

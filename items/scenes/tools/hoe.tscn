@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dprsg4pupagn3"]
+[gd_scene load_steps=10 format=3 uid="uid://dprsg4pupagn3"]
 
-[ext_resource type="Script" path="res://items/scripts/Tool.cs" id="1_cn640"]
+[ext_resource type="Script" path="res://items/scripts/Hoe.cs" id="1_fno8t"]
+[ext_resource type="Resource" uid="uid://ckbb7cogarpbu" path="res://objects/data/plants/soil.tres" id="2_h62cc"]
 [ext_resource type="Texture2D" uid="uid://cm3oxpjfjj8pb" path="res://assets/sprites/items/sprites/tools/hoe_animations.png" id="2_khfvk"]
 
 [sub_resource type="Animation" id="Animation_1ng30"]
@@ -158,6 +159,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 1]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Dig"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ujtef"]
 resource_name = "use_side"
@@ -222,6 +237,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Dig"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8v80e"]
@@ -300,6 +329,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Dig"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5e0ti"]
 _data = {
@@ -311,7 +354,8 @@ _data = {
 }
 
 [node name="Hoe" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("1_cn640")
+script = ExtResource("1_fno8t")
+soilResource = ExtResource("2_h62cc")
 animationPlayer = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

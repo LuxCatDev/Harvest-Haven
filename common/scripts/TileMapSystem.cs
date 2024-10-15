@@ -33,9 +33,6 @@ public partial class TileMapSystem : Node2D
 	[Export]
 	private TileMapLayer dataLayer;
 
-	[Export]
-	private PlacementLayer placementLayer;
-
 	readonly Vector2I[] NEIGHTBOURS = new Vector2I[] { new(0, 0), new(1, 0), new(0, 1), new(1, 1) };
 
 	readonly Dictionary<Tuple<TileType, TileType, TileType, TileType>, Vector2I> rules = new() {

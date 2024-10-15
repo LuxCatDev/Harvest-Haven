@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8pjw2vci2p7f"]
+
+[ext_resource type="Script" path="res://components/scripts/GridValidationAreaComponent.cs" id="1_hau0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15dg7"]
+size = Vector2(16, 16)
+
+[node name="GridValidationAreaComponent" type="Area2D"]
+collision_layer = 8
+collision_mask = 47
+monitoring = false
+script = ExtResource("1_hau0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_15dg7")
+debug_color = Color(0.0933332, 0, 0.7, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="area_exited" from="." to="." method="OnAreaExited"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

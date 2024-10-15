@@ -17,5 +17,4 @@ Description = "Tool For Mining"
 Texture = ExtResource("2_gjcrs")
 Value = 550
 Stackable = false
-Type = 2
 Data = SubResource("Resource_y3cll")
