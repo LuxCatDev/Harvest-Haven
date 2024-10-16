@@ -628,7 +628,8 @@ script = ExtResource("1_suvfo")
 position = Vector2(-7, 4)
 
 [node name="Shadow" type="Sprite2D" parent="Textures"]
-position = Vector2(0, -4)
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4ify6")
 
 [node name="Texture" type="Sprite2D" parent="Textures"]

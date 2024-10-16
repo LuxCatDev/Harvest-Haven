@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://q5c867i3c22k"]
+[gd_scene load_steps=9 format=3 uid="uid://q5c867i3c22k"]
 
 [ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_du0os"]
 [ext_resource type="Script" path="res://objects/scripts/Soil.cs" id="2_2i4ha"]
 [ext_resource type="Texture2D" uid="uid://beioshjb7srar" path="res://assets/sprites/objects/sprites/plants/soil_sprite_sheet.png" id="2_up8q3"]
-[ext_resource type="PackedScene" uid="uid://dva25p05bse2x" path="res://objects/scenes/plants/potatoe_plant.tscn" id="4_f4lk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icfkp"]
 size = Vector2(16, 16)
@@ -67,18 +66,16 @@ z_index = 0
 collision_layer = 32
 script = ExtResource("2_2i4ha")
 
-[node name="PotatoePlant" parent="." index="0" instance=ExtResource("4_f4lk4")]
-
-[node name="Texture" parent="." index="1"]
+[node name="Texture" parent="." index="0"]
 z_index = -1
 z_as_relative = false
 texture = ExtResource("2_up8q3")
 hframes = 2
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_icfkp")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_v3bcd")
 }

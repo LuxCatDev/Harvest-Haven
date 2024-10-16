@@ -61,6 +61,12 @@ pageScene = ExtResource("17_6p5yr")
 
 [node name="DialogController" parent="." instance=ExtResource("20_es6ge")]
 
+[node name="Tree_03" parent="." instance=ExtResource("12_e71d1")]
+position = Vector2(-128, 0)
+
+[node name="Tree_02" parent="." instance=ExtResource("12_e71d1")]
+position = Vector2(-16, 0)
+
 [node name="Tree_01" parent="." instance=ExtResource("12_e71d1")]
 position = Vector2(32, 0)
 

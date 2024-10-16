@@ -1,7 +1,6 @@
 using Entities.Player;
 using Godot;
 using GodotUtilities;
-using Items;
 
 namespace Common;
 
@@ -22,10 +21,15 @@ public partial class PickableItem : StaticBody2D
 	[Node]
 	private Area2D pickingArea;
 
+	[Node]
+	public AnimationPlayer animationPlayer;
+
 	[Export]
 	public InventoryItem InventoryItem;
 
-	public Vector2 velocity = Vector2.Zero;
+	public Vector2 Direction = Vector2.Zero;
+
+	public Vector2 Velocity = Vector2.Zero;
 
 	private bool ready;
 
@@ -34,7 +38,8 @@ public partial class PickableItem : StaticBody2D
 	public override void _Ready()
 	{
 		texture.Texture = InventoryItem.Item.Texture;
-		GetTree().CreateTimer(0.5).Timeout += () => {
+		GetTree().CreateTimer(0.5).Timeout += () =>
+		{
 			ready = true;
 			pickingArea.Monitoring = true;
 		};
@@ -42,25 +47,14 @@ public partial class PickableItem : StaticBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (toPlayer && ready)
-		{
-			velocity = GlobalPosition.DirectionTo(GameManager.Instance.Player.GlobalPosition) * 75;
-		}
-		if (ready)
-		{
-			MoveAndCollide(velocity * (float)delta);
-		} else {
-			velocity -= velocity * (float)delta;
-			MoveAndCollide(velocity * (float)delta);
-		}
-	}
+		KinematicCollision2D collision2D = MoveAndCollide(Velocity * (float)delta);
 
-	public void OnDetectionAreaBodyEntered(Node2D body)
-	{
-		if (body is Player player)
+		if (collision2D != null)
 		{
-			toPlayer = true;
+			Velocity = Velocity.Bounce(collision2D.GetNormal());
 		}
+
+		Velocity -= Velocity * (float)delta * 4;
 	}
 
 	public void OnPickingAreaBodyEntered(Node2D body)

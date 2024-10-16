@@ -1,4 +1,5 @@
 using Common;
+using Entities.Player;
 using Godot;
 using System;
 using System.Linq;
@@ -42,13 +43,10 @@ public partial class DropperComponent : Node2D
 		{
 			int dropCount = randomNumberGenerator.RandiRange(minNumberOfDrops, maxNumberOfDrops);
 
-			GD.Print(dropCount);
-
 			foreach (int i in Enumerable.Range(0, dropCount))
 			{
 				int itemIndex = randomNumberGenerator.RandiRange(0, items.Count - 1);
-
-				SpawnItem(items[itemIndex]);
+				SpawnItem(new(items[itemIndex].Item, items[itemIndex].Amount));
 			}
 		}
 
@@ -60,12 +58,11 @@ public partial class DropperComponent : Node2D
 		PickableItem pickableItem = itemScene.Instantiate<PickableItem>();
 
 		pickableItem.InventoryItem = item;
-		pickableItem.velocity = Vector2.Right.Rotated(randomNumberGenerator.Randf() * 2.0f * MathF.PI) * itemDropVelocity * randomNumberGenerator.RandfRange(0.5f, 1);
+		pickableItem.GlobalPosition = GlobalPosition;
+		pickableItem.Velocity = Vector2.Right.Rotated(randomNumberGenerator.RandfRange(-1.5f, 1.5f)) * itemDropVelocity * randomNumberGenerator.RandfRange(0.5f, 1.0f);
 
 		GameManager.Instance.Level.AddChild(pickableItem);
 
-		GD.Print(GlobalPosition);
-		
-		pickableItem.GlobalPosition = GlobalPosition;
+		pickableItem.animationPlayer.Play("bounce");
 	}
 }

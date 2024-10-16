@@ -54,8 +54,6 @@ public partial class InventoryComponent: Node
             }
         } else {
             int itemIndex = items.FindIndex((item) => item != null && item.Item == inventoryItem.Item);
-
-
             if (itemIndex != -1 && inventoryItem.Item.Stackable)
             {
                 items[itemIndex].Amount += inventoryItem.Amount;

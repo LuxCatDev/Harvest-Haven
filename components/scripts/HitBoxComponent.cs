@@ -22,7 +22,6 @@ public partial class HitBoxComponent : Area2D
 			if (scope.Contains(hurtBox.Type))
 			{
 				healthComponent?.TakeDamage(hurtBox.Damage);
-
 				EmitSignal(SignalName.OnDamaged);
 			}
 		}

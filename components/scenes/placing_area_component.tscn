@@ -13,8 +13,3 @@ script = ExtResource("1_uaddf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_upars")
 debug_color = Color(0.7, 0, 0.14, 0.419608)
-
-[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
-[connection signal="area_exited" from="." to="." method="OnAreaExited"]
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
-[connection signal="body_exited" from="." to="." method="OnBodyExited"]
