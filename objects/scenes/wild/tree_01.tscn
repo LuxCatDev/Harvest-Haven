@@ -87,9 +87,9 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fc0n"]
-size = Vector2(19, 16)
+size = Vector2(16, 16)
 
-[sub_resource type="Resource" id="Resource_wbi7e"]
+[sub_resource type="Resource" id="Resource_l0rgs"]
 resource_local_to_scene = true
 script = ExtResource("10_8ev0y")
 Item = ExtResource("9_aiepy")
@@ -125,11 +125,11 @@ healthComponent = NodePath("../HealthComponent")
 scope = Array[int]([0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
-position = Vector2(0.5, 0)
+position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_1fc0n")
 
 [node name="DropperComponent" parent="." index="6" instance=ExtResource("8_nxtp4")]
-items = Array[Object]([SubResource("Resource_wbi7e")])
+items = Array[Object]([SubResource("Resource_l0rgs")])
 maxNumberOfDrops = 6
 minNumberOfDrops = 2
 random = true

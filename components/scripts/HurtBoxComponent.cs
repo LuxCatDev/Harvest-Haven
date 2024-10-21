@@ -16,4 +16,10 @@ public partial class HurtBoxComponent : Area2D
 
 	[Export]
 	public int Damage;
+
+	public void Shoot()
+	{
+		Monitorable = true;
+		GetTree().CreateTimer(0.1).Timeout += () => Monitorable = false;
+	}
 }

@@ -1,3 +1,4 @@
+using Components.GridComponent;
 using Godot;
 using System;
 
@@ -18,11 +19,19 @@ public partial class ToolData : ItemData
 	[Export]
 	public ToolType Type;
 
-	ToolData(): this(null, ToolType.Common) {}
+	[Export]
+	public Godot.Collections.Array<ValidationRule> ValidationRules;
 
-	public ToolData(PackedScene scene, ToolType type)
+	[Export]
+	public Godot.Collections.Array<Trait> Traits;
+
+	ToolData(): this(null, new Godot.Collections.Array<ValidationRule>{}, new Godot.Collections.Array<Trait>{}, ToolType.Common) {}
+
+	public ToolData(PackedScene scene, Godot.Collections.Array<ValidationRule> validationRules, Godot.Collections.Array<Trait> traits, ToolType type)
 	{
 		Scene = scene;
+		ValidationRules = validationRules;
+		Traits = traits;
 		Type = type;
 	}
 }

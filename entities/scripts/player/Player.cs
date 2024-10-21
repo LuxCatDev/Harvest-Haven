@@ -1,4 +1,5 @@
 using Components;
+using Components.GridComponent;
 using Components.State;
 using Godot;
 using GodotUtilities;
@@ -63,7 +64,16 @@ public partial class Player : CharacterBody2D
 	public InventoryComponent InventoryComponent { get; private set; }
 
 	[Node("Components/EquipmentControllerComponent")]
-	public EquipmentControllerComponent equipmentControllerComponent;
+	public EquipmentControllerComponent EquipmentControllerComponent;
+
+	[Node("Components/PlacingControllerComponent")]
+	public PlacingControllerComponent PlacingControllerComponent;
+
+	[Node("Components/GridValidationComponent")]
+	public GridValidationComponent GridValidationComponent;
+
+	[Node("Components/ToolControllerComponent")]
+	public ToolControllerComponent ToolControllerComponent;
 
 	public override void _Ready()
 	{
@@ -98,13 +108,31 @@ public partial class Player : CharacterBody2D
 
 	public void UpdateAnimation(string anim)
 	{
-		if (equipmentControllerComponent.CarryAnimation && (anim == "move" || anim == "idle"))
+		if (EquipmentControllerComponent.CarryAnimation && (anim == "move" || anim == "idle"))
 		{
 			AnimationPlayer.Play(anim + "_carry_" + AnimationDirection);
 		}
 		else
 		{
 			AnimationPlayer.Play(anim + "_" + AnimationDirection);
+		}
+	}
+
+	public void UpdateToolAnimation(ToolData toolData, string toolDirection, Vector2 toolCardinalDirection)
+	{
+		CardinalDirection = toolCardinalDirection;
+		textures.Scale = new(CardinalDirection.X < 0 ? -1 : 1, 1);
+		switch (toolData.Type)
+		{
+			case ToolType.Axe:
+				AnimationPlayer.Play("axe_" + toolDirection);
+				break;
+			case ToolType.WateringCan:
+				AnimationPlayer.Play("axe_" + toolDirection);
+				break;
+			default:
+				AnimationPlayer.Play("axe_" + toolDirection);
+				break;
 		}
 	}
 }

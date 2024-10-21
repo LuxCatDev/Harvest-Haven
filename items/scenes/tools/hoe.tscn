@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dprsg4pupagn3"]
+[gd_scene load_steps=9 format=3 uid="uid://dprsg4pupagn3"]
 
-[ext_resource type="Script" path="res://items/scripts/Hoe.cs" id="1_fno8t"]
-[ext_resource type="Resource" uid="uid://ckbb7cogarpbu" path="res://objects/data/plants/soil.tres" id="2_h62cc"]
+[ext_resource type="Script" path="res://items/scripts/Tool.cs" id="1_loqmr"]
 [ext_resource type="Texture2D" uid="uid://cm3oxpjfjj8pb" path="res://assets/sprites/items/sprites/tools/hoe_animations.png" id="2_khfvk"]
 
 [sub_resource type="Animation" id="Animation_1ng30"]
@@ -170,7 +169,7 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"Dig"
+"method": &"Contact"
 }]
 }
 
@@ -249,7 +248,7 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"Dig"
+"method": &"Contact"
 }]
 }
 
@@ -278,7 +277,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -4), Vector2(0, -6)]
 }
 tracks/2/type = "value"
@@ -340,7 +339,7 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"Dig"
+"method": &"Contact"
 }]
 }
 
@@ -354,8 +353,7 @@ _data = {
 }
 
 [node name="Hoe" type="Node2D" node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("1_fno8t")
-soilResource = ExtResource("2_h62cc")
+script = ExtResource("1_loqmr")
 animationPlayer = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

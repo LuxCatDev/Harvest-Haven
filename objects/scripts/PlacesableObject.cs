@@ -27,16 +27,16 @@ public partial class PlacesableObject: Resource
 	public Godot.Collections.Array<ValidationRule> ValidationRules;
 
 	[Export]
-	public Godot.Collections.Array<PlacementTrait> PlacementTraits;
+	public Godot.Collections.Array<Trait> Traits;
 
-	public PlacesableObject() : this(null, new(16, 16), new Godot.Collections.Array<ValidationRule>{}, new Godot.Collections.Array<PlacementTrait>{}, ObjectCategory.Common) {}
+	public PlacesableObject() : this(null, new(16, 16), new Godot.Collections.Array<ValidationRule>{}, new Godot.Collections.Array<Trait>{}, ObjectCategory.Common) {}
 
-	public PlacesableObject(PackedScene scene, Vector2 size, Godot.Collections.Array<ValidationRule> validationRules, Godot.Collections.Array<PlacementTrait> placementTraits, ObjectCategory category)
+	public PlacesableObject(PackedScene scene, Vector2 size, Godot.Collections.Array<ValidationRule> validationRules, Godot.Collections.Array<Trait> placementTraits, ObjectCategory category)
 	{
 		Scene = scene;
 		Size = size;
 		Category = category;
 		ValidationRules = validationRules;
-		PlacementTraits = placementTraits;
+		Traits = placementTraits;
 	}
 }

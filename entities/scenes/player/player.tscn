@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c126d6k7tkm4x"]
+[gd_scene load_steps=43 format=3 uid="uid://c126d6k7tkm4x"]
 
 [ext_resource type="Script" path="res://entities/scripts/player/Player.cs" id="1_suvfo"]
 [ext_resource type="Texture2D" uid="uid://bkrpeo4ijhhf" path="res://assets/sprites/common/sprites/shadow.png" id="2_4ify6"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ctp76rxn1357f" path="res://components/scenes/placing_controller_component.tscn" id="13_0g664"]
 [ext_resource type="PackedScene" uid="uid://bvjrc7dtfc852" path="res://components/scenes/grid_validation_component.tscn" id="13_oqws5"]
 [ext_resource type="PackedScene" uid="uid://xelx5dx3df0h" path="res://components/scenes/equipment_controller_component.tscn" id="15_2e6pq"]
+[ext_resource type="PackedScene" uid="uid://dbgr6ja4glkuj" path="res://components/scenes/tool_controller_component.tscn" id="17_56u1v"]
 
 [sub_resource type="Animation" id="Animation_ghxxq"]
 length = 0.001
@@ -688,9 +689,10 @@ launchEvents = [NodePath("../Idle/OnPlayerMove")]
 [node name="OnPlayerStopMoving" type="Node" parent="StateMachineComponent/Move"]
 script = ExtResource("8_sx4xc")
 
-[node name="Using" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("equipmentControllerComponent", "launchEvents")]
+[node name="Using" type="Node" parent="StateMachineComponent" node_paths=PackedStringArray("equipmentControllerComponent", "ItemWrapper", "launchEvents")]
 script = ExtResource("12_ml2wi")
 equipmentControllerComponent = NodePath("../../Components/EquipmentControllerComponent")
+ItemWrapper = NodePath("../../Textures/EquipedItemWrapper")
 launchEvents = [NodePath("../OnToolUsed")]
 
 [node name="OnUsingFinished" type="Node" parent="StateMachineComponent/Using"]
@@ -707,8 +709,12 @@ InventoryComponent = NodePath("../InventoryComponent")
 
 [node name="GridValidationComponent" parent="Components" instance=ExtResource("13_oqws5")]
 
-[node name="EquipmentControllerComponent" parent="Components" node_paths=PackedStringArray("inventoryComponent", "PlacingController", "GridValidation", "itemWrapper") instance=ExtResource("15_2e6pq")]
+[node name="EquipmentControllerComponent" parent="Components" node_paths=PackedStringArray("inventoryComponent", "PlacingController", "GridValidation", "ToolController", "itemWrapper") instance=ExtResource("15_2e6pq")]
 inventoryComponent = NodePath("../InventoryComponent")
 PlacingController = NodePath("../PlacingControllerComponent")
 GridValidation = NodePath("../GridValidationComponent")
+ToolController = NodePath("../ToolControllerComponent")
 itemWrapper = NodePath("../../Textures/EquipedItemWrapper")
+
+[node name="ToolControllerComponent" parent="Components" node_paths=PackedStringArray("GridValidation") instance=ExtResource("17_56u1v")]
+GridValidation = NodePath("../GridValidationComponent")

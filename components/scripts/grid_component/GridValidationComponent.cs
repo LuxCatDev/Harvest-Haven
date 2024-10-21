@@ -20,7 +20,7 @@ public partial class GridValidationComponent : Node2D
     [Signal]
     public delegate void OnInteractionEventHandler();
 
-    private Godot.Collections.Array<ValidationRule> validationRules;
+    public Godot.Collections.Array<ValidationRule> ValidationRules;
 
     public Vector2 CrosshairSize;
 
@@ -34,11 +34,8 @@ public partial class GridValidationComponent : Node2D
     [Node("GridValidationAreaComponent")]
     public GridValidationAreaComponent GridValidationArea;
 
-    public PlacesableObject PlacesableObject;
-
     public void Enable()
     {
-        validationRules = PlacesableObject.ValidationRules;
         IsActive = true;
         Visible = true;
         Crosshair.Size = CrosshairSize * 16;
@@ -63,7 +60,7 @@ public partial class GridValidationComponent : Node2D
 
         List<bool> validation = new();
 
-        foreach (ValidationRule validationRule in validationRules)
+        foreach (ValidationRule validationRule in ValidationRules)
         {
             validation.Add(validationRule.IsValid(GridValidationArea, this));
         }

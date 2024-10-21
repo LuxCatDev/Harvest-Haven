@@ -33,6 +33,9 @@ public partial class EquipmentControllerComponent : Node2D
 	public GridValidationComponent GridValidation;
 
 	[Export]
+	public ToolControllerComponent ToolController;
+
+	[Export]
 	private Node2D itemWrapper;
 
 	public bool Active = true;
@@ -143,7 +146,10 @@ public partial class EquipmentControllerComponent : Node2D
 		{
 			Tool tool = toolData.Scene.Instantiate<Tool>();
 
-			tool.equipmentController = this;
+			ToolController.toolData = toolData;
+			ToolController.Enable();
+
+			tool.ToolControllerComponent = ToolController;
 
 			itemWrapper.AddChild(tool);
 

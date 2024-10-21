@@ -28,6 +28,8 @@ public partial class Crosshair : Node2D
 	[Export]
 	public Vector2 Size = new(16, 16);
 
+	public bool UsingTool = false;
+
 	public Vector2I TilePosition;
 
 	public Vector2 Center;
@@ -85,16 +87,42 @@ public partial class Crosshair : Node2D
 	{
 		if (!Visible) return;
 
-		TileMapLayer map = GameManager.Instance.TerrainLayer;
 
-		Vector2 mousePosition = map.ToLocal(GetGlobalMousePosition());
 
-		Vector2I mapPosition = map.LocalToMap(mousePosition);
-		Vector2 tile = map.MapToLocal(mapPosition);
+		if (UsingTool)
+		{
+			TileMapLayer map = GameManager.Instance.TerrainLayer;
 
-		TilePosition = mapPosition;
+			Vector2 mousePosition = map.ToLocal(GetGlobalMousePosition());
 
-		GlobalPosition = tile;
+			Vector2I tilePosition = map.LocalToMap(GameManager.Instance.Player.GlobalPosition);
+			Vector2I mapMousePosition = map.LocalToMap(mousePosition);
+			Vector2 tile = map.MapToLocal(tilePosition);
+
+			if (tilePosition == mapMousePosition)
+			{
+				TilePosition = tilePosition;
+				GlobalPosition = tile;
+			} else {
+				Vector2 distance = tile.DirectionTo(mousePosition).Snapped(Vector2.One) * 16;
+				TilePosition = map.LocalToMap(tile + distance);
+				GlobalPosition = tile + distance;
+			}
+		}
+		else
+		{
+			TileMapLayer map = GameManager.Instance.TerrainLayer;
+
+			Vector2 mousePosition = map.ToLocal(GetGlobalMousePosition());
+
+			Vector2I mapPosition = map.LocalToMap(mousePosition);
+			Vector2 tile = map.MapToLocal(mapPosition);
+
+			TilePosition = mapPosition;
+
+			GlobalPosition = tile;
+		}
+
 	}
 
 	public List<Vector2I> GetTargetetCells()

@@ -1,4 +1,5 @@
 using Components;
+using Entities.Player;
 using Godot;
 using GodotUtilities;
 
@@ -22,30 +23,36 @@ public partial class Tool : Node2D
 	private AnimationPlayer animationPlayer;
 
 	[Export]
-	private HurtBoxComponent hurtBox;
+	public ToolControllerComponent ToolControllerComponent;
 
-	[Export]
-	public EquipmentControllerComponent equipmentController;
+	public Vector2 CardinalDirection { get; private set; }
 
-	public override void _Process(double delta)
+	public string AnimationDirection
 	{
-		TileMapLayer map = GameManager.Instance.TerrainLayer;
-
-		Vector2 position = map.ToLocal(GameManager.Instance.Player.GlobalPosition + GameManager.Instance.Player.CardinalDirection * 16);
-
-		Vector2I mapPosition = map.LocalToMap(position);
-		Vector2 tile = map.MapToLocal(mapPosition);
-
-		if (hurtBox != null)
+		get
 		{
-			hurtBox.GlobalPosition = tile;
+			if (CardinalDirection == Vector2.Down)
+			{
+				return "down";
+			}
+			else if (CardinalDirection == Vector2.Up)
+			{
+				return "up";
+			}
+			else
+			{
+				return "side";
+			}
 		}
 	}
 
 	public void Use()
 	{
+		Player player = GameManager.Instance.Player;
+
+		CardinalDirection = player.GlobalPosition.DirectionTo(GetGlobalMousePosition()).Snapped(Vector2.One);
 		EmitSignal(SignalName.OnUsed);
-		animationPlayer.Play("use_" + GameManager.Instance.Player.AnimationDirection);
+		animationPlayer.Play("use_" + AnimationDirection);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -54,5 +61,10 @@ public partial class Tool : Node2D
 		{
 			Use();
 		}
+	}
+
+	public void Contact()
+	{
+		ToolControllerComponent.Interact();
 	}
 }

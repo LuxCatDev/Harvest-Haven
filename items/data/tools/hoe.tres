@@ -1,14 +1,26 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://puvu3tep2tpy"]
+[gd_resource type="Resource" script_class="Item" load_steps=11 format=3 uid="uid://puvu3tep2tpy"]
 
 [ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_5263c"]
 [ext_resource type="Script" path="res://items/scripts/ToolData.cs" id="1_ijpjv"]
 [ext_resource type="PackedScene" uid="uid://dprsg4pupagn3" path="res://items/scenes/tools/hoe.tscn" id="1_rxf2a"]
 [ext_resource type="Texture2D" uid="uid://cxvbhljiuk2kc" path="res://assets/sprites/items/sprites/tools/hoe.png" id="2_1uuo2"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/traits/DigTrait.cs" id="2_3ti7o"]
+[ext_resource type="Resource" uid="uid://ckbb7cogarpbu" path="res://objects/data/plants/soil.tres" id="3_6e5d0"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/rules/IsCellFreeRule.cs" id="4_26gae"]
+
+[sub_resource type="Resource" id="Resource_bcsaf"]
+script = ExtResource("2_3ti7o")
+soilResource = ExtResource("3_6e5d0")
+
+[sub_resource type="Resource" id="Resource_p2mou"]
+script = ExtResource("4_26gae")
 
 [sub_resource type="Resource" id="Resource_6aaml"]
 script = ExtResource("1_ijpjv")
 Scene = ExtResource("1_rxf2a")
 Type = 0
+ValidationRules = Array[Object]([SubResource("Resource_p2mou")])
+Traits = Array[Object]([SubResource("Resource_bcsaf")])
 
 [resource]
 script = ExtResource("1_5263c")

@@ -10,6 +10,10 @@ public partial class PlayerUsingState: State
     [Export]
     public EquipmentControllerComponent equipmentControllerComponent;
 
+	[Export]
+	private Node2D ItemWrapper;
+
+
     public override void Enter() {
 		player.Velocity = Vector2.Zero;
 
@@ -17,17 +21,9 @@ public partial class PlayerUsingState: State
 
 		if (equipmentControllerComponent.CurrentItem.Item.Data is ToolData data)
 		{
-			switch (data.Type)
+			if (ItemWrapper.GetChild(0) is Tool tool)
 			{
-				case ToolType.Axe:
-					player.UpdateAnimation("axe");
-					break;
-				case ToolType.WateringCan:
-					player.UpdateAnimation("water");
-					break;
-				default:
-					player.UpdateAnimation("tool");
-					break;
+				player.UpdateToolAnimation(data, tool.AnimationDirection, tool.CardinalDirection);
 			}
 
 			player.AnimationPlayer.AnimationFinished += OnAnimationFinished;

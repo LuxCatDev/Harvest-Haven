@@ -9,4 +9,4 @@ Scene = ExtResource("1_26paa")
 Size = Vector2(2, 2)
 Category = 0
 ValidationRules = Array[Object]([])
-PlacementTraits = Array[Object]([])
+Traits = null

@@ -4,18 +4,19 @@ using Objects;
 namespace Components.GridComponent.Traits;
 
 [GlobalClass]
-public partial class PlantTrait : PlacementTrait
+public partial class PlantTrait : Trait
 {
-    public override bool IsValid(PlacingControllerComponent placingController)
+    public override bool IsValid()
     {
-        return placingController.GridValidation.IsValid;
+    	if (!PlacingControllerComponent.IsActive) return false;
+        return GridValidationComponent.IsValid;
     }
 
-    public override void Execute(PlacingControllerComponent placingController)
+    public override void Execute()
     {
-		Plant plantInstance = placingController.PlacesableObject.Scene.Instantiate<Plant>();
+		Plant plantInstance = PlacingControllerComponent.PlacesableObject.Scene.Instantiate<Plant>();
 
-		foreach (Node2D node in placingController.GridValidation.GridValidationArea.collidingWith)
+		foreach (Node2D node in PlacingControllerComponent.GridValidation.GridValidationArea.collidingWith)
 		{
 			if (node is Soil soil)
 			{

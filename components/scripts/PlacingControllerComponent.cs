@@ -51,7 +51,6 @@ public partial class PlacingControllerComponent : Node2D
 
 		crosshair = GridValidation.Crosshair;
 		GridValidation.CrosshairSize = PlacesableObject.Size;
-		GridValidation.PlacesableObject = PlacesableObject;
 		GridValidation.Enable();
 	}
 
@@ -72,9 +71,10 @@ public partial class PlacingControllerComponent : Node2D
 
 		List<bool> validations = new();
 
-		foreach(PlacementTrait placementTrait in PlacesableObject.PlacementTraits)
+		foreach(Trait trait in PlacesableObject.Traits)
 		{
-			validations.Add(placementTrait.IsValid(this));
+			trait.Init();
+			validations.Add(trait.IsValid());
 		}
 
 		if (validations.FindIndex((item) => item == false) != -1)
@@ -82,9 +82,9 @@ public partial class PlacingControllerComponent : Node2D
 			return;
 		}
 
-		foreach(PlacementTrait placementTrait in PlacesableObject.PlacementTraits)
+		foreach(Trait trait in PlacesableObject.Traits)
 		{
-			placementTrait.Execute(this);
+			trait.Execute();
 		}
 	}
 }

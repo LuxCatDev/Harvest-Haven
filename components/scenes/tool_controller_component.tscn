@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbgr6ja4glkuj"]
+
+[ext_resource type="Script" path="res://components/scripts/ToolControllerComponent.cs" id="1_e6a7n"]
+[ext_resource type="PackedScene" uid="uid://bu3xpylpp6p2v" path="res://components/scenes/hurt_box_component.tscn" id="2_330ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7h5i"]
+size = Vector2(16, 16)
+
+[node name="ToolControllerComponent" type="Node2D"]
+script = ExtResource("1_e6a7n")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_330ad")]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_e7h5i")

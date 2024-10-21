@@ -9,6 +9,8 @@
 script = ExtResource("1_q4vxu")
 Scene = ExtResource("1_c6v6r")
 Type = 2
+ValidationRules = Array[Object]([])
+Traits = null
 
 [resource]
 script = ExtResource("1_pv266")
