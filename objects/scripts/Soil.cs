@@ -20,15 +20,17 @@ public partial class Soil: Object
 
 	public void SetPlant(Plant plant)
 	{
-		GD.Print(plant);
-		// plant.GlobalPosition = GlobalPosition;
+		if (Plant != null)
+		{
+			return;
+		}
+		
 		Plant = plant;
 		AddChild(plant);
 	}
 
 	public void SetEmpty()
 	{
-
 	}
 
 	public void SetWatered()

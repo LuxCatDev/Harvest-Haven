@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Components;
 using Entities.Player;
 using Godot;
 using GodotUtilities;
 using Models;
 using Objects;
+using UI;
 
 namespace Common;
 
@@ -31,8 +33,11 @@ public partial class Playground: Node2D
 	[Node]
 	private DialogController dialogController;
 
-	[Export]
-	private PlacesableObject placesableObject;
+	[Node]
+	private TimeComponent timeComponent;
+
+	[Node]
+	private Hud hud;
 
     public override void _Ready()
     {
@@ -41,6 +46,9 @@ public partial class Playground: Node2D
 		GameManager.Instance.DialogController = dialogController;
 		GameManager.Instance.TerrainLayer = terrainLayer;
 		GameManager.Instance.TileMapSystem = tileMapSystem;
+		GameManager.Instance.TimeComponent = timeComponent;
+
+		hud.Init();
     }
 
 	public void SpawnNode(Node2D node)
