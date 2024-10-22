@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bill034mdvn64"]
+
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_c0jss"]
+[ext_resource type="Texture2D" uid="uid://dekon50etlik7" path="res://assets/sprites/objects/sprites/wild/choped_tree.png" id="2_qx6da"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccwlq"]
+size = Vector2(19, 10)
+
+[node name="ChopedTree" instance=ExtResource("1_c0jss")]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_qx6da")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_ccwlq")

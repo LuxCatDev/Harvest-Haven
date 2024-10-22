@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dbrd8q2204edx"
+path="res://.godot/imported/bush_01.aseprite-307c8dd0d975563d464c2dc6a7fd1257.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/wild/bush_01.aseprite"
+dest_files=["res://.godot/imported/bush_01.aseprite-307c8dd0d975563d464c2dc6a7fd1257.res"]
+
+[params]
+

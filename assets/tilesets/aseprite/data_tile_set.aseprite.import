@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dh2mokcprpc3d"
+path="res://.godot/imported/data_tile_set.aseprite-2b92f2b674e94303d27351e1f514c16f.res"
+
+[deps]
+
+source_file="res://assets/tilesets/aseprite/data_tile_set.aseprite"
+dest_files=["res://.godot/imported/data_tile_set.aseprite-2b92f2b674e94303d27351e1f514c16f.res"]
+
+[params]
+

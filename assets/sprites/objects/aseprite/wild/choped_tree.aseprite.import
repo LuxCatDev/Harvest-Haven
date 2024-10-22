@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://l8sb5kboxk2"
+path="res://.godot/imported/choped_tree.aseprite-4b2d81449696b1c579132ccaa5134536.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/wild/choped_tree.aseprite"
+dest_files=["res://.godot/imported/choped_tree.aseprite-4b2d81449696b1c579132ccaa5134536.res"]
+
+[params]
+

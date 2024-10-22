@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bu7om5l5pk3px"
+path="res://.godot/imported/fence_back.aseprite-5db110bd13a241893f0d6d00a176d5e9.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/craftable/fence_back.aseprite"
+dest_files=["res://.godot/imported/fence_back.aseprite-5db110bd13a241893f0d6d00a176d5e9.res"]
+
+[params]
+

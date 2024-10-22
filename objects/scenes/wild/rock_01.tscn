@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn634e1t8kw1y"]
+
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_3dkm3"]
+[ext_resource type="Texture2D" uid="uid://bere2e7xtrxl0" path="res://assets/sprites/objects/sprites/wild/rock_01.png" id="2_0w65i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h756"]
+size = Vector2(13, 9)
+
+[node name="Rock_01" instance=ExtResource("1_3dkm3")]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_0w65i")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_4h756")

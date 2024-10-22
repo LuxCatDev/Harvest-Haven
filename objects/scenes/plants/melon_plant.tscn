@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://s3e2ey0bss6"]
+
+[ext_resource type="PackedScene" uid="uid://u45p22htiyh4" path="res://objects/scenes/plants/plant.tscn" id="1_o7u51"]
+
+[node name="MelonPlant" instance=ExtResource("1_o7u51")]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cblmtyeo00lxf"
+path="res://.godot/imported/water_bottle.aseprite-46496ed5d42ca1a1066315a8af58594b.res"
+
+[deps]
+
+source_file="res://assets/sprites/items/aseprite/products/water_bottle.aseprite"
+dest_files=["res://.godot/imported/water_bottle.aseprite-46496ed5d42ca1a1066315a8af58594b.res"]
+
+[params]
+

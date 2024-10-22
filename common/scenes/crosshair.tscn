@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq35qq65agd27"]
+
+[ext_resource type="Script" path="res://common/scripts/Crosshair.cs" id="1_w2rdv"]
+[ext_resource type="Texture2D" uid="uid://b56836gbpys0i" path="res://assets/sprites/common/sprites/crosshair.png" id="2_u11wd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkgbm"]
+texture = ExtResource("2_u11wd")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3mhmn"]
+texture = ExtResource("2_u11wd")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Crosshair" type="Node2D"]
+visible = false
+z_index = 1
+script = ExtResource("1_w2rdv")
+
+[node name="Free" type="Panel" parent="."]
+z_index = 10
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pkgbm")
+
+[node name="Restricted" type="Panel" parent="."]
+z_index = 10
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3mhmn")

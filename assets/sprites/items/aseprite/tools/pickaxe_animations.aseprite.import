@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://j0fa2rxl75ut"
+path="res://.godot/imported/pickaxe_animations.aseprite-b9728f03aa838450195c6c2cb67e48fe.res"
+
+[deps]
+
+source_file="res://assets/sprites/items/aseprite/tools/pickaxe_animations.aseprite"
+dest_files=["res://.godot/imported/pickaxe_animations.aseprite-b9728f03aa838450195c6c2cb67e48fe.res"]
+
+[params]
+

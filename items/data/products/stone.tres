@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bxpsp2xpsa201"]
+
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_unk30"]
+[ext_resource type="Texture2D" uid="uid://bvgjij76by4ok" path="res://assets/sprites/items/sprites/products/stone.png" id="2_pbrnq"]
+
+[resource]
+script = ExtResource("1_unk30")
+Name = "Stone"
+Description = "Piece of a rock"
+Texture = ExtResource("2_pbrnq")
+Value = 25
+Stackable = true

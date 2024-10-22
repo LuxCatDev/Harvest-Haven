@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c85bdp0vjqp4n"]
+
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_paa3l"]
+[ext_resource type="Texture2D" uid="uid://in27rqb3sdkb" path="res://assets/sprites/objects/sprites/wild/log.png" id="2_admkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63p2c"]
+size = Vector2(56, 10)
+
+[node name="Log" instance=ExtResource("1_paa3l")]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_admkf")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_63p2c")

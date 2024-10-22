@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://q5c867i3c22k"]
+
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_du0os"]
+[ext_resource type="Script" path="res://objects/scripts/Soil.cs" id="2_2i4ha"]
+[ext_resource type="Texture2D" uid="uid://beioshjb7srar" path="res://assets/sprites/objects/sprites/plants/soil_sprite_sheet.png" id="2_up8q3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icfkp"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_twmq2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nooue"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2mlb2"]
+resource_name = "wet"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v3bcd"]
+_data = {
+"RESET": SubResource("Animation_twmq2"),
+"idle": SubResource("Animation_nooue"),
+"wet": SubResource("Animation_2mlb2")
+}
+
+[node name="Soil" instance=ExtResource("1_du0os")]
+z_index = 0
+collision_layer = 32
+script = ExtResource("2_2i4ha")
+
+[node name="Texture" parent="." index="0"]
+z_index = -1
+z_as_relative = false
+texture = ExtResource("2_up8q3")
+hframes = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_icfkp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_v3bcd")
+}
+autoplay = "idle"

@@ -1,0 +1,57 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dw5oc2fybrmll"]
+
+[ext_resource type="FontFile" uid="uid://d3xr4a1mmtg75" path="res://assets/fonts/monogram-extended.ttf" id="1_h3e2q"]
+
+[sub_resource type="FontVariation" id="FontVariation_3fodw"]
+base_font = ExtResource("1_h3e2q")
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sadgy"]
+bg_color = Color(0.752941, 0.580392, 0.45098, 1)
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pbrl"]
+bg_color = Color(0.752941, 0.580392, 0.45098, 1)
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp3y0"]
+bg_color = Color(0.752941, 0.580392, 0.45098, 1)
+border_width_right = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+expand_margin_left = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31qqb"]
+bg_color = Color(0.478431, 0.282353, 0.254902, 1)
+border_width_right = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+expand_margin_left = 3.0
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/outline_size = 2
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 0
+Label/fonts/font = SubResource("FontVariation_3fodw")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_sadgy")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_5pbrl")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_hp3y0")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_31qqb")

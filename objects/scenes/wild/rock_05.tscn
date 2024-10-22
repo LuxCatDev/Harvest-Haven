@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://bnr18syk31i0t"]
+
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_dwf6p"]
+[ext_resource type="Texture2D" uid="uid://hd4sgvqww0d4" path="res://assets/sprites/objects/sprites/wild/rock_05.png" id="2_001dk"]
+[ext_resource type="Shader" path="res://assets/shaders/flashing.gdshader" id="2_wq0nm"]
+[ext_resource type="PackedScene" uid="uid://cpnpaeskb5g3v" path="res://components/scenes/breakable_component.tscn" id="3_sty33"]
+[ext_resource type="PackedScene" uid="uid://c54au5cqtmdgx" path="res://components/scenes/hit_box_component.tscn" id="4_62wbm"]
+[ext_resource type="PackedScene" uid="uid://cbdxn2ju2toak" path="res://components/scenes/health_component.tscn" id="5_s0me3"]
+[ext_resource type="PackedScene" uid="uid://bk5wf246spjyv" path="res://components/scenes/dropper_component.tscn" id="6_si3vk"]
+[ext_resource type="Resource" uid="uid://bxpsp2xpsa201" path="res://items/data/products/stone.tres" id="8_6fice"]
+[ext_resource type="Script" path="res://items/scripts/InventoryItem.cs" id="9_u8u0j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjgvn"]
+shader = ExtResource("2_wq0nm")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84ey3"]
+size = Vector2(25, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkevp"]
+size = Vector2(25, 20)
+
+[sub_resource type="Resource" id="Resource_ews1g"]
+script = ExtResource("9_u8u0j")
+Item = ExtResource("8_6fice")
+Amount = 1
+
+[sub_resource type="Animation" id="Animation_qa2wi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x5mrh"]
+resource_name = "death"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.0, 0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5gw11"]
+resource_name = "hited"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.0, 0.5, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyaf8"]
+_data = {
+"RESET": SubResource("Animation_qa2wi"),
+"death": SubResource("Animation_x5mrh"),
+"hited": SubResource("Animation_5gw11")
+}
+
+[node name="Rock_05" instance=ExtResource("1_dwf6p")]
+
+[node name="Texture" parent="." index="0"]
+material = SubResource("ShaderMaterial_rjgvn")
+texture = ExtResource("2_001dk")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_84ey3")
+
+[node name="PlacingAreaComponent" parent="." index="2"]
+size = Vector2(2, 2)
+
+[node name="BreakableComponent" parent="." index="3" node_paths=PackedStringArray("hitBox", "healthComponent", "dropperComponent", "animationPlayer") instance=ExtResource("3_sty33")]
+hitBox = NodePath("../HitBoxComponent")
+healthComponent = NodePath("../HealthComponent")
+dropperComponent = NodePath("../DropperComponent")
+animationPlayer = NodePath("../AnimationPlayer")
+
+[node name="HitBoxComponent" parent="." index="4" node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_62wbm")]
+healthComponent = NodePath("../HealthComponent")
+scope = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_jkevp")
+
+[node name="HealthComponent" parent="." index="5" instance=ExtResource("5_s0me3")]
+max_hp = 3
+
+[node name="DropperComponent" parent="." index="6" instance=ExtResource("6_si3vk")]
+items = Array[Object]([SubResource("Resource_ews1g")])
+maxNumberOfDrops = 8
+minNumberOfDrops = 2
+random = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_oyaf8")
+}
+autoplay = "RESET"

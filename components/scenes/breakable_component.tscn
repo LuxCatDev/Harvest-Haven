@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpnpaeskb5g3v"]
+
+[ext_resource type="Script" path="res://components/scripts/BreakableComponent.cs" id="1_43si3"]
+
+[node name="BreakableComponent" type="Node2D"]
+script = ExtResource("1_43si3")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://0avi8k44amr3"]
+
+[ext_resource type="Texture2D" uid="uid://crm50mlf1mxf1" path="res://assets/sprites/objects/sprites/craftable/fence_front.png" id="1_0ckh6"]
+[ext_resource type="PackedScene" uid="uid://t6jb3er5femm" path="res://objects/scenes/object.tscn" id="1_ooujt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_achgg"]
+size = Vector2(16, 10)
+
+[node name="WoodFence" instance=ExtResource("1_ooujt")]
+
+[node name="Texture" parent="." index="0"]
+position = Vector2(0, -8)
+texture = ExtResource("1_0ckh6")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_achgg")

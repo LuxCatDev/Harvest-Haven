@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://citedu33hjcfd"
+path="res://.godot/imported/rock_03.aseprite-236f318a11ef8824ab83dd3c096ff160.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/wild/rock_03.aseprite"
+dest_files=["res://.godot/imported/rock_03.aseprite-236f318a11ef8824ab83dd3c096ff160.res"]
+
+[params]
+

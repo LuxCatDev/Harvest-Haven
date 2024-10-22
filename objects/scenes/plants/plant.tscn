@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://u45p22htiyh4"]
+
+[ext_resource type="Texture2D" uid="uid://cf7csrmcakgt4" path="res://assets/sprites/objects/sprites/plants/melon_plant.png" id="1_nwmv0"]
+[ext_resource type="Script" path="res://objects/scripts/Plant.cs" id="1_uutok"]
+[ext_resource type="PackedScene" uid="uid://bu021p1lybokd" path="res://components/scenes/placing_area_component.tscn" id="2_ia6m4"]
+
+[sub_resource type="Animation" id="Animation_42mlk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pu1bx"]
+resource_name = "growed"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_kop4g"]
+resource_name = "growing_01"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_hheh4"]
+resource_name = "growing_02"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_r6c1c"]
+resource_name = "growing_03"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ht5dl"]
+resource_name = "growing_04"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_bu2sx"]
+resource_name = "seed"
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0d2j5"]
+_data = {
+"RESET": SubResource("Animation_42mlk"),
+"growed": SubResource("Animation_pu1bx"),
+"growing_01": SubResource("Animation_kop4g"),
+"growing_02": SubResource("Animation_hheh4"),
+"growing_03": SubResource("Animation_r6c1c"),
+"growing_04": SubResource("Animation_ht5dl"),
+"seed": SubResource("Animation_bu2sx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhij4"]
+
+[node name="Plant" type="StaticBody2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_uutok")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_nwmv0")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0d2j5")
+}
+autoplay = "seed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lhij4")
+disabled = true
+
+[node name="PlacingAreaComponent" parent="." instance=ExtResource("2_ia6m4")]

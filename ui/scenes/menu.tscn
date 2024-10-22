@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5kgpxuwj5c2h"]
+
+[ext_resource type="Script" path="res://ui/scripts/Menu.cs" id="1_gw3b5"]
+[ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="2_2ekvt"]
+[ext_resource type="StyleBox" uid="uid://6p6xqbiuixfq" path="res://ui/themes/slot_active_style.tres" id="2_wll2w"]
+[ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="3_fdq1l"]
+[ext_resource type="Texture2D" uid="uid://tbtc6y1m0nvw" path="res://assets/sprites/items/sprites/tools/pickaxe.png" id="3_fkmtm"]
+[ext_resource type="Texture2D" uid="uid://dahgosmlxqwl0" path="res://assets/sprites/common/sprites/coin.png" id="5_hcylu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjvfs"]
+bg_color = Color(0.0832, 0.1152, 0.16, 0.705882)
+
+[node name="Menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_gw3b5")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qjvfs")
+
+[node name="Page" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 600.0
+offset_bottom = 336.0
+
+[node name="Nav" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NavItem" type="PanelContainer" parent="Nav"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_styles/panel = ExtResource("2_wll2w")
+
+[node name="TextureRect" type="TextureRect" parent="Nav/NavItem"]
+layout_mode = 2
+texture = ExtResource("3_fkmtm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Coin Display" type="Panel" parent="."]
+offset_left = 96.0
+offset_top = 304.0
+offset_right = 168.0
+offset_bottom = 328.0
+theme_override_styles/panel = ExtResource("3_fdq1l")
+
+[node name="Label" type="Label" parent="Coin Display"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -13.5
+offset_right = -8.0
+offset_bottom = 9.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_2ekvt")
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Coin Display"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 20.0
+offset_bottom = 19.0
+texture = ExtResource("5_hcylu")
+
+[node name="Day Display" type="Panel" parent="."]
+offset_left = 176.0
+offset_top = 304.0
+offset_right = 248.0
+offset_bottom = 328.0
+theme_override_styles/panel = ExtResource("3_fdq1l")
+
+[node name="Label2" type="Label" parent="Day Display"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -13.0
+offset_right = -46.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_2ekvt")
+text = "DAY"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Day Display"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -13.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_2ekvt")
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1

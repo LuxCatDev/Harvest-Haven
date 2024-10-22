@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://df3ufdr0bjs6y"]
+
+[ext_resource type="Resource" uid="uid://q045sw0wggl0" path="res://objects/data/plants/melon_plant.tres" id="1_aekn0"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_bvrfj"]
+[ext_resource type="Script" path="res://items/scripts/SeedPack.cs" id="2_pu1h5"]
+[ext_resource type="Texture2D" uid="uid://cs0i34sk1t5y5" path="res://assets/sprites/items/sprites/plants/melon_seed_pack.png" id="2_vmk1j"]
+
+[sub_resource type="Resource" id="Resource_bwuug"]
+script = ExtResource("2_pu1h5")
+PlacesableObject = ExtResource("1_aekn0")
+
+[resource]
+script = ExtResource("1_bvrfj")
+Name = "Melon Seed Pack"
+Description = "Seed Pack For Planting A Melon Plant"
+Texture = ExtResource("2_vmk1j")
+Value = 20
+Stackable = true
+Data = SubResource("Resource_bwuug")

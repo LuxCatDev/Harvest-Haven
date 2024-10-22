@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="PlacesableObject" load_steps=11 format=3 uid="uid://dcuy58ifkmtjn"]
+
+[ext_resource type="Script" path="res://components/scripts/grid_component/traits/PlaceTrait.cs" id="1_lhui6"]
+[ext_resource type="Script" path="res://objects/scripts/PlacesableObject.cs" id="1_xrblk"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/rules/IsCellFreeRule.cs" id="3_b5sgx"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/rules/IsCloseToPlayerRule.cs" id="4_lceqp"]
+[ext_resource type="Script" path="res://components/scripts/grid_component/rules/IsNotOverPlayerRule.cs" id="5_aodrl"]
+[ext_resource type="PackedScene" uid="uid://0avi8k44amr3" path="res://objects/scenes/craftable/wood_fence.tscn" id="6_xpey0"]
+
+[sub_resource type="Resource" id="Resource_l2qoh"]
+script = ExtResource("1_lhui6")
+
+[sub_resource type="Resource" id="Resource_iaojs"]
+script = ExtResource("3_b5sgx")
+
+[sub_resource type="Resource" id="Resource_7yrj2"]
+script = ExtResource("4_lceqp")
+expectedDistance = 16.0
+
+[sub_resource type="Resource" id="Resource_gphaw"]
+script = ExtResource("5_aodrl")
+
+[resource]
+script = ExtResource("1_xrblk")
+Scene = ExtResource("6_xpey0")
+Size = Vector2(1, 1)
+Category = 1
+ValidationRules = Array[Object]([SubResource("Resource_iaojs"), SubResource("Resource_7yrj2"), SubResource("Resource_gphaw"), null])
+PlacementTraits = Array[Object]([SubResource("Resource_l2qoh")])

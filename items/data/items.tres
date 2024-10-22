@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://6ut7k5inm8j8"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_5b2j5"]
+
+[resource]
+script = ExtResource("1_5b2j5")
+base_folder = "res://items/data"
+includes = Array[String](["**.tres"])
+excludes = Array[String]([])
+paths = Array[String](["res://items/data/items.tres", "res://items/data/plants/melon.tres", "res://items/data/plants/melon_seed_pack.tres", "res://items/data/plants/potatoe.tres", "res://items/data/plants/potatoe_seed_pack.tres", "res://items/data/products/coal.tres", "res://items/data/products/stone.tres", "res://items/data/products/water_bottle.tres", "res://items/data/products/wood.tres", "res://items/data/tools/axe.tres", "res://items/data/tools/hoe.tres", "res://items/data/tools/pickaxe.tres", "res://items/data/tools/watering_can.tres"])

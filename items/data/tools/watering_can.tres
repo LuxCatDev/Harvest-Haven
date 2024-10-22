@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cd3o7j3we0qnd"]
+
+[ext_resource type="PackedScene" uid="uid://buxxecl18ae7w" path="res://items/scenes/tools/watering_can.tscn" id="1_c6v6r"]
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_pv266"]
+[ext_resource type="Script" path="res://items/scripts/ToolData.cs" id="1_q4vxu"]
+[ext_resource type="Texture2D" uid="uid://4pnsqtei036o" path="res://assets/sprites/items/sprites/tools/wateringcan.png" id="2_niqi2"]
+
+[sub_resource type="Resource" id="Resource_b3de2"]
+script = ExtResource("1_q4vxu")
+Scene = ExtResource("1_c6v6r")
+Type = 2
+ValidationRules = Array[Object]([])
+Traits = null
+
+[resource]
+script = ExtResource("1_pv266")
+Name = "Watering Can"
+Description = "Tool For Watering Your Plants Daily"
+Texture = ExtResource("2_niqi2")
+Value = 300
+Stackable = false
+Data = SubResource("Resource_b3de2")

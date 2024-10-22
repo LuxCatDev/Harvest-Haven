@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgafiice6h2p1"]
+
+[ext_resource type="Texture2D" uid="uid://cfwla708hog87" path="res://assets/ui/GUI.png" id="1_dwjgh"]
+[ext_resource type="Theme" uid="uid://dw5oc2fybrmll" path="res://ui/themes/ui_theme.tres" id="2_1k36n"]
+[ext_resource type="Script" path="res://ui/scripts/ItemInformationPanel.cs" id="2_tty2i"]
+[ext_resource type="StyleBox" uid="uid://b3ox5f3xirb57" path="res://ui/themes/slot_style.tres" id="3_psluc"]
+[ext_resource type="Texture2D" uid="uid://peah1gowjvpy" path="res://assets/sprites/items/sprites/products/wood.png" id="5_6oiyr"]
+[ext_resource type="StyleBox" uid="uid://2d3sa4vomdme" path="res://ui/themes/container.tres" id="5_7b0ga"]
+[ext_resource type="Texture2D" uid="uid://dahgosmlxqwl0" path="res://assets/sprites/common/sprites/coin.png" id="5_l6k0d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_woe6e"]
+content_margin_left = 5.0
+texture = ExtResource("1_dwjgh")
+texture_margin_left = 3.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(48, 0, 32, 32)
+
+[node name="ItemInformationPanel" type="Panel"]
+custom_minimum_size = Vector2(153, 264)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 103.0
+offset_top = -152.0
+offset_right = 256.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_7b0ga")
+script = ExtResource("2_tty2i")
+
+[node name="ItemName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 137.0
+offset_bottom = 44.0
+theme = ExtResource("2_1k36n")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("3_psluc")
+text = "Name"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Icon" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 52.0
+offset_right = 137.0
+offset_bottom = 84.0
+theme_override_styles/panel = ExtResource("3_psluc")
+
+[node name="Texture" type="TextureRect" parent="Icon"]
+layout_mode = 2
+texture = ExtResource("5_6oiyr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 52.0
+offset_right = 97.0
+offset_bottom = 76.0
+theme_override_styles/panel = ExtResource("3_psluc")
+
+[node name="ItemValue" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -14.5
+offset_right = -6.0
+offset_bottom = 8.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_1k36n")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 18.0
+texture = ExtResource("5_l6k0d")
+
+[node name="ItemDescription" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 89.0
+offset_right = 137.0
+offset_bottom = 116.0
+size_flags_vertical = 1
+theme = ExtResource("2_1k36n")
+theme_override_constants/line_spacing = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_woe6e")
+text = "Description"
+autowrap_mode = 3
+justification_flags = 35
+uppercase = true

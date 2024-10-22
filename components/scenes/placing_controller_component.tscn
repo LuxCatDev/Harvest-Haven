@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctp76rxn1357f"]
+
+[ext_resource type="Script" path="res://components/scripts/PlacingControllerComponent.cs" id="1_vlku5"]
+
+[node name="PlacingControllerComponent" type="Node2D"]
+script = ExtResource("1_vlku5")

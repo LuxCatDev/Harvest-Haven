@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://8gw2p6bjd2y4"
+path="res://.godot/imported/shadow.aseprite-06c8d12b05ddf02ff09073d59d988925.res"
+
+[deps]
+
+source_file="res://assets/sprites/common/aseprite/shadow.aseprite"
+dest_files=["res://.godot/imported/shadow.aseprite-06c8d12b05ddf02ff09073d59d988925.res"]
+
+[params]
+

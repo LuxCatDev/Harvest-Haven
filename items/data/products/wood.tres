@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ctes2xtecpa3a"]
+
+[ext_resource type="Script" path="res://items/scripts/Item.cs" id="1_awswi"]
+[ext_resource type="Texture2D" uid="uid://peah1gowjvpy" path="res://assets/sprites/items/sprites/products/wood.png" id="2_7lk86"]
+
+[resource]
+script = ExtResource("1_awswi")
+Name = "Wood"
+Description = "Raw Wood"
+Texture = ExtResource("2_7lk86")
+Value = 15
+Stackable = true

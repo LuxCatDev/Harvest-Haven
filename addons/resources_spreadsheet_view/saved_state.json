@@ -1,0 +1,54 @@
+{
+  "hidden_columns": {
+    "res://": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://items/data/plants/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://items/data/products/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://items/data/tools/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://items/resources/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://items/resources/tools/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://objects/data/common/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://objects/data/craftable/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    }
+  },
+  "recent_paths": [
+    "res://items/resources/",
+    "res://",
+    "res://objects/data/common/",
+    "res://objects/data/craftable/",
+    "res://items/data/plants/",
+    "res://items/data/products/",
+    "res://items/data/tools/",
+    "res://items/resources/tools/"
+  ],
+  "table_functions": {
+    "filter": [
+      "return true"
+    ],
+    "process": [
+      "return value"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cykbnd575wle6"
+path="res://.godot/imported/melon_plant.aseprite-049775cfce544a4d124115b7153260a1.res"
+
+[deps]
+
+source_file="res://assets/sprites/objects/aseprite/plants/melon_plant.aseprite"
+dest_files=["res://.godot/imported/melon_plant.aseprite-049775cfce544a4d124115b7153260a1.res"]
+
+[params]
+

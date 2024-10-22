@@ -1,11 +1,12 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ipxgj5bgc4un"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b3mq76ecikic"]
 
-[ext_resource type="Texture2D" uid="uid://cxlpr66ulyxpq" path="res://assets/tilesets/DataTileSet.png" id="1_n4mom"]
+[ext_resource type="Texture2D" uid="uid://c4gfphset3nq7" path="res://assets/tilesets/textures/data_tile_set.png" id="1_qu706"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mi7l"]
-texture = ExtResource("1_n4mom")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q67sn"]
+texture = ExtResource("1_qu706")
 0:0/0 = 0
 0:0/0/custom_data_0 = "Grass"
+0:0/0/custom_data_1 = true
 1:0/0 = 0
 1:0/0/custom_data_0 = "Water"
 2:0/0 = 0
@@ -14,4 +15,6 @@ texture = ExtResource("1_n4mom")
 [resource]
 custom_data_layer_0/name = "TileType"
 custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetAtlasSource_7mi7l")
+custom_data_layer_1/name = "CanPlaceObjects"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_q67sn")

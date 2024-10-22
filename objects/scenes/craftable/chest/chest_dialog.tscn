@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxm4anjiq6i6n"]
+
+[ext_resource type="PackedScene" uid="uid://o5nmadb7tagn" path="res://ui/scenes/compact_inventory_dialog.tscn" id="1_3molw"]
+[ext_resource type="Script" path="res://objects/scripts/chest/ChestDialog.cs" id="1_24bdm"]
+[ext_resource type="PackedScene" uid="uid://cgafiice6h2p1" path="res://ui/scenes/item_information_panel.tscn" id="4_dbtq6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjsv6"]
+bg_color = Color(0.0823529, 0.113725, 0.156863, 1)
+
+[node name="ChestDialog" type="CanvasLayer"]
+script = ExtResource("1_24bdm")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gjsv6")
+
+[node name="PlayerInventory" parent="." instance=ExtResource("1_3molw")]
+offset_left = 49.0
+offset_top = -124.0
+offset_right = 241.0
+offset_bottom = 140.0
+name = "Inventory"
+
+[node name="ChestInventory" parent="." instance=ExtResource("1_3molw")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_top = -124.0
+offset_right = -49.0
+offset_bottom = 140.0
+grow_horizontal = 0
+name = "Chest"
+
+[node name="ItemInformationPanel" parent="." instance=ExtResource("4_dbtq6")]
+offset_left = -68.5
+offset_top = -124.0
+offset_right = 68.5
+offset_bottom = 140.0
