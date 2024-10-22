@@ -128,6 +128,11 @@ public partial class EquipmentControllerComponent : Node2D
 			itemWrapper.RemoveChild(itemWrapper.GetChild(0));
 		}
 
+		if (ToolController.IsActive)
+		{
+			ToolController.Disable();
+		}
+
 		if (PlacingController.IsActive)
 		{
 			PlacingController.Disable();

@@ -51,6 +51,7 @@ public partial class PlacingControllerComponent : Node2D
 
 		crosshair = GridValidation.Crosshair;
 		GridValidation.CrosshairSize = PlacesableObject.Size;
+		GridValidation.ValidationRules = PlacesableObject.ValidationRules;
 		GridValidation.Enable();
 	}
 

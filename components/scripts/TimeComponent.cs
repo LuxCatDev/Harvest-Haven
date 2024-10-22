@@ -5,7 +5,7 @@ using GodotUtilities;
 namespace Components;
 
 [Scene]
-public partial class TimeComponent: Node2D 
+public partial class TimeComponent : Node2D
 {
 	public override void _Notification(int what)
 	{
@@ -34,42 +34,43 @@ public partial class TimeComponent: Node2D
 	private float time = 0.0f;
 	private float pastMinute = -1.0f;
 
-	public int Day;
+	public int Day = 1;
 	public int Hour;
 	public int Minutes;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		time = INGAME_TO_REAL_MINUTE_DURATION * 12 * MINUTES_PER_HOUR;
-    }
+	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		time += (float)delta * INGAME_TO_REAL_MINUTE_DURATION * inGameSpeed;
-
-		GD.Print(time / INGAME_TO_REAL_MINUTE_DURATION);
 
 		double value = Math.Sin(time - Math.PI / 2) + 1.0 / 2.0;
 
 		canvasModulate.Color = gradient.Gradient.Sample((float)value);
 
 		RecalculateTime();
-    }
+	}
 
 	private void RecalculateTime()
 	{
-		int totalMinutes = (int)(time / INGAME_TO_REAL_MINUTE_DURATION);
+		int minutes = (int)(time / INGAME_TO_REAL_MINUTE_DURATION);
 
-		Day = (int)(totalMinutes / MINUTES_PER_DAY);
-
-		int currentDayMinutes = totalMinutes % MINUTES_PER_DAY;
-
-		Hour = (int)(currentDayMinutes / MINUTES_PER_HOUR);
-		Minutes = (int)(currentDayMinutes % MINUTES_PER_HOUR);
+		Hour = minutes / MINUTES_PER_HOUR;
+		Minutes = minutes % MINUTES_PER_HOUR;
 
 		if (pastMinute != Minutes)
 		{
-			pastMinute = Minutes;
+			if (minutes == MINUTES_PER_DAY)
+			{
+				pastMinute = -1;
+				time = 0;
+				Day++;
+			} else {
+				pastMinute = Minutes;
+			}
 			EmitSignal(SignalName.TimeTick, Day, Hour, Minutes);
 		}
 	}
